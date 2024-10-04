@@ -1,1 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    
+    </head>
+    <style>
+body {
+  background: white;
+    
+    font-family: Arial, Helvetica, sans-serif;
+}
 
+ 
+</style>
+    <body>
+		<div id="Menu">
+			<img scr="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+        </div>
+		<div id = "Cabecalho">
+                <h1> Laguna School</h1> 
+			<form>
+				
+			</form>
+		</div>
+
+        <!--<span id="acesso"> </span>
+        <script>
+            document.getElementById("login").addEventListener("submit",
+            function(event){
+                event.preventDefault();
+                //OBTER VALORES DOS CAMPOS DE ENTRADA input
+                var a = document.getElementById("select").value;
+                var b = document.getElementById("senha").value;
+                //FAZER REQUISIÇÃO GET PARA O SERVIDOR NODE-RED
+                fetch(`http://localhost:1880/login?select=${a}&senha=${b}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        //EXIBIR O RESULTADO 
+                        document.getElementById("acesso").textContent = data.acesso;
+                        if(data.acesso == "correto professor"){
+                            location.href = "file:///C:/Users/Aluno_DEV/Downloads/Login%20L%C3%ADvia%20Vit%C3%B3ria/professor.html";
+                        }
+                        else if(data.acesso == "correto aluno"){
+                            location.href = "file:///C:/Users/Aluno_DEV/Downloads/Login%20L%C3%ADvia%20Vit%C3%B3ria/aluno.html";
+                        }
+                        else {
+                            location.href = "file:///C:/Users/Aluno_DEV/Downloads/Login%20L%C3%ADvia%20Vit%C3%B3ria/erro.html";
+                        }
+                        
+                    
+                    })//fecha o then
+            });//fecha o function
+            -->
+
+            
+                    
+        </script>
+    </body>
+</html>
