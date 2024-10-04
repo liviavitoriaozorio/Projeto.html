@@ -1,21 +1,30 @@
 body {
-    background: #ffffff;
+    background: #F2F4F7;
 }
+
 .cabeca {
     width: 1880px;
     height: 20px;
     background-color: #ffffff;
     padding: 20px;
-    margin: 10px;
+    margin: 10px; 
     margin-top: -10px; 
     margin-left: -10px;
     border: 1px solid #CFCFCF;;
 }
-#menu {
+
+.menu-button {
+    background-color: transparent; 
+    border: none; 
+    cursor: pointer; 
     position:absolute;
     top: 20px;
     left: 32px;
 }
+.menu-button img {
+    width: 20px; 
+}
+
 #logo {
     position:absolute;
     top: 1px;
@@ -42,3 +51,78 @@ body {
     font-style: normal;
     font-size: 15px;
 }
+
+.menu {
+    position:absolute;
+    width: 230px;
+    height: 843px;
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 10px; 
+    margin-top: -10px; 
+    margin-left: -10px;
+    border: 1px solid #CFCFCF;;
+}
+.inicio{
+    width: 208px;
+    height: 20px;
+    background-color: #ffffff;
+    padding: 30px;
+    margin-top: -21px; 
+    margin-left: -19px;  
+    border: 0.5px solid #CFCFCF;;
+}
+
+
+
+#casa {
+    position:absolute;
+    top: 20px;
+    left: 40px;
+}
+#ini {
+    position:absolute;
+    top: 5px;
+    left: 80px;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 540;
+    font-style: normal;
+    font-size: 15px;
+    color: #575555;
+}
+
+#calendario {
+    position:absolute;
+    top: 80px;
+    left: 40px;
+}
+#cale {
+    position:absolute;
+    top: 66px;
+    left: 80px;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 540;
+    font-style: normal;
+    font-size: 15px;
+    color: #575555;
+}
+
+#aulas {
+    position:absolute;
+    top: 140px;
+    left: 40px;
+}
+#aul{
+    position:absolute;
+    top: 125px;
+    left: 80px;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 540;
+    font-style: normal;
+    font-size: 15px;
+    color: #575555;
+}
+
