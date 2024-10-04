@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TELA DE INICIO</title>
@@ -8,55 +11,95 @@
     <style>
         .elemento{
             width: 1884px;
-            height: 50px;
+            height: 45px;
             background-color:  #6180B7;
             padding: 20px;
             margin: 10px;
-            margin-top: -5px; 
+            margin-top: -8px; 
             margin-left: -10px;
         }
 
         .quadrado{
+            text-align: center;
+        
+            font-family: "Libre Franklin", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
             background-color:#7899CE ;
             position: absolute;
-            top: 40%;
-            left: 5%;
-            transform: translate(50%,-50%);
-            padding: 80px;
-            border-radius:15px ;
+            top: 20%;
+            padding: 130px;
+            border-radius:10px ;
             color: white;
+            left:11%;
         }
 
-        input{
-            padding: 15px;
-            border: 10px;
+        .entrada{
+            padding: 25px;
+            border-radius: 7px ;
+            border: none;
             outline: none;
-
-
+            font-size: 15px;
+            
+            
+        }
+        .entrada2{
+            padding: 25px;
+            border-radius: 7px ;
+            border: none;
+            outline: none;
+            font-size: 15px;
+            
         }
 
-         button{
+        .botao{
+            
             background-color: #204691;
+            padding: 15px;
+            border-radius: 7px;
+            border: none;
             color: #fff;
-         }   
+            outline: none;
+            width: 50%;
+            align-items: center ;
+           
 
+         }
+        #img2{
+            position:absolute;
+            top: 10em;
+            left: 65em;
 
-    
+        }
+        #Log{
+            position: relative;
+            top:-50px;
+            
+        }
+        
 
     </style>
 
 <body>
+    <div class="img1">
+        <img id="img2" src="https://trello.com/1/cards/66eae2897818c52ebbac463e/attachments/66eae2e526fa37e5d5ee8cc3/previews/66eae2e526fa37e5d5ee8f01/download/Laguna.png" width="650px">
+    </div>
+    <div id="img3">
+        <button class="menu-buttonn aria-label"="Abrir menu">
+            <img src="https://cdn-icons-png.flaticon.com/128/747/747314.png">
+        </button>
+    </div>
+     
+    </div>
     <div class="quadrado">
-        <h1>Login</h1>
-        <input type="txt" placeholder="Email/Cpf">
+        <h1 id="Log">Login</h1>
+        <input class="entrada" type="txt" placeholder="Email/Cpf">
         <br><br>
-        <input type="password" placeholder="Senha">
+        <input class="entrada2" type="password" placeholder="Senha">
         <br><br>
-        <button>Enviar</button>
+        <button class="botao">Entrar</button>
     </div>
         <div class="elemento"> 
         
 </body>
 </html>
-
-
