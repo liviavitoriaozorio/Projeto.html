@@ -1,37 +1,44 @@
 body {
     background: #ffffff;
 }
-#cabeca {
+.cabeca {
     width: 1882px;
-    height: 40px;
-    background-color: #e7e3e3;
+    height: 20px;
+    background-color: #ffffff;
     padding: 20px;
     margin: 10px;
     margin-top: -10px; 
     margin-left: -10px;
+    border: 1px solid #CFCFCF;;
 }
 #menu {
     position:absolute;
-    top: 25px;
+    top: 20px;
     left: 32px;
 }
 #logo {
     position:absolute;
-    top: 4px;
+    top: 1px;
     left: 80px;
 }
 #escola {
     position:absolute;
-    top: 9px;
+    top: -2px;
     left: 150px;
+    font-size: 20px;
 }
 #perfil {
     position:absolute;
-    top: 17px;
-    left: 1840px;
+    top: 20px;
+    left: 1845px;
 }
 #nome {
     position:absolute;
-    top: 15px;
+    top: 16px;
     left: 1760px;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
 }
