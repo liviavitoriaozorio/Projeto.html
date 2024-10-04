@@ -1,0 +1,37 @@
+body {
+    background: #ffffff;
+}
+#cabeca {
+    width: 1882px;
+    height: 40px;
+    background-color: #e7e3e3;
+    padding: 20px;
+    margin: 10px;
+    margin-top: -10px; 
+    margin-left: -10px;
+}
+#menu {
+    position:absolute;
+    top: 25px;
+    left: 32px;
+}
+#logo {
+    position:absolute;
+    top: 4px;
+    left: 80px;
+}
+#escola {
+    position:absolute;
+    top: 9px;
+    left: 150px;
+}
+#perfil {
+    position:absolute;
+    top: 17px;
+    left: 1840px;
+}
+#nome {
+    position:absolute;
+    top: 15px;
+    left: 1760px;
+}
