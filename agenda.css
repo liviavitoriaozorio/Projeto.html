@@ -1,128 +1,128 @@
+* {
+    padding: 0; 
+    margin: 0;
+}
 body {
-    background: #F2F4F7;
-}
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    background-color: #ecf0ff;
 
-.cabeca {
-    width: 1880px;
-    height: 20px;
-    background-color: #ffffff;
-    padding: 20px;
-    margin: 10px; 
-    margin-top: -10px; 
-    margin-left: -10px;
-    border: 1px solid #CFCFCF;;
 }
-
-.menu-button {
+ul{
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+.estrutura {
+    display: grid;
+    grid-template-columns: 1fr 3fr  1fr;
+    grid-template-areas: 
+        'header header header'
+        'sidenav content content'
+        'footer footer footer'
+    ;
+}
+.header {
+    grid-area: header;
+    background-color: #fbf9ff;
+    padding: 20px 20px; 
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    border: 1px solid #CFCFCF;
+}
+button {
+    display: block;
     background-color: transparent; 
-    border: none; 
-    cursor: pointer; 
-    position:absolute;
-    top: 20px;
-    left: 32px;
+    border: none;
+    cursor: pointer;
+    width: 30px; 
 }
-.menu-button img {
-    width: 20px; 
+.logo {
+    max-width: 180px;
+    position:absolute;
+    top: 8px;
+    left: 60px;
+}
+.perfil{
+    max-width: 180px;
+    position:absolute;
+    top: 8px;
+    left: 1840px;
+    width: 50px;
 }
 
-#logo {
-    position:absolute;
-    top: 1px;
-    left: 70px;
+.sidenav {
+    grid-area: sidenav;
+    width: 250px;
+    height: 875px; 
+    background-color: #ffffff;
+    padding: 0; 
+    border-right: 1px solid #CFCFCF;
 }
-#escola {
+
+.sidenav h2 {
+    text-align: center;
+}
+
+.sidenav ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.sidenav ul li {
+    padding: 25px 20px; /* Ajusta o espaço interno dos itens */
+    border-bottom: 1px solid #CFCFCF; /* Linha de separação */
+    transition: background 0.3s;
+}
+
+.sidenav ul li:hover {
+    background-color: #DAEBFF; 
+}
+
+.sidenav ul li a {
+    color: rgb(0, 0, 0);
+    display: block;
+    width: 100%; /* Para garantir que o link ocupe toda a área do item */
+}
+
+.conteudo {
+    grid-area: content;
+    background-color: #ffffff; 
     position:absolute;
-    top: -2px;
-    left: 135px;
+    top: 92px;
+    left: 275px;
+    width: 1620px;
+    height: 825px; 
+    border-radius: 30px;
+}
+
+.calendario h1 {
+    color: #123286;
     font-size: 20px;
-}
-#perfil {
     position:absolute;
-    top: 13px;
-    left: 1850px;
-}
-#nome {
-    position:absolute;
-    top: 7px;
-    left: 1760px;
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 15px;
-}
-
-.menu {
-    position:absolute;
-    width: 230px;
-    height: 843px;
-    background-color: #ffffff;
-    padding: 20px;
-    margin: 10px; 
-    margin-top: -10px; 
-    margin-left: -10px;
-    border: 1px solid #CFCFCF;;
-}
-.inicio{
-    width: 208px;
-    height: 20px;
-    background-color: #ffffff;
-    padding: 30px;
-    margin-top: -21px; 
-    margin-left: -19px;  
-    border: 0.5px solid #CFCFCF;;
-}
-
-
-
-#casa {
-    position:absolute;
-    top: 20px;
+    top: 40px;
     left: 40px;
 }
-#ini {
+
+.controles {
+    margin: 10px 0;
     position:absolute;
-    top: 5px;
-    left: 80px;
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 540;
-    font-style: normal;
-    font-size: 15px;
-    color: #575555;
+    top: 40px;
+    left: 1400px;
 }
 
-#calendario {
-    position:absolute;
-    top: 80px;
-    left: 40px;
-}
-#cale {
-    position:absolute;
-    top: 66px;
-    left: 80px;
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 540;
-    font-style: normal;
-    font-size: 15px;
-    color: #575555;
+.semanas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-#aulas {
-    position:absolute;
-    top: 140px;
-    left: 40px;
+.semana {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin: 5px 0;
 }
-#aul{
-    position:absolute;
-    top: 125px;
-    left: 80px;
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 540;
-    font-style: normal;
-    font-size: 15px;
-    color: #575555;
-}
-
