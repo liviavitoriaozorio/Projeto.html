@@ -9,19 +9,70 @@
     <title>TELA DE INICIO</title>
 </head>
     <style>
-        .elemento{
-            width: 1884px;
-            height: 45px;
-            background-color:  #6180B7;
-            padding: 20px;
-            margin: 10px;
-            margin-top: -8px; 
-            margin-left: -10px;
+        body{
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            background:linear-gradient(45deg,#a7c4f5, #fff);
+        }
+        ul {
+            list-style: none;
         }
 
+
+        a {
+            text-decoration: none;
+        }
+
+
+        #estrut{
+            grid-area: header;
+            background: linear-gradient( #6180B7,#5d87cf);
+            padding: 15px;
+            display: grid;
+            grid-template-columns: 1fr auto ;
+            color: #fff;
+            position: absolute;
+            top: -10px;
+            left:-10px;
+            width: 98.98%;
+            
+        }
+        #linha{
+            display:grid;
+            grid-template-columns: 1fr 3fr 1fr;
+            grid-template-areas:
+              'header header header'
+              'sidenav content anuncios'
+              'footer footer footer';
+
+
+        }
+        #estrut nav ul {
+            display: flex;
+            flex-wrap: wrap;
+           
+        }
+       
+        #estrut li + li {
+            margin-left: 25px;
+           
+        }
+        #estrut nav a {
+            display: block;
+            padding: 5px;
+            color: white;
+            font-size: 1.125em;
+            
+            border-radius: 5px;
+            transition:0.1s;
+            height: 30px;
+       
+        }
+        #estrut nav a:hover{
+            background: #4395e2;
+        }
         .quadrado{
             text-align: center;
-        
+       
             font-family: "Libre Franklin", sans-serif;
             font-optical-sizing: auto;
             font-style: normal;
@@ -34,14 +85,15 @@
             left:11%;
         }
 
+
         .entrada{
             padding: 25px;
             border-radius: 7px ;
             border: none;
             outline: none;
             font-size: 15px;
-            
-            
+           
+           
         }
         .entrada2{
             padding: 25px;
@@ -49,11 +101,12 @@
             border: none;
             outline: none;
             font-size: 15px;
-            
+           
         }
 
+
         .botao{
-            
+           font-family:Arial, Helvetica, sans-serif;
             background-color: #204691;
             padding: 15px;
             border-radius: 7px;
@@ -62,7 +115,9 @@
             outline: none;
             width: 50%;
             align-items: center ;
+            font-size: 20px;
            
+
 
          }
         #img2{
@@ -70,25 +125,46 @@
             top: 10em;
             left: 65em;
 
+
         }
         #Log{
             position: relative;
             top:-50px;
-            
+           
         }
+        #aaa{
+        position: absolute;
+        top:90%;
+        left:91.6%;
+        font-size: 8px;
+        font-family: Arial, Helvetica, sans-serif;
+        color: rgba(192, 203, 216, 0.733);
         
-
+        }
+       
     </style>
 
-<body>
+
+    <body>
+    <div id="aaa">
+        <h1> Criado em 2024</h1>
+        <h1> Por CyberBytes </h1>
+    </div>
+   
     <div class="img1">
-        <img id="img2" src="https://trello.com/1/cards/66eae2897818c52ebbac463e/attachments/66eae2e526fa37e5d5ee8cc3/previews/66eae2e526fa37e5d5ee8f01/download/Laguna.png" width="650px">
-    </div>
-    <div id="img3">
-        <button class="menu-buttonn aria-label"="Abrir menu">
-            <img src="https://cdn-icons-png.flaticon.com/128/747/747314.png">
-        </button>
-    </div>
+        <img id="img2" src="pasta/Lagunaa.png" width="650px">
+    </div id="linha">
+    <header id="estrut">
+       
+        <nav >
+            <ul>
+
+
+                <li><a href="https://www.instagram.com/lagunaschool.br/"><img src="pasta/instaa.png"  width="30px" ></a></li>
+                <li><a href="mailto:exemplo@dominio.com?subject=Assunto%20do%20Email&body=Olá,%0D%0A%0D%0AEsta%20é%20uma%20mensagem%20pronta."><img src="pasta/email.png" width="30px"></a></li>
+            </ul>
+        </nav>
+    </header>  
      
     </div>
     <div class="quadrado">
@@ -97,9 +173,9 @@
         <br><br>
         <input class="entrada2" type="password" placeholder="Senha">
         <br><br>
-        <button class="botao">Entrar</button>
+        <a href="https://www.tiktok.com/pt-BR/"><button class="botao">Entrar</button>
     </div>
-        <div class="elemento"> 
-        
+        <div class="elemento">
+       
 </body>
 </html>
