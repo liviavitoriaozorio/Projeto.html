@@ -15,22 +15,32 @@
         <div class="estrutura">
 
             <header class="header">
+
                 <a href="#"> <img src="ImgAgenda/menu.svg" alt="menu"> </a>
                 <img class="logo" src="ImgAgenda/Lagunascholl.png" alt="Logo">
                 <img class="perfil" src="ImgAgenda/perfil.png" alt="Perfil">
+
             </header>
 
             <nav class="sidenav">
+
                 <ul>
                     <li><a href="#"><img src="ImgAgenda/home.svg" alt="casa"> inicio</a></li>
-                    <li><a href="#"><img src="ImgAgenda/calendario.svg" alt="Calendario"> Agenda</a></li>
-                    <li>
-                        <button type="submit">
+                    <li><a href="#"><img src="ImgAgenda/calendario.svg" alt="Calendario"> Agenda </a></li>
+                    <li id="Minhas">
+                        <button id="setabaixo" type="submit">
                             <img src="ImgAgenda/setaBaixo.svg" alt="setabaixo">
                         </button>
-                        <img src="ImgAgenda/livro.svg" alt="Livro"> Minhas Atividades
+                        <a href="#"><img src="ImgAgenda/livro.svg" alt="Livro"> Minhas Atividades </a>
                     </li>
+                    <ul>
+                        <li><a href="#"><img src="ImgAgenda/meteriaIcon.svg" alt="casa"> 2° A </a></li>
+                        <li><a href="#"><img src="ImgAgenda/meteriaIcon.svg" alt="casa"> 2° B </a></li>
+                        <li><a href="#"><img src="ImgAgenda/meteriaIcon.svg" alt="casa"> 2° C </a></li>
+                    </ul>
                 </ul>
+                
+
             </nav>            
             
             <div class="conteudo">
@@ -68,7 +78,10 @@
                     <div id="semanas" class="semanas"></div>
 
                 </div>
-                
+
+                <a href='https://calendar.google.com/calendar/u/0/r'><button>Novo compromisso</button></a>
+
+                                                             
                 <script src="agenda.js"></script>
 
             </div>
