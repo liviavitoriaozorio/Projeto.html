@@ -27,19 +27,13 @@ a {
 }
 .header {
     grid-area: header;
-    background-color: #fbf9ff;
+    background-color: #ffffff;
     padding: 20px 20px; 
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: center;
     border: 1px solid #CFCFCF;
-}
-button {
-    display: block;
-    background-color: transparent; 
-    border: none;
-    cursor: pointer;
-    width: 30px; 
+    border-top: 0px;
 }
 .logo {
     max-width: 180px;
@@ -73,8 +67,8 @@ button {
 
 }
 .sidenav ul li {
-    display: flex; /* Usando Flexbox */
-    align-items: center; /* Alinhamento vertical */
+    display: flex; 
+    align-items: center; 
     padding: 25px 20px; 
     border-bottom: 1px solid #CFCFCF; 
     transition: background 0.3s;
@@ -87,13 +81,6 @@ button {
     display: block;
     width: 100%; 
 }
-
-.sidenav ul li img {
-    margin-right: 10px; 
-}
-
-
-
 .conteudo {
     grid-area: content;
     background-color: #ffffff; 
@@ -112,22 +99,34 @@ button {
     left: 40px;
 }
 .controles {
+    width: 30px; 
     margin: 10px 0;
     position:absolute;
     top: 40px;
     left: 1400px;
 }
 #setaVoltar {
+    background-color: transparent; 
+    border: none;
+    cursor: pointer;
     margin: 10px 0;
     position:absolute;
     top: 20px;
     left: 100px;
 }
 #setaProximo {
+    background-color: transparent; 
+    border: none;
+    cursor: pointer;
     position:absolute;
     margin: 10px 0;
     top: 21px;
     left: 30px;
+}
+#setabaixo{
+    background-color: transparent; 
+    border: none;
+    cursor: pointer;
 }
 select {
     position:absolute;
@@ -140,18 +139,39 @@ select {
     top: 40px;
     left: -1358px;
 }
-.semanas {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+#ano {
     position:absolute;
-    top: 92px;
-    left: 275px;
+    top: 40px;
+    left: -1255px;
 }
 
 .semana {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    margin: 5px 0;
+    font-size: 23px;
+    color: #909090;
+    position:absolute;
+    top: 140px;
+    left: 25px;
+    margin: 20px 0; 
+}
+
+.semana div {
+    padding: 25px; 
+    border: none; 
+    margin: 0 5px;
+}
+
+.conteudo a button{
+    background-color: transparent; 
+    border: 1px solid #CFCFCF;
+    border-radius: 7px;
+    cursor: pointer;
+    width: 1530px;
+    height: 40px;
+    position:absolute;
+    top: 750px;
+    left: 45px;
+    color: #123286;
+    font-weight: bold;
+    font-size: 18px;
 }
