@@ -15,16 +15,21 @@
         <div class="estrutura">
 
             <header class="header">
-                <a href="#"> <img src="img/menu.svg" alt="menu"> </a>
-                <img class="logo" src="Laguna.png" alt="Logo">
-                <img class="perfil" src="img/perfil.png" alt="Perfil">
+                <a href="#"> <img src="ImgAgenda/menu.svg" alt="menu"> </a>
+                <img class="logo" src="ImgAgenda/Lagunascholl.png" alt="Logo">
+                <img class="perfil" src="ImgAgenda/perfil.png" alt="Perfil">
             </header>
 
             <nav class="sidenav">
                 <ul>
-                    <li><a href="#"><img src="img/home.svg" alt="casa"> inicio</a></li>
-                    <li><a href="#"><img src="img/calendario.svg" alt="Calendario"> Agenda</a></li>
-                    <li><a href="#"><img src="img/livro.svg" alt="Livro"> Minhas Atividades</a></li>
+                    <li><a href="#"><img src="ImgAgenda/home.svg" alt="casa"> inicio</a></li>
+                    <li><a href="#"><img src="ImgAgenda/calendario.svg" alt="Calendario"> Agenda</a></li>
+                    <li>
+                        <button type="submit">
+                            <img src="ImgAgenda/setaBaixo.svg" alt="setabaixo">
+                        </button>
+                        <img src="ImgAgenda/livro.svg" alt="Livro"> Minhas Atividades
+                    </li>
                 </ul>
             </nav>
             
@@ -38,33 +43,34 @@
 
                         <select id="ano" onchange="atualizarCalendario()">
                             <option value="2024">2024</option>
-                            <option value="2025">2025</option>
-                            <!-- Adicione mais anos conforme necessário -->
                         </select>
 
                         <select id="mes" onchange="atualizarCalendario()">
-                            <option value="0">Janeiro</option>
-                            <option value="1">Fevereiro</option>
-                            <option value="2">Março</option>
-                            <option value="3">Abril</option>
-                            <option value="4">Maio</option>
-                            <option value="5">Junho</option>
-                            <option value="6">Julho</option>
-                            <option value="7">Agosto</option>
-                            <option value="8">Setembro</option>
-                            <option value="9">Outubro</option>
-                            <option value="10">Novembro</option>
-                            <option value="11">Dezembro</option>
+                            <option value="0">Jan</option>
+                            <option value="1">Fev</option>
+                            <option value="2">Mar</option>
+                            <option value="3">Abr</option>
+                            <option value="4">Mai</option>
+                            <option value="5">Jun</option>
+                            <option value="6">Jul</option>
+                            <option value="7">Ago</option>
+                            <option value="8">Set</option>
+                            <option value="9">Out</option>
+                            <option value="10">Nov</option>
+                            <option value="11">Dez</option>
                         </select>
 
-                        <button id="setaVoltar" onclick="navegarSemana(-1)"><img src=</button>
-                        <button id="setaProximo" onclick="navegarSemana(1)">→</button>
+                        <button id="setaVoltar" onclick="navegarSemana(-1)"><img src="ImgAgenda/setaAge.jpg" alt="setaAge" width="60px"></button>
+                        <button id="setaProximo" onclick="navegarSemana(1)"><img src="ImgAgenda/setaVoltar.png" alt="setaAge" width="48px"></button>
 
                     </div>
+
                     <div id="semanas" class="semanas"></div>
+
                 </div>
                 
                 <script src="agenda.js"></script>
+
             </div>
 
         </div>
