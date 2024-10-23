@@ -1,72 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
+
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
-        <title>ATIVIDADES ALUNO</title>
+        <title>Agenda</title>
+        <link rel="stylesheet" type="text/css" href="atividades_aluno.css" media="screen" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     </head>
-    <style>
-    body {
-    background: white;
-        
-        font-family: Arial, Helvetica, sans-serif;
-    }
-        .cabecalho{
-            
-            width: 1884px;
-            height: 99px;
-            background-color:  #ffffff;
-            padding: 10px;
-            margin: 10px;
-            margin-top: -5px; 
-            margin-left: -10px;
-            border: 1px solid rgb(218, 213, 204);
-        }
-        #nome{
 
-        }
-
-
-    
-    </style>
     <body>
-		<div class = "cabecalho">
-            <div id="menu">
-                <img src="https://cdn-icons-png.flaticon.com/128/4294/4294414.png" width="15px">
-            </div>
-            <div id="nome"> <h1> Laguna School</h1>  </div>
-                
-		</div>
+        <div class="estrutura">
 
+            <header class="header">
+                <a href="#"> <img src="img/menu.svg" alt="menu"> </a>
+                <img class="logo" src="Laguna.png" alt="Logo">
+                <img class="perfil" src="img/perfil.png" alt="Perfil">
+            </header>
 
-        <!--<span id="acesso"> </span>
-        <script>
-            document.getElementById("login").addEventListener("submit",
-            function(event){
-                event.preventDefault();
-                //OBTER VALORES DOS CAMPOS DE ENTRADA input
-                var a = document.getElementById("select").value;
-                var b = document.getElementById("senha").value;
-                //FAZER REQUISIÇÃO GET PARA O SERVIDOR NODE-RED
-                fetch(`http://localhost:1880/login?select=${a}&senha=${b}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        //EXIBIR O RESULTADO 
-                        document.getElementById("acesso").textContent = data.acesso;
-                        if(data.acesso == "correto professor"){
-                            location.href = "file:///C:/Users/Aluno_DEV/Downloads/Login%20L%C3%ADvia%20Vit%C3%B3ria/professor.html";
-                        }
-                        else if(data.acesso == "correto aluno"){
-                            location.href = "file:///C:/Users/Aluno_DEV/Downloads/Login%20L%C3%ADvia%20Vit%C3%B3ria/aluno.html";
-                        }
-                        else {
-                            location.href = "file:///C:/Users/Aluno_DEV/Downloads/Login%20L%C3%ADvia%20Vit%C3%B3ria/erro.html";
-                        }
-                        
-                    
-                    })//fecha o then
-            });//fecha o function
-            -->
+            <nav class="sidenav">
+                <ul>
+                    <li><a href="#"><img src="img/home.svg" alt="Casa"> inicio</a></li>
+                    <li><a href="#"><img src="img/calendario.svg" alt="Calendario"> Agenda</a></li>
+                    <li><a href="#"><img src="img/livro.svg" alt="Livro"> Minhas Atividades</a></li>
+                </ul>
+            </nav>
+            
+            <div class="conteudo">
 
             
                     
