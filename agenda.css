@@ -8,6 +8,7 @@ body {
     font-style: normal;
     background-color: #ecf0ff;
 
+
 }
 ul{
     list-style: none;
@@ -54,51 +55,55 @@ button {
     width: 50px;
 }
 
+
 .sidenav {
     grid-area: sidenav;
-    width: 250px;
+    width: 260px;
     height: 875px; 
     background-color: #ffffff;
     padding: 0; 
     border-right: 1px solid #CFCFCF;
 }
-
 .sidenav h2 {
     text-align: center;
 }
-
 .sidenav ul {
     padding: 0;
     list-style-type: none;
-}
 
+}
 .sidenav ul li {
-    padding: 25px 20px; /* Ajusta o espaço interno dos itens */
-    border-bottom: 1px solid #CFCFCF; /* Linha de separação */
+    display: flex; /* Usando Flexbox */
+    align-items: center; /* Alinhamento vertical */
+    padding: 25px 20px; 
+    border-bottom: 1px solid #CFCFCF; 
     transition: background 0.3s;
 }
-
 .sidenav ul li:hover {
     background-color: #DAEBFF; 
 }
-
 .sidenav ul li a {
     color: rgb(0, 0, 0);
     display: block;
-    width: 100%; /* Para garantir que o link ocupe toda a área do item */
+    width: 100%; 
 }
+
+.sidenav ul li img {
+    margin-right: 10px; 
+}
+
+
 
 .conteudo {
     grid-area: content;
     background-color: #ffffff; 
     position:absolute;
     top: 92px;
-    left: 275px;
+    left: 280px;
     width: 1620px;
     height: 825px; 
     border-radius: 30px;
 }
-
 .calendario h1 {
     color: #123286;
     font-size: 20px;
@@ -106,18 +111,42 @@ button {
     top: 40px;
     left: 40px;
 }
-
 .controles {
     margin: 10px 0;
     position:absolute;
     top: 40px;
     left: 1400px;
 }
-
+#setaVoltar {
+    margin: 10px 0;
+    position:absolute;
+    top: 20px;
+    left: 100px;
+}
+#setaProximo {
+    position:absolute;
+    margin: 10px 0;
+    top: 21px;
+    left: 30px;
+}
+select {
+    position:absolute;
+    border-radius: 7px;
+    border-color: #CFCFCF;
+    height: 35px;
+    width: 88px;
+    color: #123286;
+    font-weight: bold;
+    top: 40px;
+    left: -1358px;
+}
 .semanas {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position:absolute;
+    top: 92px;
+    left: 275px;
 }
 
 .semana {
