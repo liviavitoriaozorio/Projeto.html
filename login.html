@@ -4,6 +4,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap' rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TELA DE INICIO</title>
@@ -70,19 +71,23 @@
         #estrut nav a:hover{
             background: #4395e2;
         }
-        .quadrado{
+        
+         .quadrado {
             text-align: center;
-       
-            font-family: "Libre Franklin", sans-serif;
+            font-family: "Poppins";
             font-optical-sizing: auto;
             font-style: normal;
-            background-color:#7899CE ;
+            background-color: #7899CE;
             position: absolute;
             top: 20%;
             padding: 130px;
-            border-radius:10px ;
+            border-radius: 10px;
             color: white;
-            left:11%;
+            left: 11%;
+            box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2); /* Sombra visível */
+           
+
+
         }
 
 
@@ -103,6 +108,8 @@
             font-size: 15px;
            
         }
+        
+        
 
 
         .botao{
@@ -130,6 +137,7 @@
         #Log{
             position: relative;
             top:-50px;
+            font-size: 40px;
            
         }
         #aaa{
@@ -141,7 +149,12 @@
         color: rgba(192, 203, 216, 0.733);
         
         }
-       
+        #imag1 {
+            position: absolute;
+            top:28px ;
+            left:90px ;
+        }
+      
     </style>
 
 
@@ -161,7 +174,7 @@
 
 
                 <li><a href="https://www.instagram.com/lagunaschool.br/"><img src="pasta/instaa.png"  width="30px" ></a></li>
-                <li><a href="mailto:exemplo@dominio.com?subject=Assunto%20do%20Email&body=Olá,%0D%0A%0D%0AEsta%20é%20uma%20mensagem%20pronta."><img src="pasta/email.png" width="30px"></a></li>
+                <li id="imag1"><a href="mailto:exemplo@dominio.com?subject=Assunto%20do%20Email&body=Olá,%0D%0A%0D%0AEsta%20é%20uma%20mensagem%20pronta."><img src="pasta/email.png" width="35px"></a></li>
             </ul>
         </nav>
     </header>  
@@ -169,13 +182,18 @@
     </div>
     <div class="quadrado">
         <h1 id="Log">Login</h1>
-        <input class="entrada" type="txt" placeholder="Email/Cpf">
+        <input class="entrada" type="text" placeholder="Email/Cpf"img src="pasta/perfil.png" width="30px">
         <br><br>
         <input class="entrada2" type="password" placeholder="Senha">
         <br><br>
-        <a href="https://www.tiktok.com/pt-BR/"><button class="botao">Entrar</button>
+        <a id="esq" src="#">| esqueci minha senha |</a>
+        <br><br>
+        <a id="bottoo" href="#"><button class="botao">Entrar</button>
+        
+            
     </div>
         <div class="elemento">
        
 </body>
 </html>
+    
