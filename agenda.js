@@ -1,5 +1,8 @@
+//Quando você clica em um botão para navegar, ela será incrementada ou decrementada.
 let semanaAtual = 0;
 
+/* Essa função é chamada sempre que você seleciona um novo mês ou ano
+Chama a função renderizarSemanas() para mostrar as semanas deste mês. */
 function atualizarCalendario() {
     const mes = parseInt(document.getElementById("mes").value);
     const ano = parseInt(document.getElementById("ano").value);
@@ -16,6 +19,8 @@ function atualizarCalendario() {
     renderizarSemanas(diasDoMes);
 }
 
+/* Esta função é responsável por criar e mostrar as semanas
+Exibe apenas a semana atual */
 function renderizarSemanas(dias) {
     const semanasDiv = document.getElementById("semanas");
     semanasDiv.innerHTML = "";
@@ -39,6 +44,8 @@ function renderizarSemanas(dias) {
     semanasDiv.appendChild(semanaDiv);
 }
 
+/* Essa função é chamada quando você clica nas setas para mudar de semana
+Verifique se é possível navegar */
 function navegarSemana(direcao) {
     const mes = parseInt(document.getElementById("mes").value);
     const ano = parseInt(document.getElementById("ano").value);
