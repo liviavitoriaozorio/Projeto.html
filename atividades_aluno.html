@@ -1,44 +1,46 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-    <head>
-        <meta charset="UTF-8">
-        <title>Atividades Aluno</title>
-        <link rel="stylesheet" type="text/css" href="atividades_aluno.css" media="screen" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <title>Atividades Aluno</title>
+    <link rel="stylesheet" type="text/css" href="atividades_aluno.css" media="screen" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+</head>
 
-    <body>
-        <div class="estrutura">
+<body>
+    <div class="estrutura">
+        <header class="header">
+            <a href="#"><img src="Img.Atividades_Aluno/menu.svg" alt="Menu"></a>
+            <img class="logo" src="Img.Atividades_Aluno/Lagunascholl.png" alt="Logo">
+            <img class="perfil" src="Img.Atividades_Aluno/perfil.png" alt="Perfil">
+        </header>
+        
 
-            <header class="header">
-                <a href="#"> <img src="Img.Atividades_Aluno/menu.svg" alt="Menu"> </a>
-                <img class="logo" src="Img.Atividades_Aluno/Lagunascholl.png" alt="Logo">
-                <img class="perfil" src="Img.Atividades_Aluno/perfil.png" alt="Perfil">
-            </header>
-
-            <nav class="sidenav">
-                <ul>
-                    <li><a href="#"><img src="Img.Atividades_Aluno/home.svg" alt="Casa"> Início</a></li>
-                    <li><a href="#"><img src="Img.Atividades_Aluno/calendario.svg" alt="Calendario"> Agenda</a></li>
-                    <li>
-                        <button type="submit">
-                            <img src="Img.Atividades_Aluno/setaAtiv.png" alt="seta">
+        <nav class="sidenav">
+            <ul>
+                <li><a href="#"><img src="Img.Atividades_Aluno/home.svg" alt="Casa"> Início</a></li>
+                <li><a href="#"><img src="Img.Atividades_Aluno/calendario.svg" alt="Calendario"> Agenda</a></li>
+                <li>
+                    <div class="menu-lateral">
+                        <button id="toggle-atividades">Minhas Atividades
+                            <img src="Img.Atividades_Aluno/setaBaixo.png">
                         </button>
-                   <img src="Img.Atividades_Aluno/livro.svg" alt="Livro"> Minhas Atividades
-                    </li>
-                   
-                </ul>
-            </nav>
-            
-            <div class="conteudo">
-                <div class="gelo"></div>
-
-            
-                    
-        </script>
-    </body>
+                        <div id="materias" class="materias escondido">
+                            <ul>
+                                <li><a href="#matematica">Matemática</a></li>
+                                <li><a href="#portugues">Português</a></li>
+                                <li><a href="#historia">História</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <script src="script.js"></script>
+</body>
 </html>
