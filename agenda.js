@@ -63,6 +63,12 @@ atualizarCalendario();
 document.getElementById('menu').addEventListener('click', function () {
     document.getElementById('sidenav').classList.toggle('fechar-sidenav');
     document.getElementById('conteudo').classList.toggle('expandir-conteudo');
+    
     const element = document.getElementById('setabaixo');
     element.remove();
+});
+
+document.getElementById('toggle-atividades').addEventListener('click', function() {
+    const materias = document.getElementById('materias');
+    materias.classList.toggle('escondido');
 });
