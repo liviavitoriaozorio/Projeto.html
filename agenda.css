@@ -201,3 +201,19 @@ select {
     opacity: 0; 
     visibility: hidden;
 }
+
+
+.menu-lateral {
+    width: 200px;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.materias {
+    margin-top: 10px;
+}
+
+.escondido {
+    display: none;
+}
