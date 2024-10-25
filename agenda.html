@@ -16,34 +16,39 @@
 
             <header class="header">
 
-                <a href="#"> <img src="ImgAgenda/menu.svg" alt="menu"> </a>
+                <a id="menu" href="#"> <img src="ImgAgenda/menu.svg" alt="menu"> </a>
                 <img class="logo" src="ImgAgenda/Lagunascholl.png" alt="Logo">
                 <img class="perfil" src="ImgAgenda/perfil.png" alt="Perfil">
 
             </header>
 
-            <nav class="sidenav">
+            <nav id="sidenav" class="sidenav">
 
-                <ul>
-                    <li><a href="#"><img src="ImgAgenda/home.svg" alt="casa"> inicio</a></li>
-                    <li><a href="#"><img src="ImgAgenda/calendario.svg" alt="Calendario"> Agenda </a></li>
-                    <li id="Minhas">
-                        <button id="setabaixo" type="submit">
-                            <img src="ImgAgenda/setaBaixo.svg" alt="setabaixo">
-                        </button>
-                        <a href="#"><img src="ImgAgenda/livro.svg" alt="Livro"> Minhas Atividades </a>
-                    </li>
+                <div id="sidenav_conteudo">
                     <ul>
-                        <li><a href="#"><img src="ImgAgenda/meteriaIcon.svg" alt="casa"> 2° A </a></li>
-                        <li><a href="#"><img src="ImgAgenda/meteriaIcon.svg" alt="casa"> 2° B </a></li>
-                        <li><a href="#"><img src="ImgAgenda/meteriaIcon.svg" alt="casa"> 2° C </a></li>
-                    </ul>
-                </ul>
+                        <li id="casa"><a href="#"><img src="ImgAgenda/home.svg" alt="casa"><span> Inicio</span></a></li>
+                        <li id="agenda"><a href="#"><img src="ImgAgenda/calendario.svg" alt="Calendario"><span> Agenda</span></a></li>
+                        <li id="Minhas">
+                            <button id="setabaixo" type="submit">
+                                <img src="ImgAgenda/setaBaixo.svg" alt="setabaixo">
+                            </button>
+                            <a href="#"><img src="ImgAgenda/livro.svg" alt="Livro"><span> Minhas Atividades</span></a>
+                        </li>
+                    </ul>                    
+                </div>
+
+                <div id="sair">
+
+                    <button id="sairbotão">
+                        <i class="fa-light fa-right-from-bracket"></i>
+                    </button>
+
+                </div>
                 
 
             </nav>            
             
-            <div class="conteudo">
+            <div id="conteudo" class="conteudo">
 
                 <div class="calendario">
 
