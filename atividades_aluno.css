@@ -1,89 +1,89 @@
-
 * {
     padding: 0; 
     margin: 0;
 }
+
 body {
     font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    background-color: #ecf0ff;
-
+    background-color: #ecefff;
 }
-ul{
+
+ul {
     list-style: none;
 }
+
 a {
     text-decoration: none;
 }
+
+
 .estrutura {
     display: grid;
-    grid-template-columns: 1fr 3fr  1fr;
+    grid-template-columns: 1fr 3fr 1fr;
     grid-template-areas: 
         'header header header'
         'sidenav content content'
-        'footer footer footer'
-    ;
+        'footer footer footer';
 }
+
+
 .header {
     grid-area: header;
     background-color: #fbf9ff;
-    padding: 20px 20px; 
+    padding: 20px; 
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: center;
     border: 1px solid #CFCFCF;
 }
-button {
-    display: block;
-    background-color: transparent; 
-    border: none;
-    cursor: pointer;
-    width: 30px; 
-}
+
 .logo {
     max-width: 180px;
-    position:absolute;
+    position: absolute;
     top: 8px;
     left: 60px;
 }
-.perfil{
-    max-width: 180px;
-    position:absolute;
+
+.perfil {
+    max-width: 50px;
+    position: absolute;
     top: 8px;
-    left: 1840px;
-    width: 50px;
+    right: 60px; 
 }
+
 
 .sidenav {
     grid-area: sidenav;
     width: 260px;
     height: 875px; 
     background-color: #ffffff;
-    padding: 0; 
     border-right: 1px solid #CFCFCF;
 }
+
 .sidenav h2 {
     text-align: center;
 }
+
 .sidenav ul {
     padding: 0;
-    list-style-type: none;
-
 }
+
 .sidenav ul li {
     display: flex; 
     align-items: center; 
     border-bottom: 1px solid #CFCFCF; 
     transition: background 0.3s;
 }
+
 .sidenav ul li:hover {
-    background-color: #DAEBFF; 
+    background-color: #daebff; 
 }
+
 .sidenav ul li a {
     color: rgb(0, 0, 0);
     display: block;
     width: 100%; 
+    padding: 10px 15px; 
 }
 
 .sidenav ul li img {
@@ -91,28 +91,17 @@ button {
 }
 
 
-
-.conteudo {
-    grid-area: content;
-    background-color: #ffffff; 
-    position:absolute;
-    top: 92px;
-    left: 275px;
-    width: 1620px;
-    height: 825px; 
-    border-radius: 30px;
+.menu-lateral {
+    width: 200px;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border: 1px solid #ccc;
 }
-#Ativ {
-    width: 10px;
-    position:absolute;
-    top: 8px;
-    left: 60px;
 
+.materias {
+    margin-top: 10px;
 }
-.gelo {
-    width: 1650px;  
-    height: 1050px; 
-    background-color: rgb(219, 238, 250); 
-    position: absolute; 
- 
+
+.escondido {
+    display: none;
 }
