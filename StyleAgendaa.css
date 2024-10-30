@@ -1,0 +1,273 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+a {
+	text-decoration: none;
+}
+li {
+	list-style: none;
+}
+html {
+	overflow-x: hidden;
+}
+body.dark {
+	--light: #0C0C1E;
+	--grey: #060714;
+	--dark: #FBFBFB;
+}s
+body {
+	background:#eee;
+	overflow-x: hidden;
+}
+.estrutura {
+    display: grid;
+    grid-template-columns: 1fr 3fr  1fr;
+    grid-template-areas: 
+        'sidenav header header'
+        'sidenav content content'
+        'sidenav content content'
+    ;
+}
+
+/* sidenav */
+#sidenav {
+	grid-area: sidenav;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 280px;
+	height: 100%;
+	background: #eee;
+	z-index: 2000;
+	font-family: "Inter", sans-serif;
+	transition: .3s ease;
+	overflow-x: hidden;
+}
+#sidenav .logo {
+	font-size: 24px;
+	font-weight: 700;
+	height: 56px;
+	display: flex;
+	align-items: center;
+	color: #3C91E6;
+	position: sticky;
+	top: 0;
+	left: 0;
+	background: #eee;
+	z-index: 500;
+	padding-bottom: 20px;
+	box-sizing: content-box;
+}
+#sidenav .logo .fa-solid {
+	min-width: 60px;
+	display: flex;
+	justify-content: center;
+}
+#sidenav .menu {
+	width: 100%;
+	margin-top: 48px;
+}
+#sidenav .menu li {
+	height: 48px;
+	background: transparent;
+	margin-left: 6px;
+	border-radius: 48px 0 0 48px;
+	padding: 4px;
+}
+#sidenav .menu li a {
+	width: 100%;
+	height: 100%;
+	background: #eee;
+	display: flex;
+	align-items: center;
+	border-radius: 48px;
+	font-size: 16px;
+	color: #3a3a3a;
+	white-space: nowrap;
+	overflow-x: hidden;
+}
+#sidenav .menu li a .fa-solid {
+	min-width: calc(60px  - ((4px + 6px) * 2));
+	display: flex;
+	justify-content: center;
+}
+#sidenav .logo .Icon_logo{
+    position: relative;
+    top: 0px;
+    left: 15px;
+}
+#sidenav .logo span{
+    position: relative;
+    top: 0px;
+    left: 20px;
+    font-family: "Playfair Display", serif;
+    font-weight: 700;
+    color: rgb(37, 36, 36);
+    text-shadow: 1px 1px 2px rgb(199, 199, 199);
+}
+/* Sidenav JS */
+#sidenav.escondido {
+	width: 65px;
+}
+#sidenav.escondido .menu li a {
+	width: calc(48px - (4px * 2));
+	transition: width .3s ease;
+}
+#sidenav .menu.top li a:hover {
+	color: #3C91E6;
+}
+#sidenav .menu li.ativo {
+	background: #ffff;
+	position: relative;
+}
+#sidenav .menu li.ativo::before {
+	content: '';
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	top: -40px;
+	right: 0;
+	box-shadow: 20px 20px 0 #ffff;
+	z-index: -1;
+}
+#sidenav .menu li.ativo::after {
+	content: '';
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	bottom: -40px;
+	right: 0;
+	box-shadow: 20px -20px 0 #ffff;
+	z-index: -1;
+}
+#sidenav .menu.top li.ativo a {
+	color: #3C91E6;
+	background: #DAEBFF;
+}
+
+
+
+/* conteudo */
+#conteudo {
+	grid-area: sidenav;
+	position: relative;
+	width: calc(100% - 280px);
+	left: 280px;
+	transition: .3s ease;
+}
+#sidenav.escondido ~ #conteudo {
+	width: calc(100% - 60px);
+	left: 60px;
+}
+#conteudo nav {
+	height: 56px;
+	background: #eee;
+	padding: 0 24px;
+	display: flex;
+	align-items: center;
+	grid-gap: 24px;
+	font-family: "Inter", sans-serif;
+	position: sticky;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+}
+#conteudo nav::before {
+	content: '';
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	bottom: -40px;
+	left: 0;
+	border-radius: 50%;
+	box-shadow: -20px -20px 0 #eee;
+}
+#conteudo nav a {
+	color: #3a3a3a;
+}
+#conteudo nav .fa-solid.fa-bars {
+
+	cursor: pointer;
+	color: #3a3a3a;
+}
+/* NAVBAR */
+
+
+
+.calendario h1 {
+    color: #123286;
+    font-size: 20px;
+    position: relative;
+    top: 40px;
+    left: 40px;
+	font-family: "Inter", sans-serif;
+}
+#setaVoltar {
+    background-color: transparent; 
+    border: none;
+    cursor: pointer;
+    margin: 10px 0;
+    position: relative;
+    top: 40px;
+    left: 1350px;
+}
+#setaProximo {
+    background-color: transparent; 
+    border: none;
+    cursor: pointer;
+	margin: 10px 0;
+    position: relative;
+    top: 35px;
+    left: 1190px;
+}
+select {
+    position: relative;
+    border-radius: 7px;
+    border-color: #CFCFCF;
+    height: 35px;
+    width: 88px;
+    color: #123286;
+    font-weight: bold;
+	bottom: -5px;
+	font-family: "Inter", sans-serif;
+}
+#ano {
+    position: relative;
+    left: 40px;
+}
+#mes {
+    position: relative;
+    left: 53px;
+}
+.semana {
+    font-size: 23px;
+    color: #909090;
+    position: relative;
+    top: 30px;
+    left: 25px;
+    margin: 20px 0; 
+	font-family: "Inter", sans-serif;
+}
+.semana div {
+    padding: 25px; 
+    border: none; 
+    margin: 0 5px;
+}
+#compromisso{
+    background-color: transparent; 
+    border: 1px solid #CFCFCF;
+    border-radius: 7px;
+    cursor: pointer;
+    color: #123286;
+    font-weight: bold;
+    font-size: 18px;
+	width: 1000px;
+    height: 40px;
+	position: relative;
+    top: 100px;
+    left: 320px;
+}
