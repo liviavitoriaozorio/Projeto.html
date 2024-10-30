@@ -1,6 +1,5 @@
 //Quando você clica em um botão para navegar, ela será incrementada ou decrementada.
 let semanaAtual = 0;
-
 /* Essa função é chamada sempre que você seleciona um novo mês ou ano
 Chama a função renderizarSemanas() para mostrar as semanas deste mês. */
 function atualizarCalendario() {
@@ -18,7 +17,6 @@ function atualizarCalendario() {
 
     renderizarSemanas(diasDoMes);
 }
-
 /* Esta função é responsável por criar e mostrar as semanas
 Exibe apenas a semana atual */
 function renderizarSemanas(dias) {
@@ -43,7 +41,6 @@ function renderizarSemanas(dias) {
     
     semanasDiv.appendChild(semanaDiv);
 }
-
 /* Essa função é chamada quando você clica nas setas para mudar de semana
 Verifique se é possível navegar */
 function navegarSemana(direcao) {
@@ -57,10 +54,10 @@ function navegarSemana(direcao) {
         atualizarCalendario();
     }
 }
-
 atualizarCalendario();
 
 
+/* Responsavel pelo CSS do "ativo" funcionar  */
 const allSideMenu = document.querySelectorAll('#sidenav .menu.top li a');
 
 allSideMenu.forEach(item=> {
@@ -75,9 +72,7 @@ allSideMenu.forEach(item=> {
 });
 
 
-
-
-// TOGGLE sidenav
+/* Esconde o sidenav */
 const menuBar = document.querySelector('#conteudo nav .fa-solid.fa-bars');
 const sidenav = document.getElementById('sidenav');
 
@@ -85,55 +80,15 @@ menuBar.addEventListener('click', function () {
 	sidenav.classList.toggle('escondido');
 })
 
+const linkCollapse = document.getElementsByClassName('fa-solid fa-chevron-down');
+var i
 
+for (let i = 0; i < linkCollapse.length; i++) {
+    linkCollapse[i].parentElement.addEventListener('click', function() {
+        const collapseMenu = this.nextElementSibling;
+        collapseMenu.classList.toggle('showCollapse');
 
-
-
-
-
-const searchButton = document.querySelector('#conteudo nav form .form-input button');
-const searchButtonIcon = document.querySelector('#conteudo nav form .form-input button .fa-solid');
-const searchForm = document.querySelector('#conteudo nav form');
-
-searchButton.addEventListener('click', function (e) {
-	if(window.innerWidth < 576) {
-		e.preventDefault();
-		searchForm.classList.toggle('show');
-		if(searchForm.classList.contains('show')) {
-			searchButtonIcon.classList.replace('fa-solid-search', 'fa-solid-x');
-		} else {
-			searchButtonIcon.classList.replace('fa-solid-x', 'fa-solid-search');
-		}
-	}
-})
-
-
-
-
-
-if(window.innerWidth < 768) {
-	sidenav.classList.add('escondido');
-} else if(window.innerWidth > 576) {
-	searchButtonIcon.classList.replace('fa-solid-x', 'fa-solid-search');
-	searchForm.classList.remove('show');
+        const rotate = this.querySelector('.fa-chevron-down');
+        rotate.classList.toggle('rotate');
+    });
 }
-
-
-window.addEventListener('resize', function () {
-	if(this.innerWidth > 576) {
-		searchButtonIcon.classList.replace('fa-solid-x', 'fa-solid-search');
-		searchForm.classList.remove('show');
-	}
-})
-
-
-
-const switchMode = document.getElementById('switch-mode');
-
-switchMode.addEventListener('change', function () {
-	if(this.checked) {
-		document.body.classList.add('dark');
-	} else {
-		document.body.classList.remove('dark');
-	}
-})
