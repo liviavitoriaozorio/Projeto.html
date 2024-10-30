@@ -76,7 +76,7 @@ body {
 	border-radius: 48px 0 0 48px;
 	padding: 4px;
 }
-#sidenav .menu li a {
+#sidenav .menu li .link {
 	width: 100%;
 	height: 100%;
 	background: #eee;
@@ -88,7 +88,7 @@ body {
 	white-space: nowrap;
 	overflow-x: hidden;
 }
-#sidenav .menu li a .fa-solid {
+#sidenav .menu li .link .fa-solid {
 	min-width: calc(60px  - ((4px + 6px) * 2));
 	display: flex;
 	justify-content: center;
@@ -111,18 +111,18 @@ body {
 #sidenav.escondido {
 	width: 65px;
 }
-#sidenav.escondido .menu li a {
+#sidenav.escondido .menu li .link {
 	width: calc(48px - (4px * 2));
 	transition: width .3s ease;
 }
-#sidenav .menu.top li a:hover {
+#sidenav .menu.top li .link:hover {
 	color: #3C91E6;
 }
-#sidenav .menu li.ativo {
+#sidenav .menu  #itens.ativo {
 	background: #ffff;
 	position: relative;
 }
-#sidenav .menu li.ativo::before {
+#sidenav .menu #itens.ativo::before {
 	content: '';
 	position: absolute;
 	width: 40px;
@@ -133,7 +133,7 @@ body {
 	box-shadow: 20px 20px 0 #ffff;
 	z-index: -1;
 }
-#sidenav .menu li.ativo::after {
+#sidenav .menu  #itens.ativo::after {
 	content: '';
 	position: absolute;
 	width: 40px;
@@ -144,11 +144,38 @@ body {
 	box-shadow: 20px -20px 0 #ffff;
 	z-index: -1;
 }
-#sidenav .menu.top li.ativo a {
+#sidenav .menu.top  #itens.ativo .link {
 	color: #3C91E6;
 	background: #DAEBFF;
 }
 
+
+.collapse{
+	grid-template-columns: 20px max-content 1fr;
+}
+.collapse__link{
+	justify-self: flex-end;
+	transition: .5s;
+}
+.collapse__menu{
+	display: none;
+	padding: .75rem 2.25rem;
+}
+.collapse__sublink{
+	color: var(--sub-color);
+	font-size: var(--small-font-size);
+}
+.collapse__sublink:hover{
+	color: var(--white-color);
+}
+
+.showCollapse{
+	display: block;
+}
+  
+.rotate{
+	transform: rotate(180deg);
+}
 
 
 /* conteudo */
