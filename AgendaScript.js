@@ -60,15 +60,80 @@ function navegarSemana(direcao) {
 
 atualizarCalendario();
 
-document.getElementById('menu').addEventListener('click', function () {
-    document.getElementById('sidenav').classList.toggle('fechar-sidenav');
-    document.getElementById('conteudo').classList.toggle('expandir-conteudo');
-    
-    const element = document.getElementById('setabaixo');
-    element.remove();
+
+const allSideMenu = document.querySelectorAll('#sidenav .menu.top li a');
+
+allSideMenu.forEach(item=> {
+	const li = item.parentElement;
+
+	item.addEventListener('click', function () {
+		allSideMenu.forEach(i=> {
+			i.parentElement.classList.remove('ativo');
+		})
+		li.classList.add('ativo');
+	})
 });
 
-document.getElementById('toggle-atividades').addEventListener('click', function() {
-    const materias = document.getElementById('materias');
-    materias.classList.toggle('escondido');
-});
+
+
+
+// TOGGLE sidenav
+const menuBar = document.querySelector('#conteudo nav .fa-solid.fa-bars');
+const sidenav = document.getElementById('sidenav');
+
+menuBar.addEventListener('click', function () {
+	sidenav.classList.toggle('escondido');
+})
+
+
+
+
+
+
+
+const searchButton = document.querySelector('#conteudo nav form .form-input button');
+const searchButtonIcon = document.querySelector('#conteudo nav form .form-input button .fa-solid');
+const searchForm = document.querySelector('#conteudo nav form');
+
+searchButton.addEventListener('click', function (e) {
+	if(window.innerWidth < 576) {
+		e.preventDefault();
+		searchForm.classList.toggle('show');
+		if(searchForm.classList.contains('show')) {
+			searchButtonIcon.classList.replace('fa-solid-search', 'fa-solid-x');
+		} else {
+			searchButtonIcon.classList.replace('fa-solid-x', 'fa-solid-search');
+		}
+	}
+})
+
+
+
+
+
+if(window.innerWidth < 768) {
+	sidenav.classList.add('escondido');
+} else if(window.innerWidth > 576) {
+	searchButtonIcon.classList.replace('fa-solid-x', 'fa-solid-search');
+	searchForm.classList.remove('show');
+}
+
+
+window.addEventListener('resize', function () {
+	if(this.innerWidth > 576) {
+		searchButtonIcon.classList.replace('fa-solid-x', 'fa-solid-search');
+		searchForm.classList.remove('show');
+	}
+})
+
+
+
+const switchMode = document.getElementById('switch-mode');
+
+switchMode.addEventListener('change', function () {
+	if(this.checked) {
+		document.body.classList.add('dark');
+	} else {
+		document.body.classList.remove('dark');
+	}
+})
