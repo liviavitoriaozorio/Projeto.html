@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<title>Agenda</title>
+	
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="StyleAgenda.css">
+	
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+	</head>
+
+
+	<body>
+
+		<section id="sidenav">
+
+			<div class="logo">
+				<img class="Icon_logo" src="ImgAgenda/Laguna.png" alt="Logo_escola" width="60px">
+				<span class="texto_logo">Laguna School</span>
+			</div>
+
+			<ul class="menu top">
+				<li class="ativo">
+					<a href="#">
+						<i class="fa-solid fa-house"></i>
+                        <span class="descrição">Inicio</span>
+					</a>
+				</li>
+				<li>
+					<a href ="#">
+						<i class="fa-solid fa-calendar-days"></i>
+						<span class="descrição">Agenda</span>
+					</a>
+				</li>
+				<li>
+					<a href ="#">
+						<i class="fa-solid fa-book-open-reader"></i>
+						<span class="descrição">Minhas Atividades</span>
+					</a>
+				</li>
+
+			<ul class="menu">
+				<li>
+					<a href ="#">
+						<i class="fa-solid fa-arrow-right-from-bracket"></i>
+						<span class="descrição"> Sair </span>
+					</a>
+				</li>
+			</ul>
+
+		</section>
+		
+		<section id="conteudo">
+			
+			<nav>
+				<i class='fa-solid fa-bars' ></i>
+				<a href="#" class="perfil">
+					<span> Professor(a)</span>
+					<i class="fa-solid fa-user"></i>
+				</a>
+			</nav>
+
+			<div class="calendario">
+
+				<h1>Calendário Semanal</h1>
+
+				<div class="controles">
+
+					<select id="ano" onchange="atualizarCalendario()">
+						<option value="2024">2024</option>
+					</select>
+
+					<select id="mes" onchange="atualizarCalendario()">
+						<option value="0">Jan</option>
+						<option value="1">Fev</option>
+						<option value="2">Mar</option>
+						<option value="3">Abr</option>
+						<option value="4">Mai</option>
+						<option value="5">Jun</option>
+						<option value="6">Jul</option>
+						<option value="7">Ago</option>
+						<option value="8">Set</option>
+						<option value="9">Out</option>
+						<option value="10">Nov</option>
+						<option value="11">Dez</option>
+					</select>
+
+					<button id="setaVoltar" onclick="navegarSemana(1)"><img src="ImgAgenda/setaAge.jpg" alt="setaAge" width="60px"></button>
+					<button id="setaProximo" onclick="navegarSemana(-1)"><img src="ImgAgenda/setaVoltar.png" alt="setaAge" width="48px"></button>
+
+				</div>
+
+				<div id="semanas" class="semanas"></div>
+
+			</div>
+
+			<a href='https://calendar.google.com/calendar/u/0/r'><button id="compromisso">Novo compromisso</button></a>
+
+		</section>
+		
+		<script src="ScriptAgenda.js"></script>
+	</body>
+</html>
