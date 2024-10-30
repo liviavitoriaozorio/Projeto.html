@@ -6,7 +6,7 @@
 	
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="AgendaStyle.css">
+		<link rel="stylesheet" href="StyleAgenda.css">
 	
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,28 +25,35 @@
 			</div>
 
 			<ul class="menu top">
-				<li class="ativo">
-					<a href="#">
+				<li id="itens"class="ativo">
+					<a href="#" class="link">
 						<i class="fa-solid fa-house"></i>
                         <span class="descrição">Inicio</span>
 					</a>
 				</li>
-				<li>
-					<a href ="#">
+				<li id="itens">
+					<a href ="#" class="link">
 						<i class="fa-solid fa-calendar-days"></i>
 						<span class="descrição">Agenda</span>
 					</a>
 				</li>
-				<li>
-					<a href ="#">
+				<li id="itens">
+					<a href="#" class="link">
 						<i class="fa-solid fa-book-open-reader"></i>
-						<span class="descrição">Minhas Atividades</span>
+						<span class="descrição">Minhas Aulas</span>
+						<i class="fa-solid fa-chevron-down"></i>
 					</a>
+					<ul class="collapse__menu">
+						<li><a href="#" class="collapse__sublink"> 2° ano A </a></li>
+						<li><a href="#" class="collapse__sublink"> 2° ano B </a></li>
+						<li><a href="#" class="collapse__sublink"> 2° ano C </a></li>
+					</ul>
 				</li>
+				
 
 			<ul class="menu">
-				<li>
-					<a href ="#">
+				<li id="itens">
+					<a href ="#" class="link">
 						<i class="fa-solid fa-arrow-right-from-bracket"></i>
 						<span class="descrição"> Sair </span>
 					</a>
@@ -103,6 +110,6 @@
 
 		</section>
 		
-		<script src="AgendaScript.js"></script>
+		<script src="ScriptAgenda.js"></script>
 	</body>
 </html>
