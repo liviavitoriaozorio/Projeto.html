@@ -1,387 +1,89 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> Painel Escolar </title>
-        <link rel="stylesheet" href="styles.css">
-    </head>
+<html lang="en">
 
- <style>
-    * {
-    padding: 0; 
-    margin: 0;
-}
-body {
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    background-color: #ecf0ff;
+	<head>
+		<title>Agenda</title>
+	
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="atividade_professor.css">
+	
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+	</head>
 
 
-}
-ul{
-    list-style: none;
-}
-a {
-    text-decoration: none;
-}
-.estrutura {
-    display: grid;
-    grid-template-columns: 1fr 3fr  1fr;
-    grid-template-areas: 
-        'header header header'
-        'sidenav content content'
-        'footer footer footer'
-    ;
-}
+	<body>
 
+		<section id="sidenav">
 
-/* Cabeça */
-.header {
-    grid-area: header;
-    background-color: #ffffff;
-    padding: 20px 20px; 
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    border: 1px solid #CFCFCF;
-    border-top: 0px;
-}
-.logo {
-    max-width: 180px;
-    position:absolute;
-    top: 8px;
-    left: 60px;
-}
-.perfil{
-    max-width: 180px;
-    position:absolute;
-    top: 8px;
-    left: 1840px;
-    width: 50px;
-}
+			<div class="logo">
+				<img class="Icon_logo" src="ImgAgenda/Laguna.png" alt="Logo_escola" width="60px">
+				<span class="texto_logo">Laguna School</span>
+			</div>
 
+			<ul class="menu top">
+				<li id="itens"class="ativo">
+					<a href="#" class="link">
+						<i class="fa-solid fa-house"></i>
+                        <span class="descrição">Inicio</span>
+					</a>
+				</li>
+				<li id="itens">
+					<a href ="#" class="link">
+						<i class="fa-solid fa-calendar-days"></i>
+						<span class="descrição">Agenda</span>
+					</a>
+				</li>
+				<li id="itens">
+					<a href="#" class="link">
+						<i class="fa-solid fa-book-open-reader"></i>
+						<span class="descrição">Minhas Aulas</span>
+						<i class="fa-solid fa-chevron-down"></i>
+					</a>
+					<ul class="collapse__menu">
+						<li><a href="#" class="collapse__sublink"> 2° ano A </a></li>
+						<li><a href="#" class="collapse__sublink"> 2° ano B </a></li>
+						<li><a href="#" class="collapse__sublink"> 2° ano C </a></li>
+					</ul>
+				</li>
+				
 
-/* Menu de lado */
-.sidenav {
-    grid-area: sidenav;
-    width: 260px;
-    height: 875px; 
-    background-color: #ffffff;
-    padding: 0; 
-    border-right: 1px solid #CFCFCF;
-    transition: width 0.3s;
-}
-#sidenav_conteudo {
-    padding: 12px;
-}
-.sidenav ul li {
-    display: flex;  
-    padding: 25px 20px; 
-    transition: background 0.3s;
-    border-radius: 10px;
-}
-.sidenav ul li:hover {
-    border-radius: 10px;
-    background-color: #DAEBFF; 
-}
-.sidenav ul li a {
-    color: rgb(0, 0, 0);
-    display: block;
-    width: 100%; 
-}
-#Minhas {
-    border-bottom: 1px solid #CFCFCF; 
-}
+			<ul class="menu">
+				<li id="itens">
+					<a href ="#" class="link">
+						<i class="fa-solid fa-arrow-right-from-bracket"></i>
+						<span class="descrição"> Sair </span>
+					</a>
+				</li>
+			</ul>
 
+		</section>
+		
+		<section id="conteudo">
+			
+			<nav>
+				<i class='fa-solid fa-bars' ></i>
+				<a href="#" class="perfil">
+					<span> Professor(a)</span>
+					<i class="fa-solid fa-user"></i>
+				</a>
+			</nav>
+          <div class="lições" >
+            
+          </div>
+         
 
-/* Conteudo */
-.conteudo {
-    grid-area: content;
-    background-color: #ffffff; 
-    position: absolute;
-    top: 100px;
-    left: 290px; 
-    width: calc(100% - 320px); 
-    height: 805px; 
-    border-radius: 30px;
-    box-shadow: 2px 2px 5px #dfdede;
-    transition: left 0.3s, width 0.3s;
-}
-.calendario h1 {
-    color: #123286;
-    font-size: 20px;
-    position:absolute;
-    top: 40px;
-    left: 40px;
-}
-.controles {
-    width: 30px; 
-    margin: 10px 0;
-    position:absolute;
-    top: 40px;
-    left: 1400px;
-}
-#setaVoltar {
-    background-color: transparent; 
-    border: none;
-    cursor: pointer;
-    margin: 10px 0;
-    position:absolute;
-    top: 20px;
-    left: 100px;
-}
-#setaProximo {
-    background-color: transparent; 
-    border: none;
-    cursor: pointer;
-    position:absolute;
-    margin: 10px 0;
-    top: 21px;
-    left: 30px;
-}
-#setabaixo{
-    background-color: transparent; 
-    border: none;
-    cursor: pointer;
-}
-select {
-    position:absolute;
-    border-radius: 7px;
-    border-color: #CFCFCF;
-    height: 35px;
-    width: 88px;
-    color: #123286;
-    font-weight: bold;
-    top: 40px;
-    left: -1358px;
-}
-#ano {
-    position:absolute;
-    top: 40px;
-    left: -1255px;
-}
-.semana {
-    font-size: 23px;
-    color: #909090;
-    position:absolute;
-    top: 140px;
-    left: 25px;
-    margin: 20px 0; 
-}
-.semana div {
-    padding: 25px; 
-    border: none; 
-    margin: 0 5px;
-}
-.conteudo a button{
-    background-color: transparent; 
-    border: 1px solid #CFCFCF;
-    border-radius: 7px;
-    cursor: pointer;
-    width: 1530px;
-    height: 40px;
-    position:absolute;
-    top: 750px;
-    left: 45px;
-    color: #123286;
-    font-weight: bold;
-    font-size: 18px;
-}
+         
 
+		</section>
 
-/* Java Script */
-.fechar-sidenav {
-    width: 80px; 
-    overflow: hidden;
-    transition: width 0.3s;
-}
-.expandir-conteudo {
-    left: 100px; 
-    width: calc(100% - 120px); 
-}
-.sidenav ul li span {
-    transition: opacity 0.3s;
-    opacity: 1;
-}
-
-.fechar-sidenav ul li span{
-    opacity: 0; 
-    visibility: hidden;
-}
-.menu-lateral {
-    width: 200px;
-    background-color: #f0f0f0;
-    padding: 10px;
-    border: 1px solid #ccc;
-}
-.materias {
-    margin-top: 10px;
-}
-.escondido {
-    display: none;
-}
-body {
-    font-family: "Inter", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    background-color: #ecf0ff;
-}
-
-ul{
-    list-style: none;
-}
-
-a {
-    text-decoration: none;
-}
-    .estrutura {
-    display: grid;
-    grid-template-columns: 1fr 3fr  1fr;
-    grid-template-areas: 
-        'header header header'
-        'sidenav content content'
-        'footer footer footer'
-    ;
-}
-.header {
-    grid-area:header;
-    background-color: #fbf9ff;
-    padding: 20px 10px; 
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    border: 1px solid #CFCFCF;
-}
-button {
-    display: block;
-    background-color: transparent; 
-    border: none;
-    cursor: pointer;
-    width: 20px; 
-}
-.logo {
-    max-width: 180px;
-    position:absolute;
-    top: 8px;
-    left: 60px;
-}
-.perfil{
-    max-width: 180px;
-    position:absolute;
-    top: 8px;
-    left: 1840px;
-    width: 50px;
-}
-
-.sidenav {
-    grid-area: sidenav;
-    width: 250px;
-    height: 875px; 
-    background-color: #ffffff;
-    padding: 0; 
-    border-right: 1px solid #CFCFCF;
-}
-
-.sidenav h2 {
-    text-align: center;
-}
-
-.sidenav ul {
-    padding: 0;
-    list-style-type: none;
-}
-
-.sidenav ul li {
-    padding: 25px 20px; /* Ajusta o espaço interno dos itens */
-    border-bottom: 1px solid #CFCFCF; /* Linha de separação */
-    transition: background 0.3s;
-}
-
-.sidenav ul li:hover {
-    background-color: #DAEBFF; 
-}
-
-.sidenav ul li a {
-    color: rgb(0, 0, 0);
-    display: block;
-    width: 100%; /* Para garantir que o link ocupe toda a área do item */
-}
-
-.conteudo {
-    grid-area: content;
-    background-color: #ffffff; 
-    position:absolute;
-    top: 92px;
-    left: 275px;
-    width: 1620px;
-    height: 825px; 
-    border-radius: 30px;
-}
-
-.activities {
-    display: flex;
-    gap: 20px;
-}
-
-.activity-card {
-    background-color: #EEC68A;
-    color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    cursor: pointer;
-}
-
-/* Estilo do botão de adicionar atividades */
-.add-activity {
-    margin-top: 10px;
-    padding:10px 20px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-</style>
-
-<body>
-    <div class="estrutura">
-
-        <header class="header">
-            <a href="#"> <img src="Img.Atividades_Professor/menu.svg" alt="menu"> </a>
-            <img class="logo" src="Img.Atividades_Professor/Lagunascholl.png" alt="Logo">
-            <img class="perfil" src="Img.Atividades_Professor/perfil.png" alt="Perfil">
-        </header>
-
-        <nav class="sidenav">
-            <ul>
-                <li><a href="#"><img src="Img.Atividades_Professor/home.svg" alt="casa"> inicio</a></li>
-                <li><a href="#"><img src="Img.Atividades_Professor/calendario.svg" alt="Calendario"> Agenda</a></li>
-                <li>
-                    <button type="submit">
-                        <img src="Img.Atividades_Professor/setaBaixo.svg" alt="setaBaixo"> 
-                    </button>
-                    <img src="Img.Atividades_Professor/livro.svg" alt="Livro"> Minhas Atividades
-                </li>
-            </ul>
-        </nav>            
-    </div>
-    <div class="conteudo">
-
-    
-    <div class="main-content">
-        <header>
-            <h1>Matemática 2º A</h1>
-        </header>
-        <div class="activities">
-            <div class="activity-card">02/10 - Lição de casa</div>
-            <div class="activity-card">10/10 - Prova</div>
-            <div class="activity-card">24/10 - Seminário</div>
-        </div>
-        <button class="add-activity">+</button>
-    </div>
-</body>
+		
+		<script src="atividade_professor.js"></script>
+	</body>
 </html>
+
+
 
