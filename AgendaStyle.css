@@ -153,7 +153,6 @@ body {
 	background: #DAEBFF;
 }
 
-
 .collapse{
 	grid-template-columns: 20px max-content 1fr;
 }
@@ -179,6 +178,9 @@ body {
   
 .rotate{
 	transform: rotate(180deg);
+}
+#sidenav .menu #subitem.ativo a {
+    color: #3C91E6; /* mesma cor que o item pai */
 }
 
 
@@ -252,8 +254,8 @@ body {
     cursor: pointer;
 	margin: 10px 0;
     position: relative;
-    top: 35px;
-    left: 1190px;
+    top: 2rem;
+    left: 74rem;
 }
 select {
     position: relative;
@@ -302,4 +304,3 @@ select {
     top: 100px;
     left: 320px;
 }
-
