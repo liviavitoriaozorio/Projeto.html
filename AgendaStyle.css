@@ -33,7 +33,8 @@ body {
 
 /* sidenav */
 #sidenav {
-	grid-area: sidenav;
+	display: flex;
+    flex-direction: column;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -106,6 +107,9 @@ body {
     font-weight: 700;
     color: rgb(37, 36, 36);
     text-shadow: 1px 1px 2px rgb(199, 199, 199);
+}
+.menu.top {
+    margin-bottom: auto;
 }
 /* Sidenav JS */
 #sidenav.escondido {
@@ -298,3 +302,4 @@ select {
     top: 100px;
     left: 320px;
 }
+
