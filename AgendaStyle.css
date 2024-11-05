@@ -12,204 +12,206 @@ li {
 html {
 	overflow-x: hidden;
 }
-body.dark {
-	--light: #0C0C1E;
-	--grey: #060714;
-	--dark: #FBFBFB;
-}s
 body {
-	background:#eee;
+	background: #eee;
 	overflow-x: hidden;
-}
-.estrutura {
-    display: grid;
-    grid-template-columns: 1fr 3fr  1fr;
-    grid-template-areas: 
-        'sidenav header header'
-        'sidenav content content'
-        'sidenav content content'
-    ;
+    font-family: "Inter", sans-serif;
 }
 
-/* sidenav */
-#sidenav {
-	display: flex;
+
+/* SIDENAR */
+
+/* - completo - */ 
+#Sidenav {
+    display: flex;
     flex-direction: column;
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 280px;
 	height: 100%;
-	background: #eee;
+	background: #F9F9F9;
 	z-index: 2000;
-	font-family: "Inter", sans-serif;
+	font-family: var(--lato);
 	transition: .3s ease;
 	overflow-x: hidden;
 }
-#sidenav .logo {
+#Sidenav::--webkit-scrollbar {
+	display: none;
+}
+
+/* - topo - */ 
+#Sidenav .Laguna {
 	font-size: 24px;
 	font-weight: 700;
 	height: 56px;
 	display: flex;
 	align-items: center;
-	color: #3C91E6;
+    font-family: "Playfair Display", serif;
+    text-shadow: 1px 1px 2px rgb(199, 199, 199);
+	color: rgb(37, 36, 36);
 	position: sticky;
 	top: 0;
 	left: 0;
-	background: #eee;
 	z-index: 500;
 	padding-bottom: 20px;
 	box-sizing: content-box;
 }
-#sidenav .logo .fa-solid {
+#Sidenav .Laguna .fa-solid {
 	min-width: 60px;
 	display: flex;
 	justify-content: center;
 }
-#sidenav .menu {
+
+/* - Itens - */ 
+#Sidenav .Menu_lateral {
 	width: 100%;
 	margin-top: 48px;
 }
-#sidenav .menu li {
+#Sidenav .Menu_lateral.cima {
+    width: 100%;
+    margin-top: 48px;
+    /* define a capacidade de um item flexível de crescer para ocupar o espaço disponível no container flex */
+    flex-grow: 1; 
+}
+#Sidenav .Menu_lateral li {
 	height: 48px;
 	background: transparent;
 	margin-left: 6px;
 	border-radius: 48px 0 0 48px;
 	padding: 4px;
 }
-#sidenav .menu li .link {
+#Sidenav .Menu_lateral li a {
 	width: 100%;
 	height: 100%;
-	background: #eee;
+	background: #F9F9F9;
 	display: flex;
 	align-items: center;
 	border-radius: 48px;
 	font-size: 16px;
-	color: #3a3a3a;
+	color: #342E37;
 	white-space: nowrap;
 	overflow-x: hidden;
 }
-#sidenav .menu li .link .fa-solid {
-	min-width: calc(60px  - ((4px + 6px) * 2));
+#Sidenav .Menu_lateral li a .fa-solid {
+	min-width: calc(60px - ((4px + 6px) * 2));
 	display: flex;
 	justify-content: center;
 }
-#sidenav .logo .Icon_logo{
+#Sidenav .Menu_lateral li a.Sair {
+	color: #DB504A; 
+}
+
+/* - interação (ativo) - */ 
+#Sidenav .Menu_lateral .Itens.ativo {
+    background: #eee;
     position: relative;
-    top: 0px;
-    left: 15px;
 }
-#sidenav .logo span{
-    position: relative;
-    top: 0px;
-    left: 20px;
-    font-family: "Playfair Display", serif;
-    font-weight: 700;
-    color: rgb(37, 36, 36);
-    text-shadow: 1px 1px 2px rgb(199, 199, 199);
+#Sidenav .Menu_lateral .Itens.ativo::before {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    right: 0;
+    box-shadow: 20px 20px 0 #eee;
+    z-index: -1;
+    top: -40px;
 }
-.menu.top {
-    margin-bottom: auto;
+#Sidenav .Menu_lateral .Itens.ativo::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    right: 0;
+    box-shadow: 20px 20px 0 #eee;
+    z-index: -1;
+    bottom: -40px;
+    box-shadow: 20px -20px 0 #eee;
 }
-/* Sidenav JS */
-#sidenav.escondido {
-	width: 65px;
+#Sidenav .Menu_lateral .Itens.ativo a {
+    color: #3C91E6;
 }
-#sidenav.escondido .menu li .link {
+
+#Sidenav .Menu_lateral li.ativo .Grande {
+    color: #3C91E6;
+}
+
+
+/* - interação (escondido) - */ 
+#Sidenav.escondido {
+	width: 60px;
+}
+#Sidenav.escondido .Menu_lateral li a {
 	width: calc(48px - (4px * 2));
 	transition: width .3s ease;
 }
-#sidenav .menu.top li .link:hover {
+
+/* - interação (hover) - */ 
+#Sidenav .Menu_lateral.cima li a:hover {
 	color: #3C91E6;
 }
-#sidenav .menu  #itens.ativo {
-	background: #ffff;
-	position: relative;
-}
-#sidenav .menu #itens.ativo::before {
-	content: '';
-	position: absolute;
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-	top: -40px;
-	right: 0;
-	box-shadow: 20px 20px 0 #ffff;
-	z-index: -1;
-}
-#sidenav .menu  #itens.ativo::after {
-	content: '';
-	position: absolute;
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-	bottom: -40px;
-	right: 0;
-	box-shadow: 20px -20px 0 #ffff;
-	z-index: -1;
-}
-#sidenav .menu.top  #itens.ativo .link {
-	color: #3C91E6;
-	background: #DAEBFF;
-}
 
-.collapse{
-	grid-template-columns: 20px max-content 1fr;
+/* - Interação (subitens) - */ 
+.Submenu {
+    display: none; 
 }
-.collapse__link{
-	justify-self: flex-end;
-	transition: .5s;
+.showCollapse {
+    display: block;
 }
-.collapse__menu{
-	display: none;
-	padding: .75rem 2.25rem;
+.Submenu li {
+    width: 100%; 
 }
-.collapse__sublink{
-	color: var(--sub-color);
-	font-size: var(--small-font-size);
+.Submenu li a {
+    width: 100%; /* Faz o link do subitem ocupar toda a largura */
+    display: flex;
+    align-items: center;
 }
-.collapse__sublink:hover{
-	color: var(--white-color);
+.Submenu li.ativo {
+    background: #eee; 
+    color: #3C91E6; 
 }
-
-.showCollapse{
-	display: block;
-}
-  
 .rotate{
 	transform: rotate(180deg);
 }
-#sidenav .menu #subitem.ativo a {
-    color: #3C91E6; /* mesma cor que o item pai */
-}
+
+/* SIDENAV */
 
 
-/* conteudo */
-#conteudo {
-	grid-area: sidenav;
+
+
+
+/* CONTENT */
+#Conteudo {
 	position: relative;
 	width: calc(100% - 280px);
 	left: 280px;
 	transition: .3s ease;
 }
-#sidenav.escondido ~ #conteudo {
+#Sidenav.escondido ~ #Conteudo {
 	width: calc(100% - 60px);
 	left: 60px;
 }
-#conteudo nav {
+
+
+
+
+/* HEADER */
+header {
 	height: 56px;
-	background: #eee;
+	background: #F9F9F9;
 	padding: 0 24px;
 	display: flex;
 	align-items: center;
 	grid-gap: 24px;
-	font-family: "Inter", sans-serif;
+	font-family: var(--lato);
 	position: sticky;
 	top: 0;
 	left: 0;
 	z-index: 1000;
 }
-#conteudo nav::before {
+header::before {
 	content: '';
 	position: absolute;
 	width: 40px;
@@ -217,90 +219,52 @@ body {
 	bottom: -40px;
 	left: 0;
 	border-radius: 50%;
-	box-shadow: -20px -20px 0 #eee;
+	box-shadow: -20px -20px 0 #F9F9F9;
 }
-#conteudo nav a {
-	color: #3a3a3a;
+header a {
+	color: #342E37;
 }
-#conteudo nav .fa-solid.fa-bars {
-
-	cursor: pointer;
-	color: #3a3a3a;
-}
-/* NAVBAR */
+/* HEADER */
 
 
 
-.calendario h1 {
-    color: #123286;
-    font-size: 20px;
-    position: relative;
-    top: 40px;
-    left: 40px;
-	font-family: "Inter", sans-serif;
+
+
+/* MAIN */
+#Conteudo main {
+	width: 100%;
+	padding: 36px 24px;
+	font-family: var(--poppins);
+	max-height: calc(100vh - 56px);
+	overflow-y: auto;
 }
-#setaVoltar {
-    background-color: transparent; 
-    border: none;
-    cursor: pointer;
-    margin: 10px 0;
-    position: relative;
-    top: 40px;
-    left: 1350px;
+#Conteudo main .Titulo {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	grid-gap: 16px;
+	flex-wrap: wrap;
 }
-#setaProximo {
-    background-color: transparent; 
-    border: none;
-    cursor: pointer;
-	margin: 10px 0;
-    position: relative;
-    top: 2rem;
-    left: 74rem;
+#Conteudo main .Titulo .Nome h1 {
+	font-size: 36px;
+	font-weight: 600;
+	margin-bottom: 10px;
+	color: #342E37;
+    font-size: 25px;
 }
-select {
-    position: relative;
-    border-radius: 7px;
-    border-color: #CFCFCF;
-    height: 35px;
-    width: 88px;
-    color: #123286;
-    font-weight: bold;
-	bottom: -5px;
-	font-family: "Inter", sans-serif;
+#Conteudo main .Titulo .Nome .breadcrumb {
+	display: flex;
+	align-items: center;
+	grid-gap: 16px;
 }
-#ano {
-    position: relative;
-    left: 40px;
+#Conteudo main .Titulo .Nome .breadcrumb li {
+	color: #342E37;
 }
-#mes {
-    position: relative;
-    left: 53px;
+#Conteudo main .Titulo .Nome .breadcrumb li a {
+	color: #AAAAAA;
+	pointer-events: none;
 }
-.semana {
-    font-size: 23px;
-    color: #909090;
-    position: relative;
-    top: 30px;
-    left: 25px;
-    margin: 20px 0; 
-	font-family: "Inter", sans-serif;
-}
-.semana div {
-    padding: 25px; 
-    border: none; 
-    margin: 0 5px;
-}
-#compromisso{
-    background-color: transparent; 
-    border: 1px solid #CFCFCF;
-    border-radius: 7px;
-    cursor: pointer;
-    color: #123286;
-    font-weight: bold;
-    font-size: 18px;
-	width: 1000px;
-    height: 40px;
-	position: relative;
-    top: 100px;
-    left: 320px;
+#Conteudo main .Titulo .Nome .breadcrumb li a.ativo {
+	color: #3C91E6;
+	pointer-events: unset;
 }
