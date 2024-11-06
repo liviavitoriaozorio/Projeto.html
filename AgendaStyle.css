@@ -93,7 +93,7 @@ body {
 	align-items: center;
 	border-radius: 48px;
 	font-size: 16px;
-	color: #565457;
+	color: #5a5a5a;
 	/* define a quebra de linha, no caso desse não permite */
 	white-space: nowrap;
 	overflow-x: hidden;
@@ -129,7 +129,14 @@ body {
 }
 
 #Sidenav .Menu_lateral li.ativo .Grande {
-    color: #3C91E6;
+    border-radius: 0 2rem 2rem 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    right: .5rem;
+    top: 0;
+    z-index: -1;
+	background: #DAEBFF;
 }
 
 
@@ -239,18 +246,20 @@ header a {
 
 
 .Organização {
-	display: flex;
-	flex-wrap: wrap;
-	grid-gap: 24px;
-	margin-top: 24px;
-	width: 100%;
-	justify-content: center;
+	position: relative;
+ 	width: 98%;
+  	min-height: 100%;
+  	margin: 0 auto;
+  	padding: 5px;
+  	display: flex;
+  	border-radius: 10px;
+  	background-color: #F9F9F9;
+	overflow-x: visible;
 }
 .Agenda {
-	width: 50%;
-	border-radius: 20px;
-	padding: 24px;
-	overflow-x: auto;
+	border-right: 1px solid rgb(218, 220, 224);
+	width: 60%;
+  	padding: 20px;
 }
 .Calendario {
 	position: relative;
@@ -318,26 +327,17 @@ header a {
 }
 .Calendario .dias .day:not(.prev-date, .next-date):hover {
 	color: #fff;
-	background-color: #3C91E6;;
+	background-color: #b1cdeb;
 }
 .Calendario .dias .prev-date,
 .Calendario .dias .next-date {
-	color: #b3b3b3;
+	color: #b1cdeb;
 }
 .Calendario .dias .active {
 	position: relative;
 	font-size: 2rem;
 	color: #fff;
-	background-color: #3C91E6;;
-}
-.Calendario .dias .active::before {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	box-shadow: 0 0 5px 2px #3C91E6;;
+	background-color: #b1cdeb;
 }
 .Calendario .dias .today {
 	font-size: 2rem;
@@ -417,12 +417,9 @@ header a {
 
 .Organização .Descrição {
 	position: relative;
-	width: 97%;
-	min-height: 100%;
-	border-radius: 20px;
-	padding: 24px;
-	overflow-x: auto;
-	background-color: #F9F9F9;
+  	width: 40%;
+  	min-height: 100%;
+  	padding: 20px 0;
 }
 
 .Organização .Descrição::-webkit-scrollbar {
@@ -476,15 +473,13 @@ header a {
 	padding: 0 20px;
 	padding-left: 50px;
 	color: #fff;
-	background: linear-gradient(90deg, #3f4458, transparent);
+
 	cursor: pointer;
+	color: #342E37;
 }
 
 .events .event:nth-child(even) {
 	background: transparent;
-}
-.events .event:hover {
-	background: linear-gradient(90deg, #3C91E6, transparent);
 }
 .events .event .title {
 	display: flex;
@@ -613,7 +608,7 @@ header a {
 	flex-direction: column;
 	gap: 5px;
 	padding: 20px;
-	border: 2px solid #3C91E6;
+	border: 1px solid rgb(218, 220, 224);
 }
 
 .add-event-body .add-event-input {
@@ -634,16 +629,10 @@ header a {
 	padding: 0 10px;
 	font-size: 1rem;
 	font-weight: 400;
-	color: #373c4f;
+	color: #575961;
   }
   .add-event-body .add-event-input input::placeholder {
 	color: #a5a5a5;
-  }
-  .add-event-body .add-event-input input:focus {
-	border-bottom: 1px solid #3C91E6;;
-  }
-  .add-event-body .add-event-input input:focus::placeholder {
-	color: #3C91E6;;
   }
   .add-event-footer {
 	display: flex;
@@ -669,9 +658,6 @@ header a {
 	color: #3C91E6;;
   }
 
-  .rodape{
-	height: 30px;
-  }
 /* MAIN */
 /* CONTEUDO */
 
