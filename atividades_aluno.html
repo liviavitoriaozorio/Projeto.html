@@ -1,46 +1,146 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Atividades Aluno</title>
-    <link rel="stylesheet" type="text/css" href="atividades_aluno.css" media="screen" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-</head>
+	<head>
+		<title>Agenda</title>
+	
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="atividades_professor.css">
 
-<body>
-    <div class="estrutura">
-        <header class="header">
-            <a href="#"><img src="Img.Atividades_Aluno/menu.svg" alt="Menu"></a>
-            <img class="logo" src="Img.Atividades_Aluno/Lagunascholl.png" alt="Logo">
-            <img class="perfil" src="Img.Atividades_Aluno/perfil.png" alt="Perfil">
-        </header>
-        
+        <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Anek+Devanagari&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,700;1,0&display=swap" rel="stylesheet">	
+    </head>
 
-        <nav class="sidenav">
-            <ul>
-                <li><a href="#"><img src="Img.Atividades_Aluno/home.svg" alt="Casa"> Início</a></li>
-                <li><a href="#"><img src="Img.Atividades_Aluno/calendario.svg" alt="Calendario"> Agenda</a></li>
+
+	<body>
+
+        <!-- SIDENAV -->
+        <section id="Sidenav">
+            <div class="Laguna">
+                <img class="Icon_logo" src="Img/Lagunaa.png" alt="Logo" width="60px">
+				<span class="texto_logo">Laguna School</span>
+            </div>
+            
+            <ul class="Menu_lateral cima">
+                <li class="Itens ativo">
+                    <a href="#">
+                        <i class="fa-solid fa-house"></i>
+						<span class="descrição"> Inicio </span>
+                    </a>
+                </li>
+
+                <li class="Itens">
+                    <a href="#">
+                        <i class="fa-solid fa-calendar-days"></i>
+						<span class="descrição">Agenda</span>
+                    </a>
+                </li>
+
                 <li>
-                    <div class="menu-lateral">
-                        <button id="toggle-atividades">Minhas Atividades
-                            <img src="Img.Atividades_Aluno/setaBaixo.png">
-                        </button>
-                        <div id="materias" class="materias escondido">
-                            <ul>
-                                <li><a href="#matematica">Matemática</a></li>
-                                <li><a href="#portugues">Português</a></li>
-                                <li><a href="#historia">História</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                    <a class="Grande" href="#">
+                        <i class="fa-solid fa-book-open-reader"></i>
+						<span class="descrição">Minhas Aulas</span>
+						<i class="fa-solid fa-chevron-down"></i>
+                    </a>
+
+                    <ul class="Submenu">
+						<li class="Itens" id="Subitens">
+                            <a href="#">
+                                <i class="fa-solid fa-graduation-cap"></i>
+						        <span class="descrição"> 2° ano A </span>
+                            </a>
+                        </li>
+
+						<li class="Itens" id="Subitens">
+                            <a href="#">
+                                <i class="fa-solid fa-graduation-cap"></i>
+						        <span class="descrição"> 2° ano B </span>
+                            </a>
+                        </li>
+
+                        <li class="Itens" id="Subitens">
+                            <a href="#">
+                                <i class="fa-solid fa-graduation-cap"></i>
+						        <span class="descrição"> 2° ano C </span>
+                            </a>
+                        </li>
+					</ul>
                 </li>
             </ul>
-        </nav>
-    </div>
-    <script src="script.js"></script>
-</body>
+
+            <ul class="Menu_lateral">
+                <li>
+                    <a href="#" class="Sair">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+						<span class="Descrição">Sair</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+        <!-- SIDENAV -->
+
+        <!-- SECTION (o section determina uma seção do conteudo quase como um div) - CONTEUDO -->
+        <section id="Conteudo">
+
+            <!-- HEADER -->
+            <header>
+                <i class='fa-solid fa-bars' ></i>
+                <a href="#" class="Perfil">
+                    <span> Professor(a)</span>
+                    <i class="fa-solid fa-user"></i>
+                </a>
+            </header>
+            <!-- HEADER -->
+
+            <!-- MAIN (contém o conteúdo central) -->
+            <main>
+
+                <div class="Organização">
+
+					<div class="cartão">
+						<div class="icon">
+							<i class="fa-solid fa-briefcase" style="color: #f9fafa;"></i>
+						</div>
+						
+						<div class="info">
+							<p class="date">02/10 - Lição de casa</p>
+							<p class="subject">estatísticas</p>
+						</div>
+					
+						<div class="icon">
+							<i class="fa-solid fa-note-sticky" style="color: #f7f7f8;"></i>
+						</div>
+	
+							
+						<div class="info">
+							<p class="date">10/10 - Prova</p>
+							<p class="subject">estatísticas</p>
+						</div>
+						
+					  
+							
+						<div class="icon">
+							<i class="fa-solid fa-people-group" style="color: #f4f5f6;"></i>
+						</div>
+	
+						<div class="info">
+							<p class="date">24/10 - Seminário</p>
+							<p class="subject">estatísticas</p>
+						</div>
+					</div>
+				</div>
+			</main>
+            <!-- MAIN -->
+
+        </section>
+        <!-- SECTION - CONTEUDO -->
+        
+        <script src="atividades_professor.js"></script>
+    </body>
 </html>
+		
