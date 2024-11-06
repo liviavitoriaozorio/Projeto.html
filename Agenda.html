@@ -6,20 +6,21 @@
 	
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-        	<link rel="stylesheet" href="AgendaStyle.css">
+        <link rel="stylesheet" href="teste.css">
+
+        <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        	<link href="https://fonts.googleapis.com/css2?family=Anek+Devanagari&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,700;1,0&display=swap" rel="stylesheet">	
-	</head>
+        <link href="https://fonts.googleapis.com/css2?family=Anek+Devanagari&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,700;1,0&display=swap" rel="stylesheet">	
+    </head>
 
 
 	<body>
 
         <!-- SIDENAV -->
         <section id="Sidenav">
-
             <div class="Laguna">
                 <img class="Icon_logo" src="Img/Lagunaa.png" alt="Logo" width="60px">
 				<span class="texto_logo">Laguna School</span>
@@ -32,18 +33,21 @@
 						<span class="descrição"> Inicio </span>
                     </a>
                 </li>
+
                 <li class="Itens">
                     <a href="#">
                         <i class="fa-solid fa-calendar-days"></i>
 						<span class="descrição">Agenda</span>
                     </a>
                 </li>
+
                 <li>
                     <a class="Grande" href="#">
                         <i class="fa-solid fa-book-open-reader"></i>
 						<span class="descrição">Minhas Aulas</span>
 						<i class="fa-solid fa-chevron-down"></i>
                     </a>
+
                     <ul class="Submenu">
 						<li class="Itens" id="Subitens">
                             <a href="#">
@@ -51,12 +55,14 @@
 						        <span class="descrição"> 2° ano A </span>
                             </a>
                         </li>
+
 						<li class="Itens" id="Subitens">
                             <a href="#">
                                 <i class="fa-solid fa-graduation-cap"></i>
 						        <span class="descrição"> 2° ano B </span>
                             </a>
                         </li>
+
                         <li class="Itens" id="Subitens">
                             <a href="#">
                                 <i class="fa-solid fa-graduation-cap"></i>
@@ -78,56 +84,126 @@
         </section>
         <!-- SIDENAV -->
 
-        
         <!-- SECTION (o section determina uma seção do conteudo quase como um div) - CONTEUDO -->
         <section id="Conteudo">
 
-
             <!-- HEADER -->
             <header>
-
                 <i class='fa-solid fa-bars' ></i>
-
                 <a href="#" class="Perfil">
                     <span> Professor(a)</span>
                     <i class="fa-solid fa-user"></i>
                 </a>
-
             </header>
             <!-- HEADER -->
 
-
             <!-- MAIN (contém o conteúdo central) -->
             <main>
-
                 <div class="Titulo">
-
                     <div class="Nome">
-                        <h1>Calendario da Turma</h1>
-                        
-                        <ul class="breadcrumb">
-                            <li>
-                                <a href="#">agenda</a>
-                            </li>
-                            <li><i class="fa-solid fa-chevron-right" style="color: #595d64;"></i></li>
-                            <li>
-                                <a class="ativo" href="#">calendario da turma</a>
-                            </li>
-                        </ul>
-
+                        <h1> Calendario de Atividades </h1>
                     </div>
-
                 </div>
 
+                <div class="Organização">
+
+                    <div class="Agenda">
+                        <div class="Calendario">
+
+                            <div class="mes">
+                                <i class="fas fa-angle-left prev"></i>
+                                <div class="data"> Dezembro 2015 </div>
+                                <i class="fas fa-angle-right next"></i>
+                            </div>
+
+                            <div class="semanas">
+                                <div>Dom</div>
+                                <div>Seg</div>
+                                <div>Tre</div>
+                                <div>Qua</div>
+                                <div>Qui</div>
+                                <div>Sex</div>
+                                <div>Sab</div>
+                            </div>
+
+                            <div class="dias"></div>
+
+                            <div class="goto-today">
+                                <div class="goto">
+                                    <input type="text" placeholder="mm/yyyy" class="date-input" />
+                                    <button class="goto-btn"> Buscar </button>
+                                </div>
+                                <button class="today-btn"> Hoje </button>
+                            </div>
+
+                        </div>
+                    </div>
+              
+              
+                    <div class="Descrição">
+              
+                        <div class="today-date">
+                            <div class="event-day"></div>
+                            <div class="event-date"></div>
+                        </div>
+              
+                        <div class="events"></div>
+
+                        <button class="add-event">
+                            <i class="fas fa-plus"></i>
+                          </button>
+              
+                    </div>
+
+                    <div class="add-event-wrapper">
+                
+                        <div class="add-event-header">
+                            <div class="title">Novo Evento</div>
+                            <i class="fas fa-times close"></i>
+                        </div>
+            
+                        <div class="add-event-body">
+            
+                            <div class="add-event-input">
+                                <input type="text" placeholder="Nome" class="event-name" />
+                            </div>
+                
+                            <div class="add-event-input">
+                                <input
+                                type="text"
+                                placeholder="Hora Inicial"
+                                class="event-time-from"
+                                />
+                            </div>
+                
+                            <div class="add-event-input">
+                                <input
+                                type="text"
+                                placeholder="Hora Final "
+                                class="event-time-to"
+                                />
+                            </div>
+            
+                        </div>
+            
+                        <div class="add-event-footer">
+                            <button class="add-event-btn">Novo Evento</button>
+                        </div>
+            
+                    </div>
+
+              
+        
+                </div>
+
+                <div class="rodape"></div>
+                          
             </main>
             <!-- MAIN -->
 
-
         </section>
-        <!-- SECTION
-          - CONTEUDO -->
+        <!-- SECTION - CONTEUDO -->
         
-
-        <script src="AgendaScript.js"></script>
+        <script src="teste.js"></script>
     </body>
 </html>
