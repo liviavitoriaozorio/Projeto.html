@@ -269,12 +269,34 @@ function gotoDate() {
   alert("Invalid Date");
 }
 
-//function get active day day name and date and update eventday eventdate
+function traduzirDiaSemana(englishDay) {
+  switch(englishDay) {
+    case "Sun":
+      return "Dom";  // Sunday -> Domingo
+    case "Mon":
+      return "Seg";  // Monday -> Segunda-feira
+    case "Tue":
+      return "Ter";  // Tuesday -> Terça-feira
+    case "Wed":
+      return "Qua";  // Wednesday -> Quarta-feira
+    case "Thu":
+      return "Qui";  // Thursday -> Quinta-feira
+    case "Fri":
+      return "Sex";  // Friday -> Sexta-feira
+    case "Sat":
+      return "Sáb";  // Saturday -> Sábado
+    default:
+      return englishDay;  // Caso a sigla não seja encontrada (não deveria acontecer)
+  }
+}
+
+// Função para obter o dia ativo e exibir o nome do dia em português
 function getActiveDay(date) {
   const day = new Date(year, month, date);
-  const dayName = day.toString().split(" ")[0];
-  eventDay.innerHTML = dayName;
-  eventDate.innerHTML = date + " " + months[month] + " " + year;
+  const dayName = day.toString().split(" ")[0]; // Obtém a sigla do dia em inglês
+  const diaTraduzido = traduzirDiaSemana(dayName); // Converte para português
+  eventDay.innerHTML = diaTraduzido; // Exibe o dia traduzido
+  eventDate.innerHTML = date + " " + months[month] + " " + year; // Exibe a data completa
 }
 
 //function update events when a day is active
@@ -328,25 +350,6 @@ addEventTitle.addEventListener("input", (e) => {
   addEventTitle.value = addEventTitle.value.slice(0, 60);
 });
 
-function defineProperty() {
-  var osccred = document.createElement("div");
-  osccred.innerHTML =
-    "A Project By <a href='https://www.youtube.com/channel/UCiUtBDVaSmMGKxg1HYeK-BQ' target=_blank>Open Source Coding</a>";
-  osccred.style.position = "absolute";
-  osccred.style.bottom = "0";
-  osccred.style.right = "0";
-  osccred.style.fontSize = "10px";
-  osccred.style.color = "#ccc";
-  osccred.style.fontFamily = "sans-serif";
-  osccred.style.padding = "5px";
-  osccred.style.background = "#fff";
-  osccred.style.borderTopLeftRadius = "5px";
-  osccred.style.borderBottomRightRadius = "5px";
-  osccred.style.boxShadow = "0 0 5px #ccc";
-  document.body.appendChild(osccred);
-}
-
-defineProperty();
 
 //allow only time in eventtime from and to
 addEventFrom.addEventListener("input", (e) => {
