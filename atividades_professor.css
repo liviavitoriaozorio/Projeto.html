@@ -1,110 +1,272 @@
 * {
-    padding: 0; 
-    margin: 0;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
-
-body {
-    font-family: "Inter", sans-serif;
-    background-color: #ecefff;
-}
-
-ul {
-    list-style: none;
-}
-
 a {
-    text-decoration: none;
+	text-decoration: none;
+}
+li {
+	list-style: none;
+}
+body {
+	background: #eee;
+    font-family: "Inter", sans-serif;
 }
 
+/* SIDENAR */
 
-.estrutura {
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    grid-template-areas: 
-        'header header header'
-        'sidenav content content'
-        'footer footer footer';
+/* - completo - */ 
+#Sidenav {
+	/* ativa a flex box. */
+    display: flex;
+	/* ajusta a direção dos elemntos dentro de uma flex box */
+    flex-direction: column;
+	/* fixa o elemnto na janela */
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 280px;
+	height: 100%;
+	background: #F9F9F9;
+	/* cria como se fossem camadas em relação aos  elementos */
+	z-index: 2000;
+	font-family: "Inter", sans-serif;
+	transition: .3s ease;
+	overflow-x: hidden;
+}
+#Sidenav::--webkit-scrollbar {
+	display: none;
 }
 
-
-.header {
-    grid-area: header;
-    background-color: #fbf9ff;
-    padding: 20px; 
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    border: 1px solid #CFCFCF;
+/* - topo - */ 
+#Sidenav .Laguna {
+	font-size: 24px;
+	font-weight: 700;
+	height: 56px;
+	display: flex;
+	align-items: center;
+    font-family: "Playfair Display", serif;
+    text-shadow: 1px 1px 2px rgb(199, 199, 199);
+	color: rgb(37, 36, 36);
+	position: sticky;
+	top: 0;
+	left: 0;
+	z-index: 500;
+	padding-bottom: 20px;
+	/* calcula a altura e largura com base no conteudo da caixa */
+	box-sizing: content-box;
+}
+#Sidenav .Laguna .fa-solid {
+	min-width: 60px;
+	display: flex;
+	/* alinha os itens dentro de uma flex box */
+	justify-content: center;
 }
 
-.logo {
-    max-width: 180px;
+/* - Itens - */ 
+#Sidenav .Menu_lateral {
+	width: 100%;
+	margin-top: 48px;
+}
+#Sidenav .Menu_lateral.cima {
+    width: 100%;
+    margin-top: 48px;
+    /* define a capacidade de um item flexível de crescer para ocupar o espaço disponível no container flex */
+    flex-grow: 1; 
+}
+#Sidenav .Menu_lateral li {
+	height: 48px;
+	background: transparent;
+	margin-left: 6px;
+	border-radius: 48px 0 0 48px;
+	padding: 4px;
+}
+#Sidenav .Menu_lateral li a {
+	width: 100%;
+	height: 100%;
+	background: #F9F9F9;
+	display: flex;
+	align-items: center;
+	border-radius: 48px;
+	font-size: 16px;
+	color: #342E37;
+	/* define a quebra de linha, no caso desse não permite */
+	white-space: nowrap;
+	overflow-x: hidden;
+}
+#Sidenav .Menu_lateral li a .fa-solid {
+	min-width: calc(60px - ((4px + 6px) * 2));
+	display: flex;
+	justify-content: center;
+}
+#Sidenav .Menu_lateral li a.Sair {
+	color: #DB504A; 
+}
+
+/* - interação (ativo) - */ 
+#Sidenav .Menu_lateral .Itens.ativo {
+    background: #eee;
+    position: relative;
+}
+#Sidenav .Menu_lateral .Itens.ativo::before {
+    content: '';
     position: absolute;
-    top: 8px;
-    left: 60px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    right: 0;
+    box-shadow: 20px 20px 0 #eee;
+    z-index: -1;
+    top: -40px;
 }
-
-.perfil {
-    max-width: 50px;
+#Sidenav .Menu_lateral .Itens.ativo::after {
+    content: '';
     position: absolute;
-    top: 8px;
-    right: 60px; 
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    right: 0;
+    box-shadow: 20px 20px 0 #eee;
+    z-index: -1;
+    bottom: -40px;
+    box-shadow: 20px -20px 0 #eee;
+}
+#Sidenav .Menu_lateral .Itens.ativo a {
+    color: #3C91E6;
+}
+
+#Sidenav .Menu_lateral li.ativo .Grande {
+    color: #3C91E6;
 }
 
 
-.sidenav {
-    grid-area: sidenav;
-    width: 260px;
-    height: 875px; 
-    background-color: #ffffff;
-    border-right: 1px solid #CFCFCF;
+/* - interação (escondido) - */ 
+#Sidenav.escondido {
+	width: 60px;
+}
+#Sidenav.escondido .Menu_lateral li a {
+	width: calc(48px - (4px * 2));
+	transition: width .3s ease;
 }
 
-.sidenav h2 {
-    text-align: center;
+/* - interação (hover) - */ 
+#Sidenav .Menu_lateral.cima li a:hover {
+	color: #3C91E6;
 }
 
-.sidenav ul {
-    padding: 0;
+/* - Interação (subitens) - */ 
+.Submenu {
+    display: none; 
 }
-
-.sidenav ul li {
-    display: flex; 
-    align-items: center; 
-    border-bottom: 1px solid #CFCFCF; 
-    transition: background 0.3s;
-}
-
-.sidenav ul li:hover {
-    background-color: #daebff; 
-}
-
-.sidenav ul li a {
-    color: rgb(0, 0, 0);
+.showCollapse {
     display: block;
+}
+.Submenu li {
     width: 100%; 
-    padding: 10px 15px; 
+}
+.Submenu li a {
+    width: 100%; /* Faz o link do subitem ocupar toda a largura */
+    display: flex;
+    align-items: center;
+}
+.Submenu li.ativo {
+    background: #eee; 
+    color: #3C91E6; 
+}
+.rotate{
+	transform: rotate(180deg);
 }
 
-.sidenav ul li img {
-    margin-right: 10px; 
+/* SIDENAV */
+
+
+
+/* CONTEUDO */
+#Conteudo {
+	position: relative;
+	width: calc(100% - 280px);
+	left: 280px;
+	transition: .3s ease;
+}
+#Sidenav.escondido ~ #Conteudo {
+	width: calc(100% - 60px);
+	left: 60px;
 }
 
+/* HEADER */
+header {
+	height: 56px;
+	background: #F9F9F9;
+	padding: 0 24px;
+	display: flex;
+	align-items: center;
+	grid-gap: 24px;
+	font-family: "Inter", sans-serif;
+	/* gruda na janela */
+	position: sticky;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+}
+header::before {
+	content: '';
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	bottom: -40px;
+	left: 0;
+	border-radius: 50%;
+	box-shadow: -20px -20px 0 #F9F9F9;
+}
+header a {
+	color: #342E37;
+}
+/* HEADER */
 
-.menu-lateral {
+/* MAIN */
+
+/* cabeçario do conteudo */
+#Conteudo main {
+	width: 100%;
+	padding: 36px 24px;
+	font-family: "Inter", sans-serif;
+	max-height: calc(100vh - 56px);
+}
+
+.card {
     width: 200px;
-    background-color: #f0f0f0;
-    padding: 10px;
-    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    
+   
+  }
+.icon {
+    background-color: #d9bb7b;
+    padding: 20px;
+ 
+    
+}
+  
+.info {
+    padding: 15px;
+}
+  
+.date {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+  
+.subject {
+    font-size: 12px;
+    color: #999;
 }
 
-.materias {
-    margin-top: 10px;
-}
-
-.escondido {
-    display: none;
-}
 
 
 
