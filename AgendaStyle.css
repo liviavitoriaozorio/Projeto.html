@@ -34,6 +34,7 @@ body {
 	font-family: "Inter", sans-serif;
 	transition: .3s ease;
 	overflow-x: hidden;
+	border-right: 1px solid rgb(218, 220, 224);
 }
 #Sidenav::--webkit-scrollbar {
 	display: none;
@@ -81,6 +82,8 @@ body {
 	margin-left: 6px;
 	border-radius: 48px 0 0 48px;
 	padding: 4px;
+	position: relative;
+	left: -10px;
 }
 #Sidenav .Menu_lateral li a {
 	width: 100%;
@@ -90,13 +93,22 @@ body {
 	align-items: center;
 	border-radius: 48px;
 	font-size: 16px;
-	color: #342E37;
+	color: #565457;
 	/* define a quebra de linha, no caso desse não permite */
 	white-space: nowrap;
 	overflow-x: hidden;
+	left: 10px;
 }
 #Sidenav .Menu_lateral li a .fa-solid {
 	min-width: calc(60px - ((4px + 6px) * 2));
+	display: flex;
+	justify-content: flex-start;
+	position: relative;
+	left: 10px;
+
+}
+#Sidenav .Menu_lateral li a span {
+	position: relative;
 	display: flex;
 	justify-content: center;
 }
@@ -105,35 +117,15 @@ body {
 }
 
 /* - interação (ativo) - */ 
-#Sidenav .Menu_lateral .Itens.ativo {
-    background: #eee;
-    position: relative;
-}
-#Sidenav .Menu_lateral .Itens.ativo::before {
-    content: '';
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    right: 0;
-    box-shadow: 20px 20px 0 #eee;
-    z-index: -1;
-    top: -40px;
-}
-#Sidenav .Menu_lateral .Itens.ativo::after {
-    content: '';
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    right: 0;
-    box-shadow: 20px 20px 0 #eee;
-    z-index: -1;
-    bottom: -40px;
-    box-shadow: 20px -20px 0 #eee;
-}
 #Sidenav .Menu_lateral .Itens.ativo a {
-    color: #3C91E6;
+	border-radius: 0 2rem 2rem 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    right: .5rem;
+    top: 0;
+    z-index: -1;
+	background: #DAEBFF;
 }
 
 #Sidenav .Menu_lateral li.ativo .Grande {
@@ -152,7 +144,14 @@ body {
 
 /* - interação (hover) - */ 
 #Sidenav .Menu_lateral.cima li a:hover {
-	color: #3C91E6;
+	border-radius: 0 2rem 2rem 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    right: .5rem;
+    top: 0;
+    z-index: -1;
+	background: rgb(235, 241, 247);
 }
 
 /* - Interação (subitens) - */ 
@@ -208,17 +207,9 @@ header {
 	top: 0;
 	left: 0;
 	z-index: 1000;
+	border-bottom: 1px solid rgb(218, 220, 224);
 }
-header::before {
-	content: '';
-	position: absolute;
-	width: 40px;
-	height: 40px;
-	bottom: -40px;
-	left: 0;
-	border-radius: 50%;
-	box-shadow: -20px -20px 0 #F9F9F9;
-}
+
 header a {
 	color: #342E37;
 }
@@ -256,7 +247,7 @@ header a {
 	justify-content: center;
 }
 .Agenda {
-	width: 100%;
+	width: 50%;
 	border-radius: 20px;
 	padding: 24px;
 	overflow-x: auto;
