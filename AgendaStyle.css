@@ -149,6 +149,16 @@ body {
     z-index: -1;
 	background: rgb(235, 241, 247);
 }
+#Sidenav .Menu_lateral .Sair:hover {
+	border-radius: 0 2rem 2rem 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    right: .5rem;
+    top: 0;
+    z-index: -1;
+	background: rgb(245, 232, 232);
+}
 
 /* - Interação (subitens) - */ 
 .Submenu {
