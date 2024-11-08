@@ -11,13 +11,14 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: url('img/4k_fundo.jpg')no-repeat;
+  background: url('Img/360_F_550334715_0d2cdaljV4Xd3x7yVUhRxfmLLEUyMdXr.jpg')no-repeat;
   background-size: cover;
   background-position: ceter;
 }
 .wrapper{
 
   width: 420px;
+  height: 430px;
   background: transparent;
   border:2px solid rgba(255,255,255, .2);
   backdrop-filter: blur(20px);
@@ -72,8 +73,12 @@ body {
   margin-right: 3%;
 }
 .Lembre-me a {
+  position: absolute;
   color: #fff;
   text-decoration: none;
+  white-space: nowrap;
+  top: 20;
+  left: 32% ;
   
 }
 .Lembre-me a:hover{
@@ -91,4 +96,17 @@ body {
   font-size: 16px;
   color: #333;
   font-weight: 600;
+  position: relative;
+  top: 30px;
+ }
+ .videoo {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Faz o vídeo cobrir a tela inteira, mantendo a proporção */
+  z-index: -100;
  }
