@@ -12,32 +12,26 @@ li {
 body {
 	background: #eee;
     font-family: "Inter", sans-serif;
+	overflow-x: hidden;
 }
 
-/* SIDENAR */
 
+/* SIDENAR */
 /* - completo - */ 
 #Sidenav {
-	/* ativa a flex box. */
     display: flex;
-	/* ajusta a direção dos elemntos dentro de uma flex box */
     flex-direction: column;
-	/* fixa o elemnto na janela */
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 280px;
 	height: 100%;
 	background: #F9F9F9;
-	/* cria como se fossem camadas em relação aos  elementos */
 	z-index: 2000;
 	font-family: "Inter", sans-serif;
 	transition: .3s ease;
 	overflow-x: hidden;
 	border-right: 1px solid rgb(218, 220, 224);
-}
-#Sidenav::--webkit-scrollbar {
-	display: none;
 }
 
 /* - topo - */ 
@@ -55,13 +49,11 @@ body {
 	left: 0;
 	z-index: 500;
 	padding-bottom: 20px;
-	/* calcula a altura e largura com base no conteudo da caixa */
 	box-sizing: content-box;
 }
 #Sidenav .Laguna .fa-solid {
 	min-width: 60px;
 	display: flex;
-	/* alinha os itens dentro de uma flex box */
 	justify-content: center;
 }
 
@@ -73,7 +65,7 @@ body {
 #Sidenav .Menu_lateral.cima {
     width: 100%;
     margin-top: 48px;
-    /* define a capacidade de um item flexível de crescer para ocupar o espaço disponível no container flex */
+    /* (define a capacidade de um item flexível de crescer para ocupar o espaço disponível no container flex) */
     flex-grow: 1; 
 }
 #Sidenav .Menu_lateral li {
@@ -94,7 +86,6 @@ body {
 	border-radius: 48px;
 	font-size: 16px;
 	color: #5a5a5a;
-	/* define a quebra de linha, no caso desse não permite */
 	white-space: nowrap;
 	overflow-x: hidden;
 	left: 10px;
@@ -127,7 +118,6 @@ body {
     z-index: -1;
 	background: #DAEBFF;
 }
-
 #Sidenav .Menu_lateral li.ativo .Grande {
     border-radius: 0 2rem 2rem 0;
     bottom: 0;
@@ -138,7 +128,6 @@ body {
     z-index: -1;
 	background: #DAEBFF;
 }
-
 
 /* - interação (escondido) - */ 
 #Sidenav.escondido {
@@ -172,7 +161,7 @@ body {
     width: 100%; 
 }
 .Submenu li a {
-    width: 100%; /* Faz o link do subitem ocupar toda a largura */
+    width: 100%; 
     display: flex;
     align-items: center;
 }
@@ -183,9 +172,7 @@ body {
 .rotate{
 	transform: rotate(180deg);
 }
-
 /* SIDENAV */
-
 
 
 /* CONTEUDO */
@@ -209,7 +196,6 @@ header {
 	align-items: center;
 	grid-gap: 24px;
 	font-family: "Inter", sans-serif;
-	/* gruda na janela */
 	position: sticky;
 	top: 0;
 	left: 0;
@@ -223,43 +209,32 @@ header a {
 /* HEADER */
 
 /* MAIN */
-
-/* cabeçario do conteudo */
 #Conteudo main {
 	width: 100%;
 	padding: 36px 24px;
 	font-family: "Inter", sans-serif;
 	max-height: calc(100vh - 56px);
 }
-#Conteudo main .Titulo {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	grid-gap: 16px;
-	flex-wrap: wrap;
-	font-weight: 600;
-	margin-bottom: 10px;
-	color: #0f2663;
-}
 
-
-
-
+/* todo o quadro */
 .Organização {
-	position: relative;
- 	width: 98%;
-  	min-height: 100%;
-  	margin: 0 auto;
-  	padding: 5px;
-  	display: flex;
-  	border-radius: 10px;
   	background-color: #F9F9F9;
-	overflow-x: visible;
+	display: flex;
+	flex-wrap: wrap;
+	grid-gap: 24px;
+	margin-bottom: 10px;
+	border-radius: 20px;
 }
+#Conteudo main .Organização .Agenda, #Conteudo main .Organização .Descrição {
+	background: var(--light);
+	padding: 24px;
+	overflow-x: auto;
+}
+
+/* parte do calendario */
 .Agenda {
-	border-right: 1px solid rgb(218, 220, 224);
-	width: 60%;
-  	padding: 20px;
+	flex-grow: 1;
+	flex-basis: 500px;
 }
 .Calendario {
 	position: relative;
@@ -306,6 +281,8 @@ header a {
 	align-items: center;
 	justify-content: center;
 }
+
+/* dias */
 .Calendario .dias {
 	width: 100%;
 	display: flex;
@@ -325,7 +302,7 @@ header a {
 	color: #3C91E6;;
 	border: 1px solid #f5f5f5;
 }
-.Calendario .dias .day:not(.prev-date, .next-date):hover {
+.Calendario .dias .day:not(.prev-date, .next-date):hover /*exclui os elementos que correspondem aos seletores passados dentro dos parênteses.*/{
 	color: #fff;
 	background-color: #b1cdeb;
 }
@@ -342,6 +319,8 @@ header a {
 .Calendario .dias .today {
 	font-size: 2rem;
 }
+
+/* dias eventos */
 .Calendario .dias .event {
 	position: relative;
 }
@@ -354,7 +333,7 @@ header a {
 	height: 6px;
 	border-radius: 30px;
 	transform: translateX(-50%);
-	background-color: #3C91E6;;
+	background-color: #b1cdeb;
 }
 .Calendario .dias .day:hover.event::after {
 	background-color: #fff;
@@ -366,6 +345,8 @@ header a {
 .Calendario .dias .active.event {
 	padding-bottom: 10px;
 }
+
+/* busca */
 .Calendario .goto-today {
 	width: 100%;
 	height: 50px;
@@ -375,14 +356,13 @@ header a {
 	gap: 5px;
 	padding: 0 20px;
 	margin-bottom: 20px;
-	color: #3C91E6;;
 }
 .Calendario .goto-today .goto {
 	display: flex;
 	align-items: center;
 	border-radius: 5px;
 	overflow: hidden;
-	border: 1px solid #3C91E6;;
+	border: 1px solid #3C91E6;
 }
 .Calendario .goto-today .goto input {
 	width: 100%;
@@ -391,20 +371,20 @@ header a {
 	border: none;
 	border-radius: 5px;
 	padding: 0 20px;
-	color: #3C91E6;;
+	color: #68a4e0;
 	border-radius: 5px;
 }
 .Calendario .goto-today button {
-	padding: 5px 10px;
+	padding: 10px 15px;
 	border: 1px solid #3C91E6;;
 	border-radius: 5px;
 	background-color: transparent;
 	cursor: pointer;
-	color: #3C91E6;;
+	color: #3C91E6;
 }
 .Calendario .goto-today button:hover {
 	color: #fff;
-	background-color: #3C91E6;
+	background-color: #68a4e0;
 }
 .Calendario .goto-today .goto button {
 	border: none;
@@ -413,22 +393,20 @@ header a {
 }
 
 
-
-
+/* parte dos eventos */
 .Organização .Descrição {
-	position: relative;
-  	width: 40%;
-  	min-height: 100%;
-  	padding: 20px 0;
+	flex-grow: 1;
+	flex-basis: 300px;
+	border-left:  1px solid rgb(218, 220, 224);
 }
-
 .Organização .Descrição::-webkit-scrollbar {
 	width: 5px;               
 }
 .Organização .Descrição::-webkit-scrollbar-thumb {
-	background-color: #3C91E6  ;
+	background-color: #b1cdeb  ;
 	border-radius: 20px;       
 }
+/* cima */
 .Descrição .today-date {
 	width: 100%;
 	height: 50px;
@@ -452,6 +430,8 @@ header a {
 	font-weight: 400;
 	color: #878895;
 }
+
+/* eventos/atividades */
 .events {
 	width: 100%;
 	height: 100%;
@@ -477,10 +457,6 @@ header a {
 	cursor: pointer;
 	color: #342E37;
 }
-
-.events .event:nth-child(even) {
-	background: transparent;
-}
 .events .event .title {
 	display: flex;
 	align-items: center;
@@ -492,11 +468,8 @@ header a {
 	margin-left: 20px;
 }
 .events .event i {
-	color: #3C91E6;;
+	color: #b1cdeb;
 	font-size: 0.5rem;
-}
-.events .event:hover i {
-	color: #fff;
 }
 .events .event .event-time {
 	font-size: 0.8rem;
@@ -505,31 +478,12 @@ header a {
 	margin-left: 15px;
 	pointer-events: none;
 }
-.events .event:hover .event-time {
-	color: #fff;
-}
-  /* add tick in event after */
-.events .event::after {
-	content: "✓";
-	position: absolute;
-	top: 50%;
-	right: 0;
-	font-size: 3rem;
-	line-height: 1;
-	display: none;
-	align-items: center;
-	justify-content: center;
-	opacity: 0.3;
-	color: #3C91E6;
-	transform: translateY(-50%);
-}
-.events .event:hover::after {
-	display: flex;
-}
+
+/* botão de add */
 .add-event {
-	position: absolute;
+	position: relative;
 	bottom: 30px;
-	right: 30px;
+	right: -80px;
 	width: 40px;
 	height: 40px;
 	display: flex;
@@ -559,9 +513,6 @@ header a {
 	font-weight: 500;
 	color: #878895;
 }
-
-
-
 .add-event-wrapper {
 	position: absolute;
 	bottom: 100px;
@@ -600,7 +551,6 @@ header a {
 }
 
 /* tele que adiciona o evento */
-
 .add-event-body {
 	width: 100%;
 	height: 100%;
@@ -610,7 +560,6 @@ header a {
 	padding: 20px;
 	border: 1px solid rgb(218, 220, 224);
 }
-
 .add-event-body .add-event-input {
 	width: 100%;
 	height: 40px;
@@ -619,8 +568,7 @@ header a {
 	justify-content: space-between;
 	gap: 10px;
 }
-
-  .add-event-body .add-event-input input {
+.add-event-body .add-event-input input {
 	width: 100%;
 	height: 100%;
 	outline: none;
@@ -630,17 +578,17 @@ header a {
 	font-size: 1rem;
 	font-weight: 400;
 	color: #575961;
-  }
-  .add-event-body .add-event-input input::placeholder {
+}
+.add-event-body .add-event-input input::placeholder {
 	color: #a5a5a5;
-  }
-  .add-event-footer {
+}
+.add-event-footer {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	padding: 20px;
-  }
-  .add-event-footer .add-event-btn {
+}
+.add-event-footer .add-event-btn {
 	height: 40px;
 	font-size: 1rem;
 	font-weight: 500;
@@ -652,20 +600,14 @@ header a {
 	cursor: pointer;
 	padding: 5px 10px;
 	border: 1px solid #3C91E6;;
-  }
-  .add-event-footer .add-event-btn:hover {
+}
+.add-event-footer .add-event-btn:hover {
 	background-color: transparent;
 	color: #3C91E6;;
   }
 
 /* MAIN */
 /* CONTEUDO */
-
-
-
-
-
-
 
 
 @media screen and (max-width: 768px) {
@@ -678,57 +620,4 @@ header a {
 		left: 200px;
 	}
 
-	header .nav-link {
-		display: none;
-	}
-}
-
-
-
-
-
-
-@media screen and (max-width: 576px) {
-	header form .form-input input {
-		display: none;
-	}
-
-	header form .form-input button {
-		width: auto;
-		height: auto;
-		background: transparent;
-		border-radius: none;
-		color: #342E37;
-	}
-
-	header form.show .form-input input {
-		display: block;
-		width: 100%;
-	}
-	header form.show .form-input button {
-		width: 36px;
-		height: 100%;
-		border-radius: 0 36px 36px 0;
-		color: #F9F9F9;
-		background: #DB504A;
-	}
-
-	header form.show ~ .notification,
-	header form.show ~ .profile {
-		display: none;
-	}
-
-	#Conteudo main .box-info {
-		grid-template-columns: 1fr;
-	}
-
-	#Conteudo main .table-data .Titulo {
-		min-width: 420px;
-	}
-	#Conteudo main .table-data .Agenda table {
-		min-width: 420px;
-	}
-	#Conteudo main .table-data .todo .todo-list {
-		min-width: 420px;
-	}
 }
