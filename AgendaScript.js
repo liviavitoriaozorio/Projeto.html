@@ -12,6 +12,8 @@ allSideMenu.forEach(item => {
     });
 });
 
+
+
 // Esconde o sidenav
 const menuBar = document.querySelector('header .fa-solid.fa-bars');
 const sidebar = document.getElementById('Sidenav');
@@ -33,6 +35,8 @@ menuBar.addEventListener('click', function () {
     });
 });
 
+
+
 // Menu das minhas atividades 
 const linkCollapse = document.getElementsByClassName('fa-solid fa-chevron-down');
 
@@ -53,9 +57,9 @@ for (let i = 0; i < linkCollapse.length; i++) {
 
 
 
+// Calendario Inicio
 
-
-
+// Essas parte guardam os elementos HTML que vão ser usados
 const calendar = document.querySelector(".Calendario"),
   date = document.querySelector(".data"),
   daysContainer = document.querySelector(".dias"),
@@ -75,11 +79,13 @@ const calendar = document.querySelector(".Calendario"),
   addEventTo = document.querySelector(".event-time-to "),
   addEventSubmit = document.querySelector(".add-event-btn ");
 
+// Essas variáveis controlam a data atual 
 let today = new Date();
 let activeDay;
 let month = today.getMonth();
 let year = today.getFullYear();
 
+// Armazena os meses do ano
 const months = [
   "Janeiro",
   "Fevereiro",
@@ -95,11 +101,13 @@ const months = [
   "Dezembro",
 ];
 
+// EventsArr guarda os eventos determinados em cada dia no armazenamento local do navegador
+// e getEvents() tenta recuperar eventos armazenados
 const eventsArr = [];
 getEvents();
 console.log(eventsArr);
 
-//function to add days in days with class day and prev-date next-date on previous month and next month days and active on today
+// Essa função inicializa o calendário, gerando os dias do mês corrente
 function initCalendar() {
   const firstDay = new Date(year, month, 1);
   const lastDay = new Date(year, month + 1, 0);
@@ -118,7 +126,7 @@ function initCalendar() {
   }
 
   for (let i = 1; i <= lastDate; i++) {
-    //check if event is present on that day
+
     let event = false;
     eventsArr.forEach((eventObj) => {
       if (
@@ -158,7 +166,7 @@ function initCalendar() {
   addListner();
 }
 
-//function to add month and year on prev and next button
+// Essa função ajusta a variável month e chamam initCalendar para atualizar a exibição (voltar) 
 function prevMonth() {
   month--;
   if (month < 0) {
@@ -167,7 +175,7 @@ function prevMonth() {
   }
   initCalendar();
 }
-
+// Essa função ajusta a variável month e chamam initCalendar para atualizar a exibição (proximo) 
 function nextMonth() {
   month++;
   if (month > 11) {
@@ -177,12 +185,12 @@ function nextMonth() {
   initCalendar();
 }
 
+// Essa parte deterimina que so vai ocorrer o prev e next quando clicar neles, e atualiza o calendario
 prev.addEventListener("click", prevMonth);
 next.addEventListener("click", nextMonth);
-
 initCalendar();
 
-//function to add active on day
+// Essa função permite que o usuário clique em um dia do calendário e veja os eventos daquele dia
 function addListner() {
   const days = document.querySelectorAll(".day");
   days.forEach((day) => {
@@ -190,16 +198,16 @@ function addListner() {
       getActiveDay(e.target.innerHTML);
       updateEvents(Number(e.target.innerHTML));
       activeDay = Number(e.target.innerHTML);
-      //remove active
+
       days.forEach((day) => {
         day.classList.remove("active");
       });
-      //if clicked prev-date or next-date switch to that month
+      
       if (e.target.classList.contains("prev-date")) {
         prevMonth();
-        //add active to clicked day afte month is change
+        
         setTimeout(() => {
-          //add active where no prev-date or next-date
+          
           const days = document.querySelectorAll(".day");
           days.forEach((day) => {
             if (
@@ -212,7 +220,7 @@ function addListner() {
         }, 100);
       } else if (e.target.classList.contains("next-date")) {
         nextMonth();
-        //add active to clicked day afte month is changed
+        
         setTimeout(() => {
           const days = document.querySelectorAll(".day");
           days.forEach((day) => {
@@ -231,6 +239,7 @@ function addListner() {
   });
 }
 
+// Quando o botão "Hoje" é clicado, ele redefine o mês e ano para a data atual e atualiza o calendário.
 todayBtn.addEventListener("click", () => {
   today = new Date();
   month = today.getMonth();
@@ -238,6 +247,7 @@ todayBtn.addEventListener("click", () => {
   initCalendar();
 });
 
+// Essa parte lida com a entrada de dados em um campo de input
 dateInput.addEventListener("input", (e) => {
   dateInput.value = dateInput.value.replace(/[^0-9/]/g, "");
   if (dateInput.value.length === 2) {
@@ -253,8 +263,7 @@ dateInput.addEventListener("input", (e) => {
   }
 });
 
-gotoBtn.addEventListener("click", gotoDate);
-
+// Essa função permite que o usuário insira uma data no formato "MM/AAAA" e o calendário é atualizado para o mês e ano inseridos.
 function gotoDate() {
   console.log("here");
   const dateArr = dateInput.value.split("/");
@@ -268,38 +277,41 @@ function gotoDate() {
   }
   alert("Invalid Date");
 }
+// Essa parte deterimina que so vai ocorrer a "pesquisa" quando clicar nele
+gotoBtn.addEventListener("click", gotoDate);
 
+// Traduz os dias da semana gerados para portugues 
 function traduzirDiaSemana(englishDay) {
   switch(englishDay) {
     case "Sun":
-      return "Dom";  // Sunday -> Domingo
+      return "Dom";  
     case "Mon":
-      return "Seg";  // Monday -> Segunda-feira
+      return "Seg";  
     case "Tue":
-      return "Ter";  // Tuesday -> Terça-feira
+      return "Ter";  
     case "Wed":
-      return "Qua";  // Wednesday -> Quarta-feira
+      return "Qua";  
     case "Thu":
-      return "Qui";  // Thursday -> Quinta-feira
+      return "Qui";  
     case "Fri":
-      return "Sex";  // Friday -> Sexta-feira
+      return "Sex";  
     case "Sat":
-      return "Sáb";  // Saturday -> Sábado
+      return "Sáb";  
     default:
-      return englishDay;  // Caso a sigla não seja encontrada (não deveria acontecer)
+      return englishDay;  
   }
 }
 
-// Função para obter o dia ativo e exibir o nome do dia em português
+// Função que quando selecionado, no evento aparecer o dia em português
 function getActiveDay(date) {
   const day = new Date(year, month, date);
-  const dayName = day.toString().split(" ")[0]; // Obtém a sigla do dia em inglês
-  const diaTraduzido = traduzirDiaSemana(dayName); // Converte para português
-  eventDay.innerHTML = diaTraduzido; // Exibe o dia traduzido
-  eventDate.innerHTML = date + " " + months[month] + " " + year; // Exibe a data completa
+  const dayName = day.toString().split(" ")[0]; 
+  const diaTraduzido = traduzirDiaSemana(dayName); 
+  eventDay.innerHTML = diaTraduzido; 
+  eventDate.innerHTML = date + " " + months[month] + " " + year; 
 }
 
-//function update events when a day is active
+// função atualiza os eventos quando um dia estiver ativo
 function updateEvents(date) {
   let events = "";
   eventsArr.forEach((event) => {
@@ -330,28 +342,24 @@ function updateEvents(date) {
   saveEvents();
 }
 
-//function to add event
+// Essa parte determina que quando apertado vai ir para "novo evento"  
 addEventBtn.addEventListener("click", () => {
   addEventWrapper.classList.toggle("active");
 });
 
+// Essa parte determina que quando apertado no x vai sair do "novo evento" 
 addEventCloseBtn.addEventListener("click", () => {
   addEventWrapper.classList.remove("active");
 });
 
+// Essa parte determina que quando apertado fora da tela vai sair do "novo evento" 
 document.addEventListener("click", (e) => {
   if (e.target !== addEventBtn && !addEventWrapper.contains(e.target)) {
     addEventWrapper.classList.remove("active");
   }
 });
 
-//allow 50 chars in eventtitle
-addEventTitle.addEventListener("input", (e) => {
-  addEventTitle.value = addEventTitle.value.slice(0, 60);
-});
-
-
-//allow only time in eventtime from and to
+// Essa parte lida com a entrada do horário no campo "de"
 addEventFrom.addEventListener("input", (e) => {
   addEventFrom.value = addEventFrom.value.replace(/[^0-9:]/g, "");
   if (addEventFrom.value.length === 2) {
@@ -362,6 +370,7 @@ addEventFrom.addEventListener("input", (e) => {
   }
 });
 
+// Essa parte lida com a entrada do horário no campo "ate"
 addEventTo.addEventListener("input", (e) => {
   addEventTo.value = addEventTo.value.replace(/[^0-9:]/g, "");
   if (addEventTo.value.length === 2) {
@@ -372,17 +381,17 @@ addEventTo.addEventListener("input", (e) => {
   }
 });
 
-//function to add event to eventsArr
+// Essa parte valida as entradas e adicionar o evento à lista de eventos (eventsArr)
 addEventSubmit.addEventListener("click", () => {
   const eventTitle = addEventTitle.value;
   const eventTimeFrom = addEventFrom.value;
   const eventTimeTo = addEventTo.value;
+
   if (eventTitle === "" || eventTimeFrom === "" || eventTimeTo === "") {
-    alert("Please fill all the fields");
+    alert("Por favor preencha todos os campos");
     return;
   }
 
-  //check correct time format 24 hour
   const timeFromArr = eventTimeFrom.split(":");
   const timeToArr = eventTimeTo.split(":");
   if (
@@ -393,14 +402,12 @@ addEventSubmit.addEventListener("click", () => {
     timeToArr[0] > 23 ||
     timeToArr[1] > 59
   ) {
-    alert("Invalid Time Format");
+    alert("Formato de horas invalido");
     return;
   }
-
   const timeFrom = convertTime(eventTimeFrom);
   const timeTo = convertTime(eventTimeTo);
 
-  //check if event is already added
   let eventExist = false;
   eventsArr.forEach((event) => {
     if (
@@ -416,7 +423,7 @@ addEventSubmit.addEventListener("click", () => {
     }
   });
   if (eventExist) {
-    alert("Event already added");
+    alert("Evento já adicionado");
     return;
   }
   const newEvent = {
@@ -454,17 +461,17 @@ addEventSubmit.addEventListener("click", () => {
   addEventFrom.value = "";
   addEventTo.value = "";
   updateEvents(activeDay);
-  //select active day and add event class if not added
+  //seleciona o dia ativo e adiciona a classe do evento se não for adicionado
   const activeDayEl = document.querySelector(".day.active");
   if (!activeDayEl.classList.contains("event")) {
     activeDayEl.classList.add("event");
   }
 });
 
-//function to delete event when clicked on event
+// Essa parte que o usuário exclua um evento clicando sobre ele
 eventsContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("event")) {
-    if (confirm("Are you sure you want to delete this event?")) {
+    if (confirm("Tem certeza de que deseja excluir este evento?")) {
       const eventTitle = e.target.children[0].children[1].innerHTML;
       eventsArr.forEach((event) => {
         if (
@@ -477,10 +484,10 @@ eventsContainer.addEventListener("click", (e) => {
               event.events.splice(index, 1);
             }
           });
-          //if no events left in a day then remove that day from eventsArr
+          
           if (event.events.length === 0) {
             eventsArr.splice(eventsArr.indexOf(event), 1);
-            //remove event class from day
+            
             const activeDayEl = document.querySelector(".day.active");
             if (activeDayEl.classList.contains("event")) {
               activeDayEl.classList.remove("event");
@@ -493,22 +500,21 @@ eventsContainer.addEventListener("click", (e) => {
   }
 });
 
-//function to save events in local storage
+
+//Essa função salva os eventos do armazenamento local do navegador (localStorage). Isso garante que os eventos adicionados sejam persistentes entre as sessões do usuário.
 function saveEvents() {
   localStorage.setItem("events", JSON.stringify(eventsArr));
 }
-
-//function to get events from local storage
+//Essa função salva rescupera os eventos do armazenamento local do navegador (localStorage). 
 function getEvents() {
-  //check if events are already saved in local storage then return event else nothing
   if (localStorage.getItem("events") === null) {
     return;
   }
   eventsArr.push(...JSON.parse(localStorage.getItem("events")));
 }
 
+//função converte horários no formato de 12 horas (com AM/PM) para o formato de 24 horas.
 function convertTime(time) {
-  //convert time to 24 hour format
   let timeArr = time.split(":");
   let timeHour = timeArr[0];
   let timeMin = timeArr[1];
