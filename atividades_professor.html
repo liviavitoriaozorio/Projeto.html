@@ -1,89 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 	<head>
 		<title>Agenda</title>
 	
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="atividade_professor.css">
+        <link rel="stylesheet" href="AgendaStyle.css">
+
+        <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-	</head>
+        <link href="https://fonts.googleapis.com/css2?family=Anek+Devanagari&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,700;1,0&display=swap" rel="stylesheet">	
+    </head>
 
 
 	<body>
 
-		<section id="sidenav">
-
-			<div class="logo">
-				<img class="Icon_logo" src="ImgAgenda/Laguna.png" alt="Logo_escola" width="60px">
+        <!-- SIDENAV -->
+        <section id="Sidenav">
+            <div class="Laguna">
+                <img class="Icon_logo" src="Img/Lagunaa.png" alt="Logo" width="60px">
 				<span class="texto_logo">Laguna School</span>
-			</div>
+            </div>
+            
+            <ul class="Menu_lateral cima">
+                <li class="Itens ativo">
+                    <a href="#">
+                        <i class="fa-solid fa-house"></i>
+						<span class="descrição"> Inicio </span>
+                    </a>
+                </li>
 
-			<ul class="menu top">
-				<li id="itens"class="ativo">
-					<a href="#" class="link">
-						<i class="fa-solid fa-house"></i>
-                        <span class="descrição">Inicio</span>
-					</a>
-				</li>
-				<li id="itens">
-					<a href ="#" class="link">
-						<i class="fa-solid fa-calendar-days"></i>
+                <li class="Itens">
+                    <a href="#">
+                        <i class="fa-solid fa-calendar-days"></i>
 						<span class="descrição">Agenda</span>
-					</a>
-				</li>
-				<li id="itens">
-					<a href="#" class="link">
-						<i class="fa-solid fa-book-open-reader"></i>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="Grande" href="#">
+                        <i class="fa-solid fa-book-open-reader"></i>
 						<span class="descrição">Minhas Aulas</span>
 						<i class="fa-solid fa-chevron-down"></i>
-					</a>
-					<ul class="collapse__menu">
-						<li><a href="#" class="collapse__sublink"> 2° ano A </a></li>
-						<li><a href="#" class="collapse__sublink"> 2° ano B </a></li>
-						<li><a href="#" class="collapse__sublink"> 2° ano C </a></li>
+                    </a>
+
+                    <ul class="Submenu">
+						<li class="Itens" id="Subitens">
+                            <a href="#">
+                                <i class="fa-solid fa-graduation-cap"></i>
+						        <span class="descrição"> 2° ano A </span>
+                            </a>
+                        </li>
+
+						<li class="Itens" id="Subitens">
+                            <a href="#">
+                                <i class="fa-solid fa-graduation-cap"></i>
+						        <span class="descrição"> 2° ano B </span>
+                            </a>
+                        </li>
+
+                        <li class="Itens" id="Subitens">
+                            <a href="#">
+                                <i class="fa-solid fa-graduation-cap"></i>
+						        <span class="descrição"> 2° ano C </span>
+                            </a>
+                        </li>
 					</ul>
-				</li>
-				
+                </li>
+            </ul>
 
-			<ul class="menu">
-				<li id="itens">
-					<a href ="#" class="link">
-						<i class="fa-solid fa-arrow-right-from-bracket"></i>
-						<span class="descrição"> Sair </span>
-					</a>
-				</li>
-			</ul>
+            <ul class="Menu_lateral">
+                <li>
+                    <a href="#" class="Sair">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+						<span class="Descrição">Sair</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+        <!-- SIDENAV -->
 
-		</section>
-		
-		<section id="conteudo">
-			
-			<nav>
-				<i class='fa-solid fa-bars' ></i>
-				<a href="#" class="perfil">
-					<span> Professor(a)</span>
-					<i class="fa-solid fa-user"></i>
-				</a>
-			</nav>
-          <div class="lições" >
-            
-          </div>
-         
+        <!-- SECTION (o section determina uma seção do conteudo quase como um div) - CONTEUDO -->
+        <section id="Conteudo">
 
-         
-
-		</section>
-
-		
-		<script src="atividade_professor.js"></script>
-	</body>
-</html>
+            <!-- HEADER -->
+            <header>
+                <i class='fa-solid fa-bars' ></i>
+                <a href="#" class="Perfil">
+                    <span> Professor(a)</span>
+                    <i class="fa-solid fa-user"></i>
+                </a>
+            </header>
 
 
 
