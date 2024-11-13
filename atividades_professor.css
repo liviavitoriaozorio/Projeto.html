@@ -1,198 +1,17 @@
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
-a {
-	text-decoration: none;
-}
-li {
-	list-style: none;
-}
-body {
-	background: #eee;
-    font-family: "Inter", sans-serif;
-}
-
-/* SIDENAR */
-
-/* - completo - */ 
-#Sidenav {
-	/* ativa a flex box. */
-    display: flex;
-	/* ajusta a direção dos elemntos dentro de uma flex box */
-    flex-direction: column;
-	/* fixa o elemnto na janela */
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 280px;
-	height: 100%;
-	background: #F9F9F9;
-	/* cria como se fossem camadas em relação aos  elementos */
-	z-index: 2000;
-	font-family: "Inter", sans-serif;
-	transition: .3s ease;
-	overflow-x: hidden;
-}
-#Sidenav::--webkit-scrollbar {
-	display: none;
-}
-
-/* - topo - */ 
-#Sidenav .Laguna {
-	font-size: 24px;
-	font-weight: 700;
-	height: 56px;
-	display: flex;
-	align-items: center;
-    font-family: "Playfair Display", serif;
-    text-shadow: 1px 1px 2px rgb(199, 199, 199);
-	color: rgb(37, 36, 36);
-	position: sticky;
-	top: 0;
-	left: 0;
-	z-index: 500;
-	padding-bottom: 20px;
-	/* calcula a altura e largura com base no conteudo da caixa */
-	box-sizing: content-box;
-}
-#Sidenav .Laguna .fa-solid {
-	min-width: 60px;
-	display: flex;
-	/* alinha os itens dentro de uma flex box */
-	justify-content: center;
-}
-
-/* - Itens - */ 
-#Sidenav .Menu_lateral {
-	width: 100%;
-	margin-top: 48px;
-}
-#Sidenav .Menu_lateral.cima {
-    width: 100%;
-    margin-top: 48px;
-    /* define a capacidade de um item flexível de crescer para ocupar o espaço disponível no container flex */
-    flex-grow: 1; 
-}
-#Sidenav .Menu_lateral li {
-	height: 48px;
-	background: transparent;
-	margin-left: 6px;
-	border-radius: 48px 0 0 48px;
-	padding: 4px;
-}
-#Sidenav .Menu_lateral li a {
-	width: 100%;
-	height: 100%;
-	background: #F9F9F9;
-	display: flex;
-	align-items: center;
-	border-radius: 48px;
-	font-size: 16px;
-	color: #342E37;
-	/* define a quebra de linha, no caso desse não permite */
-	white-space: nowrap;
-	overflow-x: hidden;
-}
-#Sidenav .Menu_lateral li a .fa-solid {
-	min-width: calc(60px - ((4px + 6px) * 2));
-	display: flex;
-	justify-content: center;
-}
-#Sidenav .Menu_lateral li a.Sair {
-	color: #DB504A; 
-}
-
-/* - interação (ativo) - */ 
-#Sidenav .Menu_lateral .Itens.ativo {
-    background: #eee;
-    position: relative;
-}
-#Sidenav .Menu_lateral .Itens.ativo::before {
-    content: '';
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    right: 0;
-    box-shadow: 20px 20px 0 #eee;
-    z-index: -1;
-    top: -40px;
-}
-#Sidenav .Menu_lateral .Itens.ativo::after {
-    content: '';
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    right: 0;
-    box-shadow: 20px 20px 0 #eee;
-    z-index: -1;
-    bottom: -40px;
-    box-shadow: 20px -20px 0 #eee;
-}
-#Sidenav .Menu_lateral .Itens.ativo a {
-    color: #3C91E6;
-}
-
-#Sidenav .Menu_lateral li.ativo .Grande {
-    color: #3C91E6;
-}
-
-
-/* - interação (escondido) - */ 
-#Sidenav.escondido {
-	width: 60px;
-}
-#Sidenav.escondido .Menu_lateral li a {
-	width: calc(48px - (4px * 2));
-	transition: width .3s ease;
-}
-
-/* - interação (hover) - */ 
-#Sidenav .Menu_lateral.cima li a:hover {
-	color: #3C91E6;
-}
-
-/* - Interação (subitens) - */ 
-.Submenu {
-    display: none; 
-}
-.showCollapse {
-    display: block;
-}
-.Submenu li {
-    width: 100%; 
-}
-.Submenu li a {
-    width: 100%; /* Faz o link do subitem ocupar toda a largura */
-    display: flex;
-    align-items: center;
-}
-.Submenu li.ativo {
-    background: #eee; 
-    color: #3C91E6; 
-}
-.rotate{
-	transform: rotate(180deg);
-}
-
-/* SIDENAV */
-
-
-
-/* CONTEUDO */
+/* Conteudo */
 #Conteudo {
 	position: relative;
 	width: calc(100% - 280px);
 	left: 280px;
 	transition: .3s ease;
 }
-#Sidenav.escondido ~ #Conteudo {
+#sidebar.hide ~ #Conteudo {
 	width: calc(100% - 60px);
 	left: 60px;
 }
+
+
+
 
 /* HEADER */
 header {
@@ -203,70 +22,306 @@ header {
 	align-items: center;
 	grid-gap: 24px;
 	font-family: "Inter", sans-serif;
-	/* gruda na janela */
 	position: sticky;
 	top: 0;
 	left: 0;
 	z-index: 1000;
+	border-bottom: 1px solid rgb(218, 220, 224);
 }
-header::before {
-	content: '';
-	position: absolute;
-	width: 40px;
-	height: 40px;
-	bottom: -40px;
-	left: 0;
-	border-radius: 50%;
-	box-shadow: -20px -20px 0 #F9F9F9;
-}
+
 header a {
 	color: #342E37;
 }
 /* HEADER */
 
-/* MAIN */
 
-/* cabeçario do conteudo */
+
+
+
+/* MAIN */
 #Conteudo main {
 	width: 100%;
 	padding: 36px 24px;
-	font-family: "Inter", sans-serif;
+	font-family: var(--poppins);
 	max-height: calc(100vh - 56px);
+	overflow-y: auto;
+}
+#Conteudo main .head-title {
+	display: flex;
+	align-items: center;
+	justify-Conteudo: space-between;
+	grid-gap: 16px;
+	flex-wrap: wrap;
+}
+#Conteudo main .head-title .left h1 {
+	font-size: 36px;
+	font-weight: 600;
+	margin-bottom: 10px;
+	color:#342E37;
+}
+#Conteudo main .head-title .left .breadcrumb {
+	display: flex;
+	align-items: center;
+	grid-gap: 16px;
+}
+#Conteudo main .head-title .left .breadcrumb li {
+	color:#342E37;
+}
+#Conteudo main .head-title .left .breadcrumb li a {
+	color:#AAAAAA;
+	pointer-events: none;
+}
+#Conteudo main .head-title .left .breadcrumb li a.active {
+	color:#3C91E6;
+	pointer-events: unset;
+}
+#Conteudo main .head-title .btn-download {
+	height: 36px;
+	padding: 0 16px;
+	border-radius: 36px;
+	background:#3C91E6;
+	color:#F9F9F9;
+	display: flex;
+	justify-Conteudo: center;
+	align-items: center;
+	grid-gap: 10px;
+	font-weight: 500;
 }
 
-.card {
-    width: 200px;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    text-align: center;
-    font-family: Arial, sans-serif;
-    
-   
-  }
-.icon {
-    background-color: #d9bb7b;
-    padding: 20px;
- 
-    
+
+
+
+#Conteudo main .box-info {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	grid-gap: 24px;
+	margin-top: 75px;
 }
-  
-.info {
-    padding: 15px;
+#Conteudo main .box-info li {
+	padding: 24px;
+	background:#F9F9F9;
+	border-radius: 20px;
+	display: flex;
+	align-items: center;
+	grid-gap: 24px;
 }
-  
-.date {
-    font-size: 14px;
-    font-weight: bold;
-    color: #333;
+#Conteudo main .box-info li .bx {
+	width: 80px;
+	height: 80px;
+	border-radius: 10px;
+	font-size: 36px;
+	display: flex;
+	justify-Conteudo: center;
+	align-items: center;
 }
-  
-.subject {
-    font-size: 12px;
-    color: #999;
+#Conteudo main .box-info li:nth-child(1) .bx {
+	background:#CFE8FF;
+	color:#3C91E6;
+}
+#Conteudo main .box-info li:nth-child(2) .bx {
+	background:#FFF2C6;
+	color:#FFCE26;
+}
+#Conteudo main .box-info li:nth-child(3) .bx {
+	background:#CFE8FF;
+	color:#3C91E6;
+}
+#Conteudo main .box-info li .text h3 {
+	font-size: 24px;
+	font-weight: 600;
+	color:#342E37;
+}
+#Conteudo main .box-info li .text p {
+	color:#342E37;	
 }
 
+
+
+
+
+#Conteudo main .table-data {
+	display: flex;
+	flex-wrap: wrap;
+	grid-gap: 24px;
+	margin-top: 24px;
+	width: 100%;
+	color:#342E37;
+}
+#Conteudo main .table-data > div {
+	border-radius: 20px;
+	background:#F9F9F9;
+	padding: 24px;
+	overflow-x: auto;
+}
+#Conteudo main .table-data .head {
+	display: flex;
+	align-items: center;
+	grid-gap: 16px;
+	margin-bottom: 24px;
+}
+#Conteudo main .table-data .head h3 {
+	margin-right: auto;
+	font-size: 24px;
+	font-weight: 600;
+}
+#Conteudo main .table-data .head .bx {
+	cursor: pointer;
+}
+
+#Conteudo main .table-data .order {
+	flex-grow: 1;
+	flex-basis: 500px;
+}
+#Conteudo main .table-data .order table {
+	width: 100%;
+	border-collapse: collapse;
+}
+#Conteudo main .table-data .order table th {
+	padding-bottom: 12px;
+	font-size: 13px;
+	text-align: left;
+	border-bottom: 1px solid#eee;
+}
+#Conteudo main .table-data .order table td {
+	padding: 16px 0;
+}
+#Conteudo main .table-data .order table tr td:first-child {
+	display: flex;
+	align-items: center;
+	grid-gap: 12px;
+	padding-left: 6px;
+}
+#Conteudo main .table-data .order table td img {
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+#Conteudo main .table-data .order table tbody tr:hover {
+	background:#eee;
+}
+#Conteudo main .table-data .order table tr td .status {
+	font-size: 10px;
+	padding: 6px 16px;
+	color:#F9F9F9;
+	border-radius: 20px;
+	font-weight: 700;
+}
+#Conteudo main .table-data .order table tr td .status.completed {
+	background:#3C91E6;
+}
+#Conteudo main .table-data .order table tr td .status.process {
+	background:#FFCE26;
+}
+#Conteudo main .table-data .order table tr td .status.pending {
+	background:#FFCE26;
+}
+
+
+#Conteudo main .table-data .todo {
+	flex-grow: 1;
+	flex-basis: 300px;
+}
+#Conteudo main .table-data .todo .todo-list {
+	width: 100%;
+}
+#Conteudo main .table-data .todo .todo-list li {
+	width: 100%;
+	margin-bottom: 16px;
+	background:#eee;
+	border-radius: 10px;
+	padding: 14px 20px;
+	display: flex;
+	justify-Conteudo: space-between;
+	align-items: center;
+}
+#Conteudo main .table-data .todo .todo-list li .bx {
+	cursor: pointer;
+}
+#Conteudo main .table-data .todo .todo-list li.completed {
+	border-left: 10px solid#3C91E6;
+}
+#Conteudo main .table-data .todo .todo-list li.not-completed {
+	border-left: 10px solid#ffd650;
+}
+#Conteudo main .table-data .todo .todo-list li:last-child {
+	margin-bottom: 0;
+}
+/* MAIN */
+/* Conteudo */
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
+	#sidebar {
+		width: 200px;
+	}
+
+	#Conteudo {
+		width: calc(100% - 60px);
+		left: 200px;
+	}
+
+	#Conteudo nav .nav-link {
+		display: none;
+	}
+}
+
+
+
+
+
+
+@media screen and (max-width: 576px) {
+	#Conteudo nav form .form-input input {
+		display: none;
+	}
+
+	#Conteudo nav form .form-input button {
+		width: auto;
+		height: auto;
+		background: transparent;
+		border-radius: none;
+		color:#342E37;
+	}
+
+	#Conteudo nav form.show .form-input input {
+		display: block;
+		width: 100%;
+	}
+	#Conteudo nav form.show .form-input button {
+		width: 36px;
+		height: 100%;
+		border-radius: 0 36px 36px 0;
+		color:#F9F9F9;
+		background:#DB504A;
+	}
+
+	#Conteudo nav form.show ~ .notification,
+	#Conteudo nav form.show ~ .profile {
+		display: none;
+	}
+
+	#Conteudo main .box-info {
+		grid-template-columns: 1fr;
+	}
+
+	#Conteudo main .table-data .head {
+		min-width: 420px;
+	}
+	#Conteudo main .table-data .order table {
+		min-width: 420px;
+	}
+	#Conteudo main .table-data .todo .todo-list {
+		min-width: 420px;
+	}
+}
 
 
 
