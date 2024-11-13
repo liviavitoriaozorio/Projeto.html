@@ -310,7 +310,7 @@ header a {
 	justify-content: center;
 	cursor: pointer;
 	color: #3C91E6;;
-	border: 1px solid #f5f5f5;
+	border: 1px solid #f1efef;
 }
 .Calendario .dias .day:not(.prev-date, .next-date):hover /*exclui os elementos que correspondem aos seletores passados dentro dos parênteses.*/{
 	color: #fff;
