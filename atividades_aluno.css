@@ -1,107 +1,50 @@
-* {
-    padding: 0; 
-    margin: 0;
-}
-
-body {
+/* MAIN */
+#Conteudo main {
+    width: 100%;
+    padding: 36px 24px;
     font-family: "Inter", sans-serif;
-    background-color: #ecefff;
+    max-height: calc(100vh - 56px);
 }
 
-ul {
-    list-style: none;
+/* todo o quadro */
+.organização {
+    background-color: #F9F9F9;
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 24px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    height: 820px;
 }
 
-a {
-    text-decoration: none;
+/* menu */
+#Conteudo main .organização .menu {
+    background: var(--light);
+    padding: 24px;
+    overflow-x: auto;
+    display: flex; 
+    justify-content: space-between; 
+    flex-wrap: wrap;  
 }
 
-
-.estrutura {
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    grid-template-areas: 
-        'header header header'
-        'sidenav content content'
-        'footer footer footer';
-}
-
-
-.header {
-    grid-area: header;
-    background-color: #fbf9ff;
-    padding: 20px; 
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    border: 1px solid #CFCFCF;
-}
-
-.logo {
-    max-width: 180px;
-    position: absolute;
-    top: 8px;
-    left: 60px;
-}
-
-.perfil {
-    max-width: 50px;
-    position: absolute;
-    top: 8px;
-    right: 60px; 
-}
-
-
-.sidenav {
-    grid-area: sidenav;
-    width: 260px;
-    height: 875px; 
-    background-color: #ffffff;
-    border-right: 1px solid #CFCFCF;
-}
-
-.sidenav h2 {
+/* blocos */
+.blocos {
+    background-color: #EEC68A;
+    width:50%;  
+    min-width: 200px;  
+    padding: 16px;
+    border-radius: 10px;
     text-align: center;
 }
 
-.sidenav ul {
-    padding: 0;
+/* Imagem dentro dos blocos */
+.blocos img {
+	width: 50px;
+    max-width: 100%;
+    height: auto;
 }
 
-.sidenav ul li {
-    display: flex; 
-    align-items: center; 
-    border-bottom: 1px solid #CFCFCF; 
-    transition: background 0.3s;
-}
-
-.sidenav ul li:hover {
-    background-color: #daebff; 
-}
-
-.sidenav ul li a {
-    color: rgb(0, 0, 0);
-    display: block;
-    width: 100%; 
-    padding: 10px 15px; 
-}
-
-.sidenav ul li img {
-    margin-right: 10px; 
-}
-
-
-.menu-lateral {
-    width: 200px;
-    background-color: #f0f0f0;
-    padding: 10px;
-    border: 1px solid #ccc;
-}
-
-.materias {
-    margin-top: 10px;
-}
-
-.escondido {
-    display: none;
+/* Adicionando margem no final para espaçamento */
+.blocos + .blocos {
+    margin-left: 24px;
 }
