@@ -2,12 +2,11 @@
 <html lang="pt-br">
 
 	<head>
-		<title>Atividades</title>
+		<title>Agenda</title>
 	
 		<meta charset="UTF-8">
-		<meta name="viewport" Conteudo="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="atividades_professor.css">
-        <link rel="stylesheet" href="sidenav.css">
 
         <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	
@@ -20,75 +19,74 @@
 
 	<body>
 
-        <!-- SIDENAV -->
-        <section id="Sidenav">
-            <div class="Laguna">
-                <img class="Icon_logo" src="Img/Lagunaa.png" alt="Logo" width="60px">
-				<span class="texto_logo">Laguna School</span>
-            </div>
-            
-            <ul class="Menu_lateral cima">
-                <li class="Itens ativo">
-                    <a href="#">
-                        <i class="fa-solid fa-house"></i>
-						<span class="descrição"> Inicio </span>
-                    </a>
-                </li>
+       <!-- SIDENAV -->
+       <section id="Sidenav">
+        <div class="Laguna">
+            <img class="Icon_logo" src="Img/Lagunaa.png" alt="Logo" width="60px">
+            <span class="texto_logo">Laguna School</span>
+        </div>
+        
+        <ul class="Menu_lateral cima">
+            <li class="Itens ativo">
+                <a href="#">
+                    <i class="fa-solid fa-house"></i>
+                    <span class="descrição"> Inicio </span>
+                </a>
+            </li>
 
-                <li class="Itens">
-                    <a href="#">
-                        <i class="fa-solid fa-calendar-days"></i>
-						<span class="descrição">Agenda</span>
-                    </a>
-                </li>
+            <li class="Itens">
+                <a href="#">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <span class="descrição">Agenda</span>
+                </a>
+            </li>
 
-                <li>
-                    <a class="Grande" href="#">
-                        <i class="fa-solid fa-book-open-reader"></i>
-						<span class="descrição">Minhas Aulas</span>
-						<i class="fa-solid fa-chevron-down"></i>
-                    </a>
+            <li>
+                <a class="Grande" href="#">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    <span class="descrição">Minhas Aulas</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </a>
 
-                    <ul class="Submenu">
-						<li class="Itens" id="Subitens">
-                            <a href="#">
-                                <i class="fa-solid fa-graduation-cap"></i>
-						        <span class="descrição1"> 2° ano A </span>
-                            </a>
-                        </li>
+                <ul class="Submenu">
+                    <br>
+                    <li class="Itens" id="Subitens">
+                        <a href="#">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <span class="descrição"> 2° ano A </span>
+                        </a>
+                    </li>
 
-						<li class="Itens" id="Subitens">
-                            <a href="#">
-                                <i class="fa-solid fa-graduation-cap"></i>
-						        <span class="descrição2"> 2° ano B </span>
-                            </a>
-                        </li>
+                    <li class="Itens" id="Subitens">
+                        <a href="#">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <span class="descrição"> 2° ano B </span>
+                        </a>
+                    </li>
 
-                        <li class="Itens" id="Subitens">
-                            <a href="#">
-                                <i class="fa-solid fa-graduation-cap"></i>
-						        <span class="descrição3"> 2° ano C </span>
-                            </a>
-                        </li>
-					</ul>
-                </li>
-            </ul>
+                    <li class="Itens" id="Subitens">
+                        <a href="#">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <span class="descrição"> 2° ano C </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
 
-            <ul class="Menu_lateral">
-                <li>
-                    <a href="#" class="Sair">
-                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
-						<span class="Descrição">Sair</span>
-                    </a>
-                </li>
-            </ul>
-        </section>
-        <!-- SIDENAV -->
-
-        <!-- SECTION (o section determina uma seção do conteudo quase como um div) - CONTEUDO -->
-        <section id="Conteudo">
-
-            <!-- HEADER -->
+        <ul class="Menu_lateral">
+            <li>
+                <a href="#" class="Sair">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <span class="Descrição">Sair</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+    <!-- SIDENAV -->
+    <!-- SECTION (o section determina uma seção do conteudo quase como um div) - CONTEUDO -->
+    <section id="Conteudo">
+        <!-- HEADER -->
             <header>
                 <i class='fa-solid fa-bars' ></i>
                  <a href="#" class="Perfil">
@@ -115,10 +113,45 @@
                             </li>
                         </ul>
                     </div>
-                    <a href="#" class="btn-download">
+                    <button class="add-event">
                         <i class='bx bxs-file-plus' style='color:#ffffff'  ></i>
                         <span class="text">Adicionar atividade </span>
-                    </a>
+                    </button>
+                    <div class="add-event-wrapper">
+                
+                        <div class="add-event-header">
+                            <i class="fas fa-times close"></i>
+                        </div>
+            
+                        <div class="add-event-body">
+            
+                            <div class="add-event-input">
+                                <input type="text" placeholder="Nome" class="event-name" />
+                            </div>
+                
+                            <div class="add-event-input">
+                                <input
+                                type="text"
+                                placeholder="Hora Inicial"
+                                class="event-time-from"
+                                />
+                            </div>
+                
+                            <div class="add-event-input">
+                                <input
+                                type="text"
+                                placeholder="Hora Final "
+                                class="event-time-to"
+                                />
+                            </div>
+            
+                        </div>
+            
+                        <div class="add-event-footer">
+                            <button class="add-event-btn">Novo Evento</button>
+                        </div>
+            
+                    </div>
 
                 </div>
         
@@ -252,10 +285,7 @@
                 <!-- MAIN -->
             </section>
             <!-- Conteudo -->
-        
-
-
-
+                
 
                     <!--
                     <div class="menu">
@@ -288,8 +318,15 @@
 		<script src="atividades_professor.js"></script>
 	</body>
 </html>
+        
+
+               
+                      
+                                
+                
 
 
+                    
 
 
 
