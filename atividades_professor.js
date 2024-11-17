@@ -38,7 +38,7 @@ menuBar.addEventListener('click', function () {
 
 
 // Menu das minhas atividades 
-const linkCollapse = document.getElementsByClassName('fa-solid fa-chevron-down');
+const linkCollapse = document.querySelectorAll('fa-solid fa-chevron-down');
 
 for (let i = 0; i < linkCollapse.length; i++) {
     linkCollapse[i].parentElement.addEventListener('click', function () {
@@ -54,4 +54,62 @@ for (let i = 0; i < linkCollapse.length; i++) {
         rotate.classList.toggle('rotate');
     });
 }
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Seleciona o botão "Adicionar"
+    const addButton = document.querySelector(".box-info .add");
+
+    // Função para mostrar a tela de adicionar
+    addButton.addEventListener("click", function () {
+        // Cria um overlay que vai cobrir toda a tela
+        const overlay = document.createElement("div");
+        overlay.classList.add("overlay");
+
+        // Cria o conteúdo da tela de adicionar
+        const addContent = document.createElement("div");
+        addContent.classList.add("add-content");
+        addContent.innerHTML = `
+            <h2> Nova Atividade </h2>
+            <p >Preencha os campos abaixo </p>
+            <form>
+                <select>
+                    <option value="projeto">Projeto</option>
+                    <option value="avaliação">Avaliação</option>
+                    <option value="relatorio">Relatório</option>
+                    <option value="revisao">Revisão</option>
+                    <option value="apresentacao">Apresentação</option>
+                    <option value="questionario">Questionário</option>
+                    <option value="leitura">Leitura</option>
+                    <option value="pesquisa">Pesquisa</option>
+                    <option value="lição">Lição de casa</option>
+                    <option value="aviso">Aviso</option>
+                </select>
+
+                <label for="anexo">Anexo</label>
+                <input type="file" id="fileInput">
+                <label for="date">Data:</label>
+                <input type="date" id="date" name="date">
+                <label for="title">conteudo</label>
+                <input type="text" id="text" name="text" placeholder="Digite o texto...">
+                <button type="submit">Salvar</button>
+            </form>
+            <button id="close-btn">Fechar</button>
+        `;
+
+        // Adiciona o overlay e o conteúdo ao body
+        document.body.appendChild(overlay);
+        document.body.appendChild(addContent);
+
+        // Função para fechar a tela
+        document.getElementById("close-btn").addEventListener("click", function () {
+            document.body.removeChild(overlay);
+            document.body.removeChild(addContent);
+        });
+    });
+});
+
+
 
