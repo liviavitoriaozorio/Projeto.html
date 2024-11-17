@@ -2,14 +2,13 @@
 <html lang="pt-br">
 
 	<head>
-		<title>Agenda</title>
+		<title>Atividades</title>
 	
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="atividades_professor.css">
 
         <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-	
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,315 +18,151 @@
 
 	<body>
 
-       <!-- SIDENAV -->
-       <section id="Sidenav">
-        <div class="Laguna">
-            <img class="Icon_logo" src="Img/Lagunaa.png" alt="Logo" width="60px">
-            <span class="texto_logo">Laguna School</span>
-        </div>
-        
-        <ul class="Menu_lateral cima">
-            <li class="Itens ativo">
-                <a href="#">
-                    <i class="fa-solid fa-house"></i>
-                    <span class="descrição"> Inicio </span>
-                </a>
-            </li>
+        <!-- SIDENAV -->
+        <section id="Sidenav">
+            <div class="Laguna">
+                <img class="Icon_logo" src="Img/Lagunaa.png" alt="Logo" width="60px">
+				<span class="texto_logo">Laguna School</span>
+            </div>
+            
+            <ul class="Menu_lateral cima">
+                <li class="Itens ativo">
+                    <a href="#">
+                        <i class="fa-solid fa-house"></i>
+						<span class="descrição"> Inicio </span>
+                    </a>
+                </li>
 
-            <li class="Itens">
-                <a href="#">
-                    <i class="fa-solid fa-calendar-days"></i>
-                    <span class="descrição">Agenda</span>
-                </a>
-            </li>
+                <li class="Itens">
+                    <a href="#">
+                        <i class="fa-solid fa-calendar-days"></i>
+						<span class="descrição">Agenda</span>
+                    </a>
+                </li>
 
-            <li>
-                <a class="Grande" href="#">
-                    <i class="fa-solid fa-book-open-reader"></i>
-                    <span class="descrição">Minhas Aulas</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </a>
+                <li>
+                    <a class="Grande" href="#">
+                        <i class="fa-solid fa-book-open-reader"></i>
+						<span class="descrição">Minhas Aulas</span>
+						<i class="fa-solid fa-chevron-down"></i>
+                    </a>
 
-                <ul class="Submenu">
-                    <br>
-                    <li class="Itens" id="Subitens">
-                        <a href="#">
-                            <i class="fa-solid fa-graduation-cap"></i>
-                            <span class="descrição"> 2° ano A </span>
-                        </a>
-                    </li>
+                    <ul class="Submenu">
+                        <br>
+						<li class="Itens" id="Subitens">
+                            <a href="#">
+                                <i class="fa-solid fa-graduation-cap"></i>
+						        <span class="descrição"> 2° ano A </span>
+                            </a>
+                        </li>
 
-                    <li class="Itens" id="Subitens">
-                        <a href="#">
-                            <i class="fa-solid fa-graduation-cap"></i>
-                            <span class="descrição"> 2° ano B </span>
-                        </a>
-                    </li>
+						<li class="Itens" id="Subitens">
+                            <a href="#">
+                                <i class="fa-solid fa-graduation-cap"></i>
+						        <span class="descrição"> 2° ano B </span>
+                            </a>
+                        </li>
 
-                    <li class="Itens" id="Subitens">
-                        <a href="#">
-                            <i class="fa-solid fa-graduation-cap"></i>
-                            <span class="descrição"> 2° ano C </span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+                        <li class="Itens" id="Subitens">
+                            <a href="#">
+                                <i class="fa-solid fa-graduation-cap"></i>
+						        <span class="descrição"> 2° ano C </span>
+                            </a>
+                        </li>
+					</ul>
+                </li>
+            </ul>
 
-        <ul class="Menu_lateral">
-            <li>
-                <a href="#" class="Sair">
-                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                    <span class="Descrição">Sair</span>
-                </a>
-            </li>
-        </ul>
-    </section>
-    <!-- SIDENAV -->
-    <!-- SECTION (o section determina uma seção do conteudo quase como um div) - CONTEUDO -->
-    <section id="Conteudo">
-        <!-- HEADER -->
+            <ul class="Menu_lateral">
+                <li>
+                    <a href="#" class="Sair">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+						<span class="Descrição">Sair</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+        <!-- SIDENAV -->
+
+        <!-- SECTION (o section determina uma seção do conteudo quase como um div) - CONTEUDO -->
+        <section id="Conteudo">
+
+            <!-- HEADER -->
             <header>
                 <i class='fa-solid fa-bars' ></i>
-                 <a href="#" class="Perfil">
+                <a href="#" class="Perfil">
                     <span> Professor(a)</span>
-                     <i class="fa-solid fa-user"></i>
+                    <i class="fa-solid fa-user"></i>
                 </a>
             </header>
             <!-- HEADER -->
-        
-            <!-- MAIN -->
+
+            <!-- MAIN (contém o conteúdo central) -->
             <main>
+    
+                <ul class="box-info">
+                    <li >
+                        <i class='bx bx-calendar-exclamation'   ></i>
+                        <span class="text">
+                            <h3> prova </h3>
+                            <p>25 de janeiro</p>
+                        </span>
+                    </li>
+                    <li>
+                        <i class='bx bxs-group' ></i>
+                        <span class="text">
+                            <h3> seminário </h3>
+                            <p>04 de setembro</p>
+                        </span>
+                    </li>
+                    <button class="add">
+                        <li >
+                            <i class='bx bx-add-to-queue'></i>
+                            <span class="text">
+                                <h3> Adicionar </h3>
+                            </span>
+                        </li>
+                    </button>
+                </ul>
 
-                <div class="head-title">
-
-                    <div class="left">
-                        <h1>Minhas Aulas</h1>
-                        <ul class="breadcrumb">
-                            <li>
-                                <a href="#">Minhas Aulas</a>
+                <div class="table-data">
+                    <div class="todo">
+                        <div class="head">
+                            <h3>Todos</h3>
+                            <i class='bx bx-plus' ></i>
+                            <i class='bx bx-filter' ></i>
+                        </div>
+                        <ul class="todo-list">
+                            <li class="completed">
+                                <p>Todo List</p>
+                                <i class='bx bx-dots-vertical-rounded' ></i>
                             </li>
-                            <li><i class='bx bx-chevron-right' ></i></li>
-                            <li>
-                                <a class="active" href="#">2°A</a>
+                            <li class="completed">
+                                <p>Todo List</p>
+                                <i class='bx bx-dots-vertical-rounded' ></i>
+                            </li>
+                            <li class="not-completed">
+                                <p>Todo List</p>
+                                <i class='bx bx-dots-vertical-rounded' ></i>
+                            </li>
+                            <li class="completed">
+                                <p>Todo List</p>
+                                <i class='bx bx-dots-vertical-rounded' ></i>
+                            </li>
+                            <li class="not-completed">
+                                <p>Todo List</p>
+                                <i class='bx bx-dots-vertical-rounded' ></i>
                             </li>
                         </ul>
                     </div>
-                    <button class="add-event">
-                        <i class='bx bxs-file-plus' style='color:#ffffff'  ></i>
-                        <span class="text">Adicionar atividade </span>
-                    </button>
-                    <div class="add-event-wrapper">
-                
-                        <div class="add-event-header">
-                            <i class="fas fa-times close"></i>
-                        </div>
-            
-                        <div class="add-event-body">
-            
-                            <div class="add-event-input">
-                                <input type="text" placeholder="Nome" class="event-name" />
-                            </div>
-                
-                            <div class="add-event-input">
-                                <input
-                                type="text"
-                                placeholder="Hora Inicial"
-                                class="event-time-from"
-                                />
-                            </div>
-                
-                            <div class="add-event-input">
-                                <input
-                                type="text"
-                                placeholder="Hora Final "
-                                class="event-time-to"
-                                />
-                            </div>
-            
-                        </div>
-            
-                        <div class="add-event-footer">
-                            <button class="add-event-btn">Novo Evento</button>
-                        </div>
-            
-                    </div>
-
                 </div>
+            </main>
+            <!-- MAIN -->
+
+        </section>
+        <!-- SECTION - CONTEUDO -->
         
-                <ul class="box-info">
-
-                    <li>
-                        <i class='bx bx-note'></i>
-                        <span class="text">
-                            <h3>24/01</h3>
-                            <p>Prova</p>
-                        </span>
-                    </li>
-
-                    <li>
-                        <i class='bx bxs-backpack'></i>
-                        <span class="text">
-                            <h3>28/01</h3>
-                            <p>Seminário</p>
-                        </span>
-                    </li>
-
-                    <li>
-                        <i class='bx bx-user'></i>
-                        <span class="text">
-                            <h3>30/01</h3>
-                            <p>Lição de Casa</p>
-                        </span>
-                    </li>
-
-                </ul>
-        
-        
-                <div class="table-data">
-
-                    <div class="order">
-
-                        <div class="head">
-                            <h3>Entregas</h3>
-                            <i class='bx bx-search' ></i>
-                            <i class='bx bx-filter' ></i>
-                        </div>
-
-                        <table>
-
-                            <thead>
-                                <tr>
-                                    <th>Perfil</th>
-                                    <th>Data da Entrega</th>
-                                    <th>Atividades</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <img src="img/people.png">
-                                        <p>John Doe</p>
-                                    </td>
-                                    <td>01-10-2021</td>
-                                    <td><span class="Prova">Prova</span></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <img src="img/people.png">
-                                        <p>John Doe</p>
-                                    </td>
-                                    <td>01-10-2021</td>
-                                    <td><span class="Lição de casa">Lição de casa</span></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <img src="img/people.png">
-                                        <p>John Doe</p>
-                                    </td>
-                                    <td>01-10-2021</td>
-                                    <td><span class="Seminário">Seminário</span></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <img src="img/people.png">
-                                        <p>John Doe</p>
-                                    </td>
-                                    <td>01-10-2021</td>
-                                    <td><span class="Lição de casa">Lição de casa</span></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <img src="img/people.png">
-                                        <p>John Doe</p>
-                                    </td>
-                                    <td>01-10-2021</td>
-                                    <td><span class="Seminário">Seminário</span></td>
-                                </tr>
-
-                            </tbody>
-                        </table>
-
-                    </div>
-
-                        <div class="todo">
-                            <div class="head">
-                                <h3>Afazeres</h3>
-                                <i class='bx bx-plus' ></i>
-                                <i class='bx bx-filter' ></i>
-                            </div>
-                            <ul class="todo-list">
-                                <li class="completed">
-                                    <p>Todo List</p>
-                                    <i class='bx bx-dots-vertical-rounded' ></i>
-                                </li>
-                                <li class="completed">
-                                    <p>Todo List</p>
-                                    <i class='bx bx-dots-vertical-rounded' ></i>
-                                </li>
-                                <li class="not-completed">
-                                    <p>Todo List</p>
-                                    <i class='bx bx-dots-vertical-rounded' ></i>
-                                </li>
-                                <li class="completed">
-                                    <p>Todo List</p>
-                                    <i class='bx bx-dots-vertical-rounded' ></i>
-                                </li>
-                                <li class="not-completed">
-                                    <p>Todo List</p>
-                                    <i class='bx bx-dots-vertical-rounded' ></i>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </main>
-                <!-- MAIN -->
-            </section>
-            <!-- Conteudo -->
-                
-
-                    <!--
-                    <div class="menu">
-
-                        <div class="blocos">
-                            <div class="top"><img src="Img/mochila.png" alt="Mochila"></div>
-                            <br>
-                            <span> lição de casa </span>
-                            <p class="2°a"> estatísticas </p>
-                        </div>
-
-                        <div class="blocos">
-                            <img src="Img/notas.png" alt="Mochila">
-                            <br>
-                            <span> prova </span>
-                            <p class="2°a"> estatísticas </p>
-                        </div>
-
-                        <div class="blocos">
-                            <img src="Img/people.png" alt="Mochila">
-                            <br>
-                            <span> seminário </span>
-                            <p class="2°a"> estatísticas </p>
-                        </div>
-
-                    </div>
-                    -->
-
-		
-		<script src="atividades_professor.js"></script>
-	</body>
+        <script src="atividades_professor.js"></script>
+    </body>
 </html>
-        
-
-               
-                      
-                                
-                
-
-
-                    
-
-
-
 
