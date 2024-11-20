@@ -226,12 +226,13 @@ header a {
 	overflow-y: auto;
 }
 
+/* caixa de atividades */
 #Conteudo main .box-info {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 	grid-gap: 24px;
 }
-#Conteudo main .box-info li {
+#Conteudo main .box-info .Atividades {
 	padding: 24px;
 	background:#F9F9F9;
 	border-radius: 20px;
@@ -239,7 +240,7 @@ header a {
 	align-items: center;
 	grid-gap: 24px;
 }
-#Conteudo main .box-info li .bx {
+#Conteudo main .box-info .Atividades .bx {
 	width: 80px;
 	height: 80px;
 	border-radius: 10px;
@@ -256,10 +257,6 @@ header a {
 	background: #FFF2C6;
 	color: #FFCE26;
 }
-#Conteudo main .box-info .add li .bx {
-	background: #ffe0d382;
-	color: #fba885cb;
-}
 #Conteudo main .box-info li .text h3 {
 	font-size: 24px;
 	font-weight: 600;
@@ -268,15 +265,20 @@ header a {
 #Conteudo main .box-info li .text p {
 	color: #342E37;	
 }
-
-
+/* caixa de adicionar */
 
 #Conteudo main .box-info .add{
-	border-width: 1px;
-  	border-style: dashed;
-  	border-color: #3C91E6;
-    border-radius: 20px;
+	display: flex;
+    height: 100%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed;
+    color: #3C91E6;
+	border-radius: 20px;
+    margin-bottom: 40px;
 }
+
 
 #Conteudo main .table-data {
 	display: flex;
@@ -408,6 +410,44 @@ header a {
 #close-btn:hover {
     background-color: #b43f3a;
 }
+
+
+
+
+/* Estilo para o menu flutuante */
+.menu-flutuante {
+    display: none; /* Inicialmente escondido */
+    position: absolute;
+    background-color: #FFF;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 10px;
+    min-width: 150px;
+    z-index: 100;
+}
+
+.menu-flutuante a {
+    display: block;
+    padding: 8px;
+    font-size: 14px;
+    color: #342E37;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.menu-flutuante a:hover {
+    background-color: #f0f0f0;
+}
+
+.menu-flutuante .editar {
+    color: #3C91E6;
+}
+
+.menu-flutuante .deletar {
+    color: #DB504A;
+}
+
 
 
 @media screen and (max-width: 768px) {
