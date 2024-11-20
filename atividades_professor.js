@@ -57,59 +57,174 @@ for (let i = 0; i < linkCollapse.length; i++) {
 
 
 
-
 document.addEventListener("DOMContentLoaded", function () {
-    // Seleciona o botão "Adicionar"
     const addButton = document.querySelector(".box-info .add");
 
-    // Função para mostrar a tela de adicionar
+    const typeStyles = {
+        Projeto: {
+            icon: 'bx bx-task',
+            bgColor: '#CFE8FF',
+            textColor: '#3C91E6'
+        },
+        Avaliação: {
+            icon: 'bx bx-pencil',
+            bgColor: '#FFF2C6',
+            textColor: '#FFCE26'
+        },
+        Relatório: {
+            icon: 'bx bx-file',
+            bgColor: '#FFE6E6',
+            textColor: '#FF6F61'
+        },
+        Revisão: {
+            icon: 'bx bx-book',
+            bgColor: '#E8F5E9',
+            textColor: '#4CAF50'
+        },
+        Apresentação: {
+            icon: 'bx bx-show',
+            bgColor: '#F3E5F5',
+            textColor: '#9C27B0'
+        },
+        Questionário: {
+            icon: 'bx bx-help-circle',
+            bgColor: '#FFF9C4',
+            textColor: '#FFC107'
+        },
+        Leitura: {
+            icon: 'bx bx-book-reader',
+            bgColor: '#D1C4E9',
+            textColor: '#673AB7'
+        },
+        Pesquisa: {
+            icon: 'bx bx-search',
+            bgColor: '#E1F5FE',
+            textColor: '#03A9F4'
+        },
+        'Lição de casa': {
+            icon: 'bx bx-home',
+            bgColor: '#FFECB3',
+            textColor: '#FF9800'
+        },
+        Aviso: {
+            icon: 'bx bx-bell',
+            bgColor: '#FFCDD2',
+            textColor: '#E53935'
+        }
+    };
+
     addButton.addEventListener("click", function () {
-        // Cria um overlay que vai cobrir toda a tela
+        openAddActivityForm();
+    });
+
+    function openAddActivityForm(activity = null) {
         const overlay = document.createElement("div");
         overlay.classList.add("overlay");
 
-        // Cria o conteúdo da tela de adicionar
         const addContent = document.createElement("div");
         addContent.classList.add("add-content");
         addContent.innerHTML = `
-            <h2> Nova Atividade </h2>
-            <p >Preencha os campos abaixo </p>
+            <h2>${activity ? 'Editar Atividade' : 'Nova Atividade'}</h2>
+            <p>Preencha os campos abaixo</p>
             <form>
-                <select>
-                    <option value="projeto">Projeto</option>
-                    <option value="avaliação">Avaliação</option>
-                    <option value="relatorio">Relatório</option>
-                    <option value="revisao">Revisão</option>
-                    <option value="apresentacao">Apresentação</option>
-                    <option value="questionario">Questionário</option>
-                    <option value="leitura">Leitura</option>
-                    <option value="pesquisa">Pesquisa</option>
-                    <option value="lição">Lição de casa</option>
-                    <option value="aviso">Aviso</option>
+                <label for="type">Tipo:</label>
+                <select id="type">
+                    <option value="Projeto" ${activity && activity.type === 'Projeto' ? 'selected' : ''}>Projeto</option>
+                    <option value="Avaliação" ${activity && activity.type === 'Avaliação' ? 'selected' : ''}>Avaliação</option>
+                    <option value="Relatório" ${activity && activity.type === 'Relatório' ? 'selected' : ''}>Relatório</option>
+                    <option value="Revisão" ${activity && activity.type === 'Revisão' ? 'selected' : ''}>Revisão</option>
+                    <option value="Apresentação" ${activity && activity.type === 'Apresentação' ? 'selected' : ''}>Apresentação</option>
+                    <option value="Questionário" ${activity && activity.type === 'Questionário' ? 'selected' : ''}>Questionário</option>
+                    <option value="Leitura" ${activity && activity.type === 'Leitura' ? 'selected' : ''}>Leitura</option>
+                    <option value="Pesquisa" ${activity && activity.type === 'Pesquisa' ? 'selected' : ''}>Pesquisa</option>
+                    <option value="Lição de casa" ${activity && activity.type === 'Lição de casa' ? 'selected' : ''}>Lição de casa</option>
+                    <option value="Aviso" ${activity && activity.type === 'Aviso' ? 'selected' : ''}>Aviso</option>
                 </select>
 
-                <label for="anexo">Anexo</label>
-                <input type="file" id="fileInput">
                 <label for="date">Data:</label>
-                <input type="date" id="date" name="date">
-                <label for="title">conteudo</label>
-                <input type="text" id="text" name="text" placeholder="Digite o texto...">
-                <button type="submit">Salvar</button>
+                <input type="date" id="date" name="date" value="${activity ? activity.date : ''}" required>
+
+                <button type="submit" id="save-btn">${activity ? 'Atualizar' : 'Salvar'}</button>
             </form>
             <button id="close-btn">Fechar</button>
         `;
-
-        // Adiciona o overlay e o conteúdo ao body
         document.body.appendChild(overlay);
         document.body.appendChild(addContent);
 
-        // Função para fechar a tela
         document.getElementById("close-btn").addEventListener("click", function () {
             document.body.removeChild(overlay);
             document.body.removeChild(addContent);
         });
-    });
-});
 
+        document.getElementById("save-btn").addEventListener("click", function (e) {
+            e.preventDefault();
 
+            const type = document.getElementById("type").value;
+            const date = document.getElementById("date").value;
+
+            if (!type || !date) {
+                alert("Por favor, preencha todos os campos.");
+                return;
+            }
+
+            const [year, month, day] = date.split("-");
+            const formattedDate = new Date(year, month - 1, day).toLocaleDateString('pt-BR', {
+                day: 'numeric',
+                month: 'long'
+            });
+
+            const boxInfo = document.querySelector(".box-info");
+
+            const newActivity = document.createElement("li");
+            newActivity.classList.add("Atividades");
+
+            const { icon, bgColor, textColor } = typeStyles[type] || {};
+
+            newActivity.innerHTML = `
+                <i class='${icon}' style="background: ${bgColor}; color: ${textColor}; border-radius: 10px; padding: 20px;"></i>
+                <span class="text">
+                    <h3>${type}</h3>
+                    <p>${formattedDate}</p>
+                </span>
+                <i class="fa-solid fa-ellipsis"></i>
+                <div class="menu-flutuante">
+                    <a href="#" class="editar">Editar</a>
+                    <a href="#" class="deletar">Deletar</a>
+                </div>
+            `;
+
+            if (activity) {
+                boxInfo.replaceChild(newActivity, activity.element);
+            } else {
+                boxInfo.insertBefore(newActivity, addButton);
+            }
+
+            document.body.removeChild(overlay);
+            document.body.removeChild(addContent);
+
+            const ellipsisIcon = newActivity.querySelector(".fa-ellipsis");
+            const menuFlutuante = newActivity.querySelector(".menu-flutuante");
+
+            ellipsisIcon.addEventListener("click", function () {
+                menuFlutuante.style.display = menuFlutuante.style.display === 'block' ? 'none' : 'block';
+            });
+
+            const editarButton = menuFlutuante.querySelector(".editar");
+            const deletarButton = menuFlutuante.querySelector(".deletar");
+
+            // Função de editar
+            editarButton.addEventListener("click", function () {
+                openAddActivityForm({
+                    type: newActivity.querySelector("h3").textContent,
+                    date: newActivity.querySelector("p").textContent,
+                    element: newActivity
+                });
+            });
+
+            // Função de deletar
+            deletarButton.addEventListener("click", function () {
+                boxInfo.removeChild(newActivity);
+            });
+        });
+    }});
 
