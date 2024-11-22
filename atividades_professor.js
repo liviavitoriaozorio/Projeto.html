@@ -61,56 +61,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const addButton = document.querySelector(".box-info .add");
 
     const typeStyles = {
-        Projeto: {
-            icon: 'bx bx-task',
-            bgColor: '#CFE8FF',
-            textColor: '#3C91E6'
-        },
-        Avaliação: {
-            icon: 'bx bx-pencil',
-            bgColor: '#FFF2C6',
-            textColor: '#FFCE26'
-        },
-        Relatório: {
-            icon: 'bx bx-file',
-            bgColor: '#FFE6E6',
-            textColor: '#FF6F61'
-        },
-        Revisão: {
-            icon: 'bx bx-book',
-            bgColor: '#E8F5E9',
-            textColor: '#4CAF50'
-        },
-        Apresentação: {
-            icon: 'bx bx-show',
-            bgColor: '#F3E5F5',
-            textColor: '#9C27B0'
-        },
-        Questionário: {
-            icon: 'bx bx-help-circle',
-            bgColor: '#FFF9C4',
-            textColor: '#FFC107'
-        },
-        Leitura: {
-            icon: 'bx bx-book-reader',
-            bgColor: '#D1C4E9',
-            textColor: '#673AB7'
-        },
-        Pesquisa: {
-            icon: 'bx bx-search',
-            bgColor: '#E1F5FE',
-            textColor: '#03A9F4'
-        },
-        'Lição de casa': {
-            icon: 'bx bx-home',
-            bgColor: '#FFECB3',
-            textColor: '#FF9800'
-        },
-        Aviso: {
-            icon: 'bx bx-bell',
-            bgColor: '#FFCDD2',
-            textColor: '#E53935'
-        }
+        Projeto: { icon: 'bx bx-task', bgColor: '#CFE8FF', textColor: '#3C91E6' },
+        Avaliação: { icon: 'bx bx-pencil', bgColor: '#FFF2C6', textColor: '#FFCE26' },
+        Relatório: { icon: 'bx bx-file', bgColor: '#FFE6E6', textColor: '#FF6F61' },
+        Revisão: { icon: 'bx bx-book', bgColor: '#E8F5E9', textColor: '#4CAF50' },
+        Apresentação: { icon: 'bx bx-show', bgColor: '#F3E5F5', textColor: '#9C27B0' },
+        Questionário: { icon: 'bx bx-help-circle', bgColor: '#FFF9C4', textColor: '#FFC107' },
+        Leitura: { icon: 'bx bx-book-reader', bgColor: '#D1C4E9', textColor: '#673AB7' },
+        Pesquisa: { icon: 'bx bx-search', bgColor: '#E1F5FE', textColor: '#03A9F4' },
+        'Lição de casa': { icon: 'bx bx-home', bgColor: '#FFECB3', textColor: '#FF9800' },
+        Aviso: { icon: 'bx bx-bell', bgColor: '#FFCDD2', textColor: '#E53935' }
     };
 
     addButton.addEventListener("click", function () {
@@ -129,20 +89,22 @@ document.addEventListener("DOMContentLoaded", function () {
             <form>
                 <label for="type">Tipo:</label>
                 <select id="type">
-                    <option value="Projeto" ${activity && activity.type === 'Projeto' ? 'selected' : ''}>Projeto</option>
-                    <option value="Avaliação" ${activity && activity.type === 'Avaliação' ? 'selected' : ''}>Avaliação</option>
-                    <option value="Relatório" ${activity && activity.type === 'Relatório' ? 'selected' : ''}>Relatório</option>
-                    <option value="Revisão" ${activity && activity.type === 'Revisão' ? 'selected' : ''}>Revisão</option>
-                    <option value="Apresentação" ${activity && activity.type === 'Apresentação' ? 'selected' : ''}>Apresentação</option>
-                    <option value="Questionário" ${activity && activity.type === 'Questionário' ? 'selected' : ''}>Questionário</option>
-                    <option value="Leitura" ${activity && activity.type === 'Leitura' ? 'selected' : ''}>Leitura</option>
-                    <option value="Pesquisa" ${activity && activity.type === 'Pesquisa' ? 'selected' : ''}>Pesquisa</option>
-                    <option value="Lição de casa" ${activity && activity.type === 'Lição de casa' ? 'selected' : ''}>Lição de casa</option>
-                    <option value="Aviso" ${activity && activity.type === 'Aviso' ? 'selected' : ''}>Aviso</option>
+                    ${Object.keys(typeStyles).map(type => `
+                        <option value="${type}" ${activity && activity.type === type ? 'selected' : ''}>${type}</option>
+                    `).join('')}
                 </select>
 
                 <label for="date">Data:</label>
                 <input type="date" id="date" name="date" value="${activity ? activity.date : ''}" required>
+
+                <label for="content">Conteúdo/Explicação:</label>
+                <textarea id="content">${activity ? activity.content : ''}</textarea>
+
+                <label for="link">Link (opcional):</label>
+                <input type="url" id="link" value="${activity ? activity.link : ''}">
+
+                <label for="attachment">Anexo:</label>
+                <input type="file" id="attachment" ${activity ? 'value="' + activity.attachment + '"' : ''}>
 
                 <button type="submit" id="save-btn">${activity ? 'Atualizar' : 'Salvar'}</button>
             </form>
@@ -161,9 +123,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const type = document.getElementById("type").value;
             const date = document.getElementById("date").value;
+            const content = document.getElementById("content").value;
+            const link = document.getElementById("link").value;
+            const attachment = document.getElementById("attachment").files[0];
 
-            if (!type || !date) {
-                alert("Por favor, preencha todos os campos.");
+            if (!type || !date || !content) {
+                alert("Por favor, preencha todos os campos obrigatórios.");
                 return;
             }
 
@@ -193,6 +158,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
             `;
 
+            newActivity.dataset.details = JSON.stringify({
+                type,
+                date: formattedDate,
+                content,
+                link,
+                attachment: attachment ? attachment.name : ''
+            });
+
             if (activity) {
                 boxInfo.replaceChild(newActivity, activity.element);
             } else {
@@ -202,29 +175,113 @@ document.addEventListener("DOMContentLoaded", function () {
             document.body.removeChild(overlay);
             document.body.removeChild(addContent);
 
+            newActivity.addEventListener("click", function () {
+                const details = JSON.parse(this.dataset.details);
+                showDetailsPopup(details);
+            });
+
             const ellipsisIcon = newActivity.querySelector(".fa-ellipsis");
             const menuFlutuante = newActivity.querySelector(".menu-flutuante");
 
-            ellipsisIcon.addEventListener("click", function () {
+            ellipsisIcon.addEventListener("click", function (e) {
+                e.stopPropagation();
                 menuFlutuante.style.display = menuFlutuante.style.display === 'block' ? 'none' : 'block';
             });
 
             const editarButton = menuFlutuante.querySelector(".editar");
             const deletarButton = menuFlutuante.querySelector(".deletar");
 
-            // Função de editar
-            editarButton.addEventListener("click", function () {
+            editarButton.addEventListener("click", function (e) {
+                e.stopPropagation();
                 openAddActivityForm({
-                    type: newActivity.querySelector("h3").textContent,
-                    date: newActivity.querySelector("p").textContent,
+                    type,
+                    date: formattedDate,
+                    content,
+                    link,
+                    attachment: attachment ? attachment.name : '',
                     element: newActivity
                 });
             });
 
-            // Função de deletar
-            deletarButton.addEventListener("click", function () {
+            deletarButton.addEventListener("click", function (e) {
+                e.stopPropagation();
                 boxInfo.removeChild(newActivity);
+                saveActivities(); // Atualiza o localStorage após a exclusão
             });
-        });
-    }});
 
+            saveActivities(); // Salva as atividades no localStorage
+        });
+    }
+
+    function showDetailsPopup(details) {
+        const overlay = document.createElement("div");
+        overlay.classList.add("overlay");
+
+        const detailContent = document.createElement("div");
+        detailContent.classList.add("add-content"); // Reutiliza o estilo de "add-content"
+        detailContent.innerHTML = `
+            <h2>${details.type}</h2>
+            <p><strong>Data:</strong> ${details.date}</p>
+            <p><strong>Conteúdo:</strong> ${details.content}</p>
+            ${details.link ? `<p><strong>Link:</strong> <a href="${details.link}" target="_blank">${details.link}</a></p>` : ''}
+            ${details.attachment ? `<p><strong>Anexo:</strong> ${details.attachment}</p>` : ''}
+            <button id="close-detail-btn">Fechar</button>
+        `;
+
+        document.body.appendChild(overlay);
+        document.body.appendChild(detailContent);
+
+        document.getElementById("close-detail-btn").addEventListener("click", function () {
+            document.body.removeChild(overlay);
+            document.body.removeChild(detailContent);
+        });
+    }
+
+    // Função para salvar as atividades no localStorage
+    function saveActivities() {
+        const activities = [];
+        const activityElements = document.querySelectorAll(".box-info .Atividades");
+
+        activityElements.forEach(activityElement => {
+            const details = JSON.parse(activityElement.dataset.details);
+            activities.push(details);
+        });
+
+        localStorage.setItem("activities", JSON.stringify(activities));
+    }
+
+    // Função para carregar as atividades do localStorage
+    function loadActivities() {
+        const storedActivities = JSON.parse(localStorage.getItem("activities"));
+        if (storedActivities) {
+            storedActivities.forEach(activity => {
+                const newActivity = document.createElement("li");
+                newActivity.classList.add("Atividades");
+
+                const { icon, bgColor, textColor } = typeStyles[activity.type] || {};
+
+                newActivity.innerHTML = `
+                    <i class='${icon}' style="background: ${bgColor}; color: ${textColor}; border-radius: 10px; padding: 20px;"></i>
+                    <span class="text">
+                        <h3>${activity.type}</h3>
+                        <p>${activity.date}</p>
+                    </span>
+                    <i class="fa-solid fa-ellipsis"></i>
+                    <div class="menu-flutuante">
+                        <a href="#" class="editar">Editar</a>
+                        <a href="#" class="deletar">Deletar</a>
+                    </div>
+                `;
+
+                newActivity.dataset.details = JSON.stringify(activity);
+                document.querySelector(".box-info").insertBefore(newActivity, addButton);
+
+                // Adicionar funcionalidades de edição e exclusão
+                addActivityEventListeners(newActivity);
+            });
+        }
+    }
+
+    // Carregar as atividades armazenadas ao carregar a página
+    loadActivities();
+});
