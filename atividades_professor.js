@@ -316,3 +316,133 @@ document.addEventListener("DOMContentLoaded", function () {
     
     
 });
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const addButton = document.querySelector(".bx-plus");
+    const todoList = document.querySelector(".todo-list");
+
+    // Carregar todos os itens da lista no LocalStorage
+    loadTodoList();
+
+    // Adicionar um novo item ao clicar no botão
+    addButton.addEventListener("click", function () {
+        openAddTodoForm(); // Chama a função que abre a janela modal
+    });
+
+    // Função para abrir a janela modal de adicionar nova tarefa
+    function openAddTodoForm(todo = null) {
+        const overlay = document.createElement("div");
+        overlay.classList.add("overlay");
+
+        const addContent = document.createElement("div");
+        addContent.classList.add("add-content");
+        addContent.innerHTML = `
+            <h2>${todo ? 'Editar Tarefa' : 'Nova Tarefa'}</h2>
+            <form id="todo-form">
+                <label for="todo-content">Conteúdo da Tarefa:</label>
+                <textarea id="todo-content">${todo ? todo.content : ''}</textarea>
+                <button type="submit">${todo ? 'Atualizar' : 'Salvar'}</button>
+            </form>
+            <button id="close-btn">Fechar</button>
+        `;
+
+        document.body.appendChild(overlay);
+        document.body.appendChild(addContent);
+
+        // Fechar a janela modal
+        document.getElementById("close-btn").addEventListener("click", function () {
+            overlay.remove();
+            addContent.remove();
+        });
+
+        // Lidar com o envio do formulário
+        addContent.querySelector("form").addEventListener("submit", function (e) {
+            e.preventDefault();
+            const content = document.getElementById("todo-content").value.trim();
+            
+            if (!content) {
+                alert("O conteúdo da tarefa é obrigatório.");
+                return;
+            }
+
+            if (todo) {
+                // Atualizar tarefa existente
+                todo.content = content;
+                updateTodoItem(todo);
+            } else {
+                // Adicionar nova tarefa
+                const todoItem = createTodoItem(content);
+                todoList.appendChild(todoItem);
+                saveTodoList();
+            }
+
+            // Fechar a janela modal
+            overlay.remove();
+            addContent.remove();
+        });
+    }
+
+    // Função para criar um novo item de tarefa
+    function createTodoItem(content) {
+        const li = document.createElement("li");
+        li.classList.add("todo-item");
+
+        li.innerHTML = `
+            <span class="todo-content">${content}</span>
+            <i class="bx bx-dots-vertical-rounded"></i>
+            <div class="menu-flutuante" style="display: none;">
+                <a href="#" class="editar">Editar</a>
+                <a href="#" class="deletar">Deletar</a>
+            </div>
+        `;
+
+        // Adicionar eventos de menu flutuante
+        const ellipsisIcon = li.querySelector(".bx-dots-vertical-rounded");
+        const menuFlutuante = li.querySelector(".menu-flutuante");
+        const editButton = li.querySelector(".editar");
+        const deleteButton = li.querySelector(".deletar");
+
+        ellipsisIcon.addEventListener("click", function (e) {
+            e.stopPropagation();
+            menuFlutuante.style.display = menuFlutuante.style.display === "block" ? "none" : "block";
+        });
+
+        // Editar tarefa
+        editButton.addEventListener("click", function (e) {
+            e.stopPropagation();
+            openAddTodoForm({ content: li.querySelector(".todo-content").textContent, element: li });
+        });
+
+        // Deletar tarefa
+        deleteButton.addEventListener("click", function (e) {
+            e.stopPropagation();
+            li.remove();
+            saveTodoList();
+        });
+
+        return li;
+    }
+
+    // Salvar a lista no LocalStorage
+    function saveTodoList() {
+        const todos = Array.from(todoList.children).map(item => item.querySelector(".todo-content").textContent);
+        localStorage.setItem("todoList", JSON.stringify(todos));
+    }
+
+    // Carregar a lista do LocalStorage
+    function loadTodoList() {
+        const savedTodos = JSON.parse(localStorage.getItem("todoList")) || [];
+        savedTodos.forEach(content => {
+            const todoItem = createTodoItem(content);
+            todoList.appendChild(todoItem);
+        });
+    }
+
+    // Atualizar tarefa
+    function updateTodoItem(todo) {
+        todo.element.querySelector(".todo-content").textContent = todo.content;
+        saveTodoList();
+    }
+});
