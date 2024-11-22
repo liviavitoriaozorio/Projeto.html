@@ -12,8 +12,6 @@ allSideMenu.forEach(item => {
     });
 });
 
-
-
 // Esconde o sidenav
 const menuBar = document.querySelector('header .fa-solid.fa-bars');
 const sidebar = document.getElementById('Sidenav');
@@ -35,10 +33,8 @@ menuBar.addEventListener('click', function () {
     });
 });
 
-
-
 // Menu das minhas atividades 
-const linkCollapse = document.querySelectorAll('fa-solid fa-chevron-down');
+const linkCollapse = document.getElementsByClassName('fa-solid fa-chevron-down');
 
 for (let i = 0; i < linkCollapse.length; i++) {
     linkCollapse[i].parentElement.addEventListener('click', function () {
@@ -54,7 +50,6 @@ for (let i = 0; i < linkCollapse.length; i++) {
         rotate.classList.toggle('rotate');
     });
 }
-
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -73,6 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
         Aviso: { icon: 'bx bx-bell', bgColor: '#FFCDD2', textColor: '#E53935' }
     };
 
+    // Abre o formulário de nova atividade
     addButton.addEventListener("click", function () {
         openAddActivityForm();
     });
@@ -85,7 +81,6 @@ document.addEventListener("DOMContentLoaded", function () {
         addContent.classList.add("add-content");
         addContent.innerHTML = `
             <h2>${activity ? 'Editar Atividade' : 'Nova Atividade'}</h2>
-            <p>Preencha os campos abaixo</p>
             <form>
                 <label for="type">Tipo:</label>
                 <select id="type">
@@ -93,195 +88,227 @@ document.addEventListener("DOMContentLoaded", function () {
                         <option value="${type}" ${activity && activity.type === type ? 'selected' : ''}>${type}</option>
                     `).join('')}
                 </select>
-
                 <label for="date">Data:</label>
-                <input type="date" id="date" name="date" value="${activity ? activity.date : ''}" required>
-
-                <label for="content">Conteúdo/Explicação:</label>
+                <input type="date" id="date" value="${activity ? activity.date : ''}" required>
+                <label for="content">Conteúdo:</label>
                 <textarea id="content">${activity ? activity.content : ''}</textarea>
-
                 <label for="link">Link (opcional):</label>
                 <input type="url" id="link" value="${activity ? activity.link : ''}">
-
-                <label for="attachment">Anexo:</label>
-                <input type="file" id="attachment" ${activity ? 'value="' + activity.attachment + '"' : ''}>
-
-                <button type="submit" id="save-btn">${activity ? 'Atualizar' : 'Salvar'}</button>
+                <button type="submit">${activity ? 'Atualizar' : 'Salvar'}</button>
             </form>
             <button id="close-btn">Fechar</button>
         `;
+
         document.body.appendChild(overlay);
         document.body.appendChild(addContent);
 
         document.getElementById("close-btn").addEventListener("click", function () {
-            document.body.removeChild(overlay);
-            document.body.removeChild(addContent);
+            overlay.remove();
+            addContent.remove();
         });
 
-        document.getElementById("save-btn").addEventListener("click", function (e) {
+        addContent.querySelector("form").addEventListener("submit", function (e) {
             e.preventDefault();
-
             const type = document.getElementById("type").value;
             const date = document.getElementById("date").value;
             const content = document.getElementById("content").value;
             const link = document.getElementById("link").value;
-            const attachment = document.getElementById("attachment").files[0];
 
             if (!type || !date || !content) {
-                alert("Por favor, preencha todos os campos obrigatórios.");
+                alert("Preencha todos os campos obrigatórios.");
                 return;
             }
 
-            const [year, month, day] = date.split("-");
-            const formattedDate = new Date(year, month - 1, day).toLocaleDateString('pt-BR', {
-                day: 'numeric',
-                month: 'long'
-            });
-
-            const boxInfo = document.querySelector(".box-info");
-
-            const newActivity = document.createElement("li");
-            newActivity.classList.add("Atividades");
-
-            const { icon, bgColor, textColor } = typeStyles[type] || {};
-
-            newActivity.innerHTML = `
-                <i class='${icon}' style="background: ${bgColor}; color: ${textColor}; border-radius: 10px; padding: 20px;"></i>
-                <span class="text">
-                    <h3>${type}</h3>
-                    <p>${formattedDate}</p>
-                </span>
-                <i class="fa-solid fa-ellipsis"></i>
-                <div class="menu-flutuante">
-                    <a href="#" class="editar">Editar</a>
-                    <a href="#" class="deletar">Deletar</a>
-                </div>
-            `;
-
-            newActivity.dataset.details = JSON.stringify({
-                type,
-                date: formattedDate,
-                content,
-                link,
-                attachment: attachment ? attachment.name : ''
-            });
-
+            const activityDetails = { type, date, content, link };
             if (activity) {
-                boxInfo.replaceChild(newActivity, activity.element);
+                activityDetails.element = activity.element;
+                updateActivity(activityDetails);
             } else {
-                boxInfo.insertBefore(newActivity, addButton);
+                addActivity(activityDetails);
             }
 
-            document.body.removeChild(overlay);
-            document.body.removeChild(addContent);
-
-            newActivity.addEventListener("click", function () {
-                const details = JSON.parse(this.dataset.details);
-                showDetailsPopup(details);
-            });
-
-            const ellipsisIcon = newActivity.querySelector(".fa-ellipsis");
-            const menuFlutuante = newActivity.querySelector(".menu-flutuante");
-
-            ellipsisIcon.addEventListener("click", function (e) {
-                e.stopPropagation();
-                menuFlutuante.style.display = menuFlutuante.style.display === 'block' ? 'none' : 'block';
-            });
-
-            const editarButton = menuFlutuante.querySelector(".editar");
-            const deletarButton = menuFlutuante.querySelector(".deletar");
-
-            editarButton.addEventListener("click", function (e) {
-                e.stopPropagation();
-                openAddActivityForm({
-                    type,
-                    date: formattedDate,
-                    content,
-                    link,
-                    attachment: attachment ? attachment.name : '',
-                    element: newActivity
-                });
-            });
-
-            deletarButton.addEventListener("click", function (e) {
-                e.stopPropagation();
-                boxInfo.removeChild(newActivity);
-                saveActivities(); // Atualiza o localStorage após a exclusão
-            });
-
-            saveActivities(); // Salva as atividades no localStorage
+            overlay.remove();
+            addContent.remove();
         });
     }
 
-    function showDetailsPopup(details) {
-        const overlay = document.createElement("div");
-        overlay.classList.add("overlay");
+    function addActivity(details) {
+        const activityElement = createActivityElement(details);
+        document.querySelector(".box-info").insertBefore(activityElement, addButton);
+        saveActivities();
+    }
 
-        const detailContent = document.createElement("div");
-        detailContent.classList.add("add-content"); // Reutiliza o estilo de "add-content"
-        detailContent.innerHTML = `
-            <h2>${details.type}</h2>
-            <p><strong>Data:</strong> ${details.date}</p>
-            <p><strong>Conteúdo:</strong> ${details.content}</p>
-            ${details.link ? `<p><strong>Link:</strong> <a href="${details.link}" target="_blank">${details.link}</a></p>` : ''}
-            ${details.attachment ? `<p><strong>Anexo:</strong> ${details.attachment}</p>` : ''}
-            <button id="close-detail-btn">Fechar</button>
+    function updateActivity(details) {
+        const { element, ...newDetails } = details;
+        const updatedElement = createActivityElement(newDetails);
+        document.querySelector(".box-info").replaceChild(updatedElement, element);
+        saveActivities();
+    }
+
+    function createActivityElement(details) {
+        const { type, date, content, link } = details;
+        const { icon, bgColor, textColor } = typeStyles[type] || {};
+
+        const activityElement = document.createElement("li");
+        activityElement.classList.add("Atividades");
+        activityElement.dataset.details = JSON.stringify(details);
+
+        activityElement.innerHTML = `
+            <i class="${icon}" style="background: ${bgColor}; color: ${textColor}; padding: 10px; border-radius: 50%;"></i>
+            <span>
+                <h3>${type}</h3>
+                <p>${new Date(date).toLocaleDateString()}</p>
+            </span>
+            <i class="fa-solid fa-ellipsis"></i>
+            <div class="menu-flutuante">
+                <a href="#" class="editar">Editar</a>
+                <a href="#" class="deletar">Deletar</a>
+            </div>
         `;
 
-        document.body.appendChild(overlay);
-        document.body.appendChild(detailContent);
+        addActivityEventListeners(activityElement);
+        return activityElement;
+    }
 
-        document.getElementById("close-detail-btn").addEventListener("click", function () {
-            document.body.removeChild(overlay);
-            document.body.removeChild(detailContent);
+    function addActivityEventListeners(activityElement) {
+        const details = JSON.parse(activityElement.dataset.details);
+
+        const editButton = activityElement.querySelector(".editar");
+        const deleteButton = activityElement.querySelector(".deletar");
+
+        editButton.addEventListener("click", function (e) {
+            e.stopPropagation();
+            openAddActivityForm({ ...details, element: activityElement });
+        });
+
+        deleteButton.addEventListener("click", function (e) {
+            e.stopPropagation();
+            activityElement.remove();
+            saveActivities();
         });
     }
 
-    // Função para salvar as atividades no localStorage
     function saveActivities() {
-        const activities = [];
-        const activityElements = document.querySelectorAll(".box-info .Atividades");
-
-        activityElements.forEach(activityElement => {
-            const details = JSON.parse(activityElement.dataset.details);
-            activities.push(details);
-        });
-
+        const activities = Array.from(document.querySelectorAll(".Atividades")).map(activityElement =>
+            JSON.parse(activityElement.dataset.details)
+        );
         localStorage.setItem("activities", JSON.stringify(activities));
     }
 
-    // Função para carregar as atividades do localStorage
     function loadActivities() {
-        const storedActivities = JSON.parse(localStorage.getItem("activities"));
-        if (storedActivities) {
-            storedActivities.forEach(activity => {
-                const newActivity = document.createElement("li");
-                newActivity.classList.add("Atividades");
-
-                const { icon, bgColor, textColor } = typeStyles[activity.type] || {};
-
-                newActivity.innerHTML = `
-                    <i class='${icon}' style="background: ${bgColor}; color: ${textColor}; border-radius: 10px; padding: 20px;"></i>
-                    <span class="text">
-                        <h3>${activity.type}</h3>
-                        <p>${activity.date}</p>
-                    </span>
-                    <i class="fa-solid fa-ellipsis"></i>
-                    <div class="menu-flutuante">
-                        <a href="#" class="editar">Editar</a>
-                        <a href="#" class="deletar">Deletar</a>
-                    </div>
-                `;
-
-                newActivity.dataset.details = JSON.stringify(activity);
-                document.querySelector(".box-info").insertBefore(newActivity, addButton);
-
-                // Adicionar funcionalidades de edição e exclusão
-                addActivityEventListeners(newActivity);
-            });
-        }
+        const storedActivities = JSON.parse(localStorage.getItem("activities")) || [];
+        storedActivities.forEach(activity => addActivity(activity));
     }
 
-    // Carregar as atividades armazenadas ao carregar a página
     loadActivities();
+
+    function addActivityEventListeners(activityElement) {
+        const details = JSON.parse(activityElement.dataset.details);
+    
+        const ellipsisIcon = activityElement.querySelector(".fa-ellipsis");
+        const menuFlutuante = activityElement.querySelector(".menu-flutuante");
+        const editButton = activityElement.querySelector(".editar");
+        const deleteButton = activityElement.querySelector(".deletar");
+    
+        // Mostrar/ocultar o menu flutuante ao clicar no ícone de três pontos
+        ellipsisIcon.addEventListener("click", function (e) {
+            e.stopPropagation();  // Impede a propagação do clique, evitando o fechamento imediato do menu
+            menuFlutuante.style.display = menuFlutuante.style.display === 'block' ? 'none' : 'block';
+        });
+    
+        // Evita que o menu de edição/exclusão feche imediatamente
+        menuFlutuante.addEventListener("click", function (e) {
+            e.stopPropagation();
+        });
+    
+        // Evento para editar a atividade
+        editButton.addEventListener("click", function (e) {
+            e.stopPropagation();
+            openAddActivityForm({ ...details, element: activityElement });
+        });
+    
+        // Evento para deletar a atividade
+        deleteButton.addEventListener("click", function (e) {
+            e.stopPropagation();
+            activityElement.remove();
+            saveActivities();
+        });
+    }
+
+    function addActivityEventListeners(activityElement) {
+        const details = JSON.parse(activityElement.dataset.details);
+    
+        // Evento para exibir os detalhes da atividade ao clicar no corpo da atividade
+        activityElement.addEventListener("click", function () {
+            showActivityDetails(details);
+        });
+    
+        // Eventos do menu flutuante (editar, deletar, etc.)
+        const ellipsisIcon = activityElement.querySelector(".fa-ellipsis");
+        const menuFlutuante = activityElement.querySelector(".menu-flutuante");
+        const editButton = activityElement.querySelector(".editar");
+        const deleteButton = activityElement.querySelector(".deletar");
+    
+        ellipsisIcon.addEventListener("click", function (e) {
+            e.stopPropagation();
+            menuFlutuante.style.display = menuFlutuante.style.display === 'block' ? 'none' : 'block';
+        });
+    
+        menuFlutuante.addEventListener("click", function (e) {
+            e.stopPropagation();
+        });
+    
+        editButton.addEventListener("click", function (e) {
+            e.stopPropagation();
+            openAddActivityForm({ ...details, element: activityElement });
+        });
+    
+        deleteButton.addEventListener("click", function (e) {
+            e.stopPropagation();
+            activityElement.remove();
+            saveActivities();
+        });
+    }
+    
+    function showActivityDetails(details) {
+        // Criação do overlay (fundo escuro)
+        const overlay = document.createElement("div");
+        overlay.classList.add("overlay");
+    
+        // Criação do conteúdo do modal (informações da atividade)
+        const modal = document.createElement("div");
+        modal.classList.add("modal");
+    
+        modal.innerHTML = `
+            <div class="modal-header">
+                <h2>Detalhes da Atividade</h2>
+                <button id="close-modal-btn" class="close-btn">X</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Tipo:</strong> ${details.type}</p>
+                <p><strong>Data:</strong> ${details.date}</p>
+                <p><strong>Conteúdo/Explicação:</strong> ${details.content}</p>
+                ${details.link ? `<p><strong>Link:</strong> <a href="${details.link}" target="_blank">${details.link}</a></p>` : ''}
+                ${details.attachment ? `<p><strong>Anexo:</strong> ${details.attachment}</p>` : ''}
+            </div>
+        `;
+    
+        // Adiciona o modal e o overlay no corpo da página
+        document.body.appendChild(overlay);
+        document.body.appendChild(modal);
+    
+        // Fechar o modal
+        document.getElementById("close-modal-btn").addEventListener("click", function () {
+            document.body.removeChild(overlay);
+            document.body.removeChild(modal);
+        });
+    
+        // Fechar o modal clicando fora do conteúdo
+        overlay.addEventListener("click", function () {
+            document.body.removeChild(overlay);
+            document.body.removeChild(modal);
+        });
+    }
+    
+    
 });
