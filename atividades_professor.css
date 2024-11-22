@@ -387,14 +387,11 @@ header a {
     display: flex;
     justify-content: space-between;
     align-items: center;
+	border-left: 10px solid #3C91E6;
 }
 
 #Conteudo main .table-data .todo .todo-list li .bx {
     cursor: pointer;
-}
-
-#Conteudo main .table-data .todo .todo-list li.not-completed {
-    border-left: 10px solid #3C91E6;
 }
 
 #Conteudo main .table-data .todo .todo-list li:last-child {
