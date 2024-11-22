@@ -85,7 +85,7 @@ body {
 	align-items: center;
 	border-radius: 48px;
 	font-size: 16px;
-	color: #5a5a5a;
+	color: #353434;
 	white-space: nowrap;
 	overflow-x: hidden;
 	left: 10px;
@@ -448,6 +448,66 @@ header a {
     color: #DB504A;
 }
 
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px; /* Deixa as bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    z-index: 2001;
+    font-family: 'Arial', sans-serif;
+    overflow-y: auto; /* Garante que o conteúdo longo role, se necessário */
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee; /* Adiciona uma linha separadora */
+}
+
+.modal-header h2 {
+    margin: 0;
+    color: #333;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #555;
+    cursor: pointer;
+}
+
+.modal-body {
+    margin-top: 20px;
+}
+
+.modal-body p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.modal-body a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.modal-body a:hover {
+    text-decoration: underline;
+}
+
+.modal-body p strong {
+    font-weight: bold;
+}
 
 
 @media screen and (max-width: 768px) {
