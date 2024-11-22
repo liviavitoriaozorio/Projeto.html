@@ -85,7 +85,7 @@ body {
 	align-items: center;
 	border-radius: 48px;
 	font-size: 16px;
-	color: #353434;
+	color: #5a5a5a;
 	white-space: nowrap;
 	overflow-x: hidden;
 	left: 10px;
@@ -184,6 +184,7 @@ body {
 }
 /* SIDENAV */
 
+
 /* CONTEUDO */
 #Conteudo {
 	position: relative;
@@ -221,17 +222,17 @@ header a {
 #Conteudo main {
 	width: 100%;
 	padding: 36px 24px;
-	font-family: var(--poppins);
+	font-family: "Inter", sans-serif;
 	max-height: calc(100vh - 56px);
-	overflow-y: auto;
 }
 
 /* caixa de atividades */
 #Conteudo main .box-info {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	grid-template-columns: repeat(4, minmax(240px, 1fr));
 	grid-gap: 24px;
 }
+
 #Conteudo main .box-info .Atividades {
 	padding: 24px;
 	background:#F9F9F9;
@@ -249,6 +250,12 @@ header a {
 	justify-content: center;
 	align-items: center;
 }
+
+
+
+
+
+
 #Conteudo main .box-info li:nth-child(1) .bx {
 	background: #CFE8FF;
 	color:#3C91E6;
@@ -275,9 +282,11 @@ header a {
     align-items: center;
     border: 2px dashed;
     color: #3C91E6;
+	background-color: #e0e9f1;
 	border-radius: 20px;
     margin-bottom: 40px;
 }
+
 
 
 #Conteudo main .table-data {
@@ -286,11 +295,11 @@ header a {
 	grid-gap: 24px;
 	margin-top: 24px;
 	width: 100%;
-	color: #342E37;
+	color:  #342E37;
 }
 #Conteudo main .table-data > div {
 	border-radius: 20px;
-	background:#F9F9F9;
+	background: #F9F9F9;
 	padding: 24px;
 	overflow-x: auto;
 }
@@ -309,40 +318,89 @@ header a {
 	cursor: pointer;
 }
 
-
-
-#Conteudo main .table-data .todo {
+#Conteudo main .table-data .order {
 	flex-grow: 1;
-	flex-basis: 300px;
+	flex-basis: 500px;
 }
-#Conteudo main .table-data .todo .todo-list {
+#Conteudo main .table-data .order table {
 	width: 100%;
+	border-collapse: collapse;
 }
-#Conteudo main .table-data .todo .todo-list li {
-	width: 100%;
-	margin-bottom: 16px;
-	background: #eee;
-	border-radius: 10px;
-	padding: 14px 20px;
+#Conteudo main .table-data .order table th {
+	padding-bottom: 12px;
+	font-size: 13px;
+	text-align: left;
+	border-bottom: 1px solid  #eee;
+}
+#Conteudo main .table-data .order table td {
+	padding: 16px 0;
+}
+#Conteudo main .table-data .order table tr td:first-child {
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
+	grid-gap: 12px;
+	padding-left: 6px;
 }
-#Conteudo main .box-info .add{
-	background: #f9f9f982;
+#Conteudo main .table-data .order table td img {
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	object-fit: cover;
 }
+#Conteudo main .table-data .order table tbody tr:hover {
+	background:  #eee;
+}
+#Conteudo main .table-data .order table tr td .status {
+	font-size: 10px;
+	padding: 6px 16px;
+	color: #F9F9F9;
+	border-radius: 20px;
+	font-weight: 700;
+}
+#Conteudo main .table-data .order table tr td .status.completed {
+	background: #3C91E6;
+}
+#Conteudo main .table-data .order table tr td .status.process {
+	background: #FD7238;
+}
+#Conteudo main .table-data .order table tr td .status.pending {
+	background: #FFCE26;
+}
+
+
+/* Estilo do todo */
+#Conteudo main .table-data .todo {
+    flex-grow: 1;
+    flex-basis: 300px;
+}
+
+#Conteudo main .table-data .todo .todo-list {
+    width: 100%;
+}
+
+#Conteudo main .table-data .todo .todo-list li {
+    width: 100%;
+    margin-bottom: 16px;
+    background: #eee;
+    border-radius: 10px;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 #Conteudo main .table-data .todo .todo-list li .bx {
-	cursor: pointer;
+    cursor: pointer;
 }
-#Conteudo main .table-data .todo .todo-list li.completed {
-	border-left: 10px solid#3C91E6;
-}
+
 #Conteudo main .table-data .todo .todo-list li.not-completed {
-	border-left: 10px solid #FD7238;
+    border-left: 10px solid #3C91E6;
 }
+
 #Conteudo main .table-data .todo .todo-list li:last-child {
-	margin-bottom: 0;
+    margin-bottom: 0;
 }
+
 
 
 
@@ -401,6 +459,12 @@ header a {
 .add-content button:hover {
     background-color: #357dd4;
 }
+
+
+/* Estilo para a lista de tarefas */
+
+
+
 
 /* Botão de fechar */
 #close-btn {
