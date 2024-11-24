@@ -48,3 +48,66 @@
 .blocos + .blocos {
     margin-left: 24px;
 }
+#AtividadesAluno {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+#AtividadesAluno h1 {
+    text-align: center;
+    font-size: 2rem;
+}
+
+#AtividadesAluno p {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.atividade {
+    background: #f0f0f0;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.atividade h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.atividade p {
+    margin: 5px 0;
+}
+
+.botoes-atividade {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.botoes-atividade button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.botoes-atividade button.aceitar {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.botoes-atividade button.negar {
+    background-color: #f44336;
+    color: white;
+}
+
+.anexo-container {
+    margin-top: 10px;
+}
+
+.anexo-container input {
+    padding: 5px;
+    border-radius: 5px;
+}
