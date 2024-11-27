@@ -221,6 +221,7 @@ header a {
 #interfacealuno {
 	width: 100%;
 	background: #F9F9F9;
+	border-radius: 5px;
 }
 #tudao {
 	position: absolute;
@@ -229,7 +230,7 @@ header a {
 
 }
 #bloquinho {
-	backgroung: white;
+	background: white;
 	border: 0.5px solid #ccc;
 	border-radius: 4px:
 	box-shadow: 0 3px 6px rgba (0, 0, 0.1);
@@ -241,10 +242,12 @@ header a {
 #laranja {
 	background: orange;
 	top: 30%;
+	position: absolute;
 }
 #laranja.icone {
 	width:  45%;
 	aligh-itens: center;
+	position: absolute;
 }
 @media screen and (max-width: 768px) {
 	#Sidenav {
