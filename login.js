@@ -1,27 +1,30 @@
-document.getElementById('loginForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+// Lista de usuários com email, senha, tipo e outras informações
+const usuarios = [
+    { email: "matematica@lagunaschool.com", senha: "profmat123", tipo: "professor", disciplina: "matematica" },
+    { email: "portugues@lagunaschool.com", senha: "profport123", tipo: "professor", disciplina: "portugues" },
+    { email: "aluno1@lagunaschool.com", senha: "aluno123", tipo: "aluno" },
+    { email: "aluno2@lagunaschool.com", senha: "aluno123", tipo: "aluno" }
+];
 
-    // Pegando os valores dos inputs
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+// Adiciona o ouvinte de evento de clique no botão
+document.getElementById("login-btn").addEventListener("click", function() {
+    const email = document.getElementById("email").value;
+    const senha = document.getElementById("senha").value;
 
-    // Verificando se os campos não estão vazios (simulação simples de login)
-    if (username === "" || password === "") {
-        showError("Por favor, preencha todos os campos.");
-    } else {
-        // Simulação de autenticação simples
-        if (username === "usuario" && password === "senha123") {
-            alert("Login bem-sucedido!");
-            window.location.href = "dashboard.html"; // Redireciona para outra página após o login
-        } else {
-            showError("Usuário ou senha incorretos.");
+    // Busca o usuário correspondente com email e senha
+    const usuario = usuarios.find(u => u.email === email && u.senha === senha);
+
+    if (usuario) {
+        // Verifica o tipo de usuário e redireciona para a página correta
+        if (usuario.tipo === "professor") {
+            // Redireciona para a página do professor, passando a disciplina no query string
+            window.location.href = `inicio_professor.html?disciplina=${usuario.disciplina}`;
+        } else if (usuario.tipo === "aluno") {
+            // Redireciona para a página do aluno
+            window.location.href = "inicio_aluno.html";
         }
+    } else {
+        // Exibe o prompt de erro com a mensagem
+        alert("Credenciais inválidas.");
     }
 });
-
-// Função para mostrar mensagens de erro
-function showError(message) {
-    const errorMessage = document.getElementById('error-message');
-    errorMessage.textContent = message;
-    errorMessage.style.visibility = 'visible';
-}
