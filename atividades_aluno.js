@@ -66,6 +66,45 @@ for (let i = 0; i < linkCollapse.length; i++) {
 
 
 document.addEventListener("DOMContentLoaded", function () {
+    const menuItems = document.querySelectorAll(".Menu_lateral .Itens a");
+
+    // Adiciona um evento de clique para cada item do menu
+    menuItems.forEach(item => {
+        item.addEventListener("click", function(event) {
+            // Verifica o ID da disciplina que foi clicada
+            const disciplinaSelecionada = event.target.id;
+
+            // Redireciona para a página de atividades
+            if (disciplinaSelecionada === "Matematica") {
+                window.location.href = "atividades_aluno.html";
+            }
+            if (disciplinaSelecionada === "Portuguesa") {
+                window.location.href = "atividades_aluno.html";
+            }
+            if (disciplinaSelecionada === "História") {
+                window.location.href = "atividades_aluno.html";
+            }
+            if (disciplinaSelecionada === "Geografia") {
+                window.location.href = "atividades_aluno.html";
+            }
+            if (disciplinaSelecionada === "Química") {
+                window.location.href = "atividades_aluno.html";
+            }
+            if (disciplinaSelecionada === "Biologia") {
+                window.location.href = "atividades_aluno.html";
+            }
+            if (disciplinaSelecionada === "Arte") {
+                window.location.href = "atividades_aluno.html";
+            }
+        });
+    });
+
+    let selectedTurma = localStorage.getItem("selectedTurma") || 'turma_a';
+    const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+
+    loadActivities(turma, disciplinaSelecionada);
+
+
     // Estilos dos tipos de atividades
     const typeStyles = {
         Projeto: { icon: 'bx bx-task', bgColor: '#CFE8FF', textColor: '#3C91E6' },
@@ -167,7 +206,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Carregar as atividades do localStorage assim que a página carregar
     loadActivities();
 });
-
 
 
 document.addEventListener("DOMContentLoaded", function () {
