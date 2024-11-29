@@ -17,7 +17,7 @@ body {
 
 
 /* SIDENAR */
-/* - completo - */ 
+
 #Sidenav {
     display: flex;
     flex-direction: column;
@@ -34,7 +34,7 @@ body {
 	border-right: 1px solid rgb(218, 220, 224);
 }
 
-/* - topo - */ 
+
 #Sidenav .Laguna {
 	font-size: 24px;
 	font-weight: 700;
@@ -57,7 +57,7 @@ body {
 	justify-content: center;
 }
 
-/* - Itens - */ 
+
 #Sidenav .Menu_lateral {
 	width: 100%;
 	margin-top: 48px;
@@ -65,7 +65,6 @@ body {
 #Sidenav .Menu_lateral.cima {
     width: 100%;
     margin-top: 48px;
-    /* (define a capacidade de um item flexível de crescer para ocupar o espaço disponível no container flex) */
     flex-grow: 1; 
 }
 #Sidenav .Menu_lateral li {
@@ -96,7 +95,6 @@ body {
 	justify-content: flex-start;
 	position: relative;
 	left: 10px;
-
 }
 #Sidenav .Menu_lateral li a span {
 	position: relative;
@@ -107,7 +105,7 @@ body {
 	color: #DB504A; 
 }
 
-/* - interação (ativo) - */ 
+
 #Sidenav .Menu_lateral .Itens.ativo a {
 	border-radius: 0 2rem 2rem 0;
     bottom: 0;
@@ -129,7 +127,7 @@ body {
 	background: #DAEBFF;
 }
 
-/* - interação (escondido) - */ 
+
 #Sidenav.escondido {
 	width: 60px;
 }
@@ -138,7 +136,7 @@ body {
 	transition: width .3s ease;
 }
 
-/* - interação (hover) - */ 
+
 #Sidenav .Menu_lateral.cima li a:hover {
 	border-radius: 0 2rem 2rem 0;
     bottom: 0;
@@ -160,7 +158,7 @@ body {
 	background: rgb(245, 232, 232);
 }
 
-/* - Interação (subitens) - */ 
+
 .Submenu {
     display: none; 
 }
@@ -212,43 +210,264 @@ header {
 	z-index: 1000;
 	border-bottom: 1px solid rgb(218, 220, 224);
 }
-
 header a {
 	color: #342E37;
 }
 /* HEADER */
 
-#interfacealuno {
+/* MAIN */
+#Conteudo main {
 	width: 100%;
-	background: #F9F9F9;
-	border-radius: 5px;
-}
-#tudao {
-	position: absolute;
+	padding: 36px 24px;
 	font-family: "Inter", sans-serif;
-	aligh-itens: left;
+	max-height: calc(100vh - 56px);
+}
 
+/* caixa de atividades */
+#Conteudo main .box-info {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(240px, 1fr));
+	grid-gap: 24px;
 }
-#bloquinho {
-	background: white;
-	border: 0.5px solid #ccc;
-	border-radius: 4px:
-	box-shadow: 0 3px 6px rgba (0, 0, 0.1);
-	position: relative;
-	top: 300px;
-	left: 250px;
+#Conteudo main .box-info .Atividades {
+	padding: 24px;
+	background:#F9F9F9;
+	border-radius: 20px;
+	display: flex;
+	align-items: center;
+	grid-gap: 24px;
+}
+#Conteudo main .box-info .Atividades .bx {
+	width: 80px;
+	height: 80px;
+	border-radius: 10px;
+	font-size: 36px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 
+/* Estilo do div antes do todo */
+#Conteudo main .table-data {
+	display: flex;
+	flex-wrap: wrap;
+	grid-gap: 24px;
+	margin-top: 24px;
+	width: 100%;
+	color:  #342E37;
 }
-#laranja {
-	background: orange;
-	top: 30%;
-	position: absolute;
+#Conteudo main .table-data > div {
+	border-radius: 20px;
+	background: #F9F9F9;
+	padding: 24px;
+	overflow-x: auto;
 }
-#laranja.icone {
-	width:  45%;
-	aligh-itens: center;
-	position: absolute;
+
+/* Estilo do todo */
+.todo .head {
+	display: flex;
+	align-items: center;
+	grid-gap: 16px;
+	margin-bottom: 24px;
 }
+.todo .head h3 {
+	margin-right: auto;
+	font-size: 24px;
+	font-weight: 600;
+}
+.todo .head .bx {
+	cursor: pointer;
+}
+
+.todo {
+    flex-grow: 1;
+    flex-basis: 300px;
+}
+.todo .todo-list {
+    width: 100%;
+}
+.todo .todo-list li {
+    width: 100%;
+    margin-bottom: 16px;
+    background: #eee;
+    border-radius: 10px;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+	border-left: 10px solid #3C91E6;
+}
+.todo .todo-list li .bx {
+    cursor: pointer;
+}
+.todo .todo-list li:last-child {
+    margin-bottom: 0;
+}
+
+/* Estilo para o menu flutuante */
+.menu-flutuante {
+    display: none; 
+    position: absolute;
+    background-color: #FFF;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 10px;
+    min-width: 150px;
+    z-index: 100;
+}
+.menu-flutuante a {
+    display: block;
+    padding: 8px;
+    font-size: 14px;
+    color: #342E37;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+.menu-flutuante a:hover {
+    background-color: #f0f0f0;
+}
+.menu-flutuante .editar {
+    color: #3C91E6;
+}
+.menu-flutuante .deletar {
+    color: #DB504A;
+}
+
+
+
+/* Estilo para o botão */
+.add-content .bx-plus {
+    padding: 10px 20px;
+    background-color: #3c91e6;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.add-content .bx-plus:hover {
+    background-color: #327ab7;
+}
+
+/* Estilos para o modal de adicionar e editar*/
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2001;
+}
+.add-content {
+	position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+	z-index: 2002;
+}
+.add-content h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.add-content form {
+    display: flex;
+    flex-direction: column;
+}
+.add-content label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.add-content input[type="text"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+.add-content button {
+    padding: 10px;
+    background-color: #3c91e6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+.add-content button:hover {
+    background-color: #327ab7;
+}
+.add-content #close-btn {
+    margin-top: 10px;
+    background-color: #f77668;
+}
+.add-content #close-btn:hover {
+    background-color: #cc4d3f;
+}
+
+/* Estilos para o modal de visualizar */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px; /* Deixa as bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    z-index: 2001;
+    font-family: 'Arial', sans-serif;
+    overflow-y: auto; /* Garante que o conteúdo longo role, se necessário */
+}
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee; /* Adiciona uma linha separadora */
+}
+.modal-header h2 {
+    margin: 0;
+    color: #333;
+}
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #555;
+    cursor: pointer;
+}
+.modal-body {
+    margin-top: 20px;
+}
+.modal-body p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+.modal-body a {
+    color: #007bff;
+    text-decoration: none;
+}
+.modal-body a:hover {
+    text-decoration: underline;
+}
+.modal-body p strong {
+    font-weight: bold;
+}
+
 @media screen and (max-width: 768px) {
 	#Sidenav {
 		width: 200px;
