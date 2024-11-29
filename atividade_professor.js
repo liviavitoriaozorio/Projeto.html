@@ -155,8 +155,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 alert("Preencha todos os campos obrigatórios.");
                 return;
             }
+
+            const professorInfo = JSON.parse(localStorage.getItem('professor'));
+            const disciplina = professorInfo ? professorInfo.disciplina: "Desconhecida";
         
-            const activityDetails = { type, date: formattedDate, content, link };
+            const activityDetails = { type, date: formattedDate, content, link, disciplina};
             if (activity) {
                 activityDetails.element = activity.element;
                 updateActivity(activityDetails);
@@ -296,6 +299,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     loadActivities();
 });
+
 
 
 document.addEventListener("DOMContentLoaded", function () {
