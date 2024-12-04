@@ -1,9 +1,7 @@
 // Efeito dos elementos ativos 
 const allSideMenu = document.querySelectorAll('#Sidenav .Menu_lateral li a');
-
 // Adicionar a classe 'ativo' ao item correspondente à página atual
 const currentPage = window.location.pathname.split('/').pop(); // Obtém o nome da página atual
-
 allSideMenu.forEach(item => {
     const li = item.parentElement;
     const href = item.getAttribute('href'); // Obtém o href do link
@@ -27,12 +25,9 @@ allSideMenu.forEach(item => {
     });
 });
 
-
-
 // Esconde o sidenav
 const menuBar = document.querySelector('header .fa-solid.fa-bars');
 const sidebar = document.getElementById('Sidenav');
-
 menuBar.addEventListener('click', function () {
     // Alterna a classe 'escondido' do sidenav
     sidebar.classList.toggle('escondido');
@@ -50,11 +45,8 @@ menuBar.addEventListener('click', function () {
     });
 });
 
-
-
 // Menu das minhas atividades 
 const linkCollapse = document.getElementsByClassName('fa-solid fa-chevron-down');
-
 for (let i = 0; i < linkCollapse.length; i++) {
     linkCollapse[i].parentElement.addEventListener('click', function () {
         const collapseMenu = this.nextElementSibling;
@@ -70,10 +62,76 @@ for (let i = 0; i < linkCollapse.length; i++) {
     });
 }
 
+function carregarRespostas() {
+    const tbody = document.querySelector("#tabela-envios tbody");
+    tbody.innerHTML = ""; // Limpar a tabela antes de adicionar os novos dados
+
+    // Buscar todas as chaves que começam com "resposta_"
+    for (let key in localStorage) {
+        if (key.startsWith("resposta_")) {
+            const resposta = localStorage.getItem(key);
+            const tipo = key.split('_')[1]; // Pega o tipo da chave (atividade, relatório, etc.)
+            const email = key.split('_')[2]; // Pega o email associado
+            const aluno = email.split('@')[0]; // Extrai o nome do aluno (do email)
+
+            // Cria a linha da tabela
+            const tr = document.createElement("tr");
+
+            // Cria as células para a linha
+            const tdAluno = document.createElement("td");
+            tdAluno.innerHTML = `<img src="img/people.png"><p>${aluno}</p>`;
+            
+            const tdTipo = document.createElement("td");
+            tdTipo.textContent = tipo;
+
+            const tdEstado = document.createElement("td");
+            const status = document.createElement("span");
+            status.classList.add("status");
+
+            // Define a classe do status com base no valor da resposta
+            if (resposta === "Aceitar") {
+                status.classList.add("aceito");
+                status.textContent = "Aceito";
+            } else if (resposta === "Negar") {
+                status.classList.add("negado");
+                status.textContent = "Negado";
+            } else if (resposta === "Pendente") {
+                status.classList.add("pendente");
+                status.textContent = "Pendente";
+            }
+
+            tdEstado.appendChild(status);
+
+            // Adiciona as células na linha
+            tr.appendChild(tdAluno);
+            tr.appendChild(tdTipo);
+            tr.appendChild(tdEstado);
+
+            // Adiciona a linha na tabela
+            tbody.appendChild(tr);
+        }
+    }
+
+    // Caso não haja respostas, exibe uma mensagem
+    if (tbody.children.length === 0) {
+        const trVazia = document.createElement("tr");
+        const tdVazia = document.createElement("td");
+        tdVazia.setAttribute("colspan", "3");
+        tdVazia.classList.add("empty-message");
+        tdVazia.textContent = "Não há respostas registradas.";
+        trVazia.appendChild(tdVazia);
+        tbody.appendChild(trVazia);
+    }
+}
+
+// Carrega as respostas quando a página for carregada
+window.onload = carregarRespostas;
+
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
     const addButton = document.querySelector(".box-info .add");
-
     const typeStyles = {
         Projeto: { icon: 'bx bx-task', bgColor: '#CFE8FF', textColor: '#3C91E6' },
         Avaliação: { icon: 'bx bx-pencil', bgColor: '#FFF2C6', textColor: '#FFCE26' },
@@ -87,25 +145,44 @@ document.addEventListener("DOMContentLoaded", function () {
         Aviso: { icon: 'bx bx-bell', bgColor: '#FFCDD2', textColor: '#E53935' }
     };
 
+    // Identifica a disciplina
+    const disciplinaAtual = localStorage.getItem('disciplinaAtual');
+    if (!disciplinaAtual) {
+        alert("Erro: disciplina não encontrada.");
+        return window.location.href = "login.html";
+    }
+    
+    // Identificando a turma selecionada no sidenav
     let selectedTurma = localStorage.getItem("selectedTurma") || 'turma_a';
-
-    // Identificando a turma selecionada
     const turmaLinks = document.querySelectorAll("#Sidenav .Submenu .Itens a");
     turmaLinks.forEach(link => {
         link.addEventListener("click", function (e) {
             e.preventDefault();
             selectedTurma = this.id; 
-            localStorage.setItem("selectedTurma", selectedTurma);
+            localStorage.setItem("selectedTurma", selectedTurma); 
             window.location.href = this.href;
         });
     });
+
+    // Carregar atividades específicas para a disciplina e turma
+    function loadActivities() {
+        const storedActivities = JSON.parse(localStorage.getItem(`activities_${disciplinaAtual}_${selectedTurma}`)) || [];
+        storedActivities.forEach(activity => addActivity(activity));
+    }
+
+    // Salvar atividades específicas para a disciplina e turma
+    function saveActivities() {
+        const activities = Array.from(document.querySelectorAll(".Atividades")).map(activityElement =>
+            JSON.parse(activityElement.dataset.details)
+        );
+        localStorage.setItem(`activities_${disciplinaAtual}_${selectedTurma}`, JSON.stringify(activities));
+    }
 
     // Abre o formulário de nova atividade
     addButton.addEventListener("click", function () {
         openAddActivityForm();
     });
 
-    // Função para abrir o formulário de nova atividade
     function openAddActivityForm(activity = null) {
         const overlay = document.createElement("div");
         overlay.classList.add("overlay");
@@ -147,39 +224,34 @@ document.addEventListener("DOMContentLoaded", function () {
             const link = document.getElementById("link").value;
             const dateInput = document.getElementById("date").value;
             const date = new Date(dateInput); 
-        
-            date.setDate(date.getDate() + 1);  // Ajuste manual de +1 dia
+
+            date.setDate(date.getDate() + 1); 
             const formattedDate = date.toISOString().split('T')[0]; 
-        
+
             if (!type || !date || !content) {
                 alert("Preencha todos os campos obrigatórios.");
                 return;
             }
 
-            const professorInfo = JSON.parse(localStorage.getItem('professor'));
-            const disciplina = professorInfo ? professorInfo.disciplina: "Desconhecida";
-        
-            const activityDetails = { type, date: formattedDate, content, link, disciplina};
+            const activityDetails = { type, date: formattedDate, content, link, disciplina: disciplinaAtual, turma: selectedTurma };
             if (activity) {
                 activityDetails.element = activity.element;
                 updateActivity(activityDetails);
             } else {
                 addActivity(activityDetails);
             }
-        
+
             overlay.remove();
             addContent.remove();
         });
-        
     }
 
-    // Função para criar a atividade
+    // Função para adicionar a atividade
     function addActivity(details) {
         const activityElement = createActivityElement(details);
         document.querySelector(".box-info").insertBefore(activityElement, addButton);
         saveActivities();
     }
-
     // Função para atualizar a atividade
     function updateActivity(details) {
         const { element, ...newDetails } = details;
@@ -187,7 +259,6 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector(".box-info").replaceChild(updatedElement, element);
         saveActivities();
     }
-
     // Função para criar o elemento da atividade
     function createActivityElement(details) {
         const { type, date, content, link } = details;
@@ -224,8 +295,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Mostrar o menu flutuante
         ellipsisButton.addEventListener("click", function (e) {
-            e.stopPropagation(); // Impede que o evento se propague para outros elementos
-            menuFlutuante.classList.toggle("show"); // Toggle para mostrar/ocultar o menu
+            e.stopPropagation(); 
+            menuFlutuante.classList.toggle("show"); 
         });
 
         // Editar a atividade
@@ -245,7 +316,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Visualizar detalhes ao clicar na atividade
         activityElement.addEventListener("click", function () {
-            viewActivityDetails(details); // Chamando a função para exibir detalhes
+            viewActivityDetails(details); 
         });
 
         // Fechar o menu quando clicar fora dele
@@ -258,7 +329,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Função para visualizar os detalhes da atividade
     function viewActivityDetails(details) {
-        // Criar o overlay para os detalhes
         const detailsOverlay = document.createElement("div");
         detailsOverlay.classList.add("details-overlay");
 
@@ -283,22 +353,11 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Função para salvar as atividades no localStorage
-    function saveActivities() {
-        const activities = Array.from(document.querySelectorAll(".Atividades")).map(activityElement =>
-            JSON.parse(activityElement.dataset.details)
-        );
-        localStorage.setItem(`activities_${selectedTurma}`, JSON.stringify(activities));
-    }
-
-    // Função para carregar as atividades do localStorage
-    function loadActivities() {
-        const storedActivities = JSON.parse(localStorage.getItem(`activities_${selectedTurma}`)) || [];
-        storedActivities.forEach(activity => addActivity(activity));
-    }
-
     loadActivities();
 });
+
+
+
 
 
 
