@@ -66,62 +66,37 @@ for (let i = 0; i < linkCollapse.length; i++) {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    const menuItems = document.querySelectorAll(".Menu_lateral .Itens a");
+    const menuItems = document.querySelectorAll(".Menu_lateral .Itens a"); // Seleciona os links do sidenav
 
-    // Adiciona um evento de clique para cada item do menu
-    menuItems.forEach(item => {
-        item.addEventListener("click", function(event) {
-            // Verifica o ID da disciplina que foi clicada
-            const disciplinaSelecionada = event.target.id;
+    // Recupera a turma do aluno do localStorage
+    const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+    const selectedTurma = usuarioLogado ? usuarioLogado.turma : "turma_a"; // A turma vem do login do aluno
 
-            // Redireciona para a página de atividades
-            if (disciplinaSelecionada === "Matematica") {
-                window.location.href = "atividades_aluno.html";
-            }
-            if (disciplinaSelecionada === "Portuguesa") {
-                window.location.href = "atividades_aluno.html";
-            }
-            if (disciplinaSelecionada === "História") {
-                window.location.href = "atividades_aluno.html";
-            }
-            if (disciplinaSelecionada === "Geografia") {
-                window.location.href = "atividades_aluno.html";
-            }
-            if (disciplinaSelecionada === "Química") {
-                window.location.href = "atividades_aluno.html";
-            }
-            if (disciplinaSelecionada === "Biologia") {
-                window.location.href = "atividades_aluno.html";
-            }
-            if (disciplinaSelecionada === "Arte") {
-                window.location.href = "atividades_aluno.html";
-            }
+    let disciplinaSelecionada = null; // Variável para a disciplina selecionada no sidenav
+
+    // Verifica se o usuário está logado
+    if (!usuarioLogado || !usuarioLogado.turma) {
+        alert("Você precisa estar logado para acessar as atividades.");
+        window.location.href = "login.html"; // Redireciona para o login se não estiver logado
+    }
+
+    // Adiciona eventos para as disciplinas no menu lateral
+    menuItems.forEach((item) => {
+        item.addEventListener("click", function (event) {
+            // Previne o comportamento padrão do link (não recarregar a página)
+            event.preventDefault();
+
+            // Captura o ID do elemento clicado (sempre o <a>)
+            disciplinaSelecionada = event.currentTarget.id;
+
+            // Carregar as atividades filtradas pela turma e disciplina
+            loadActivities(disciplinaSelecionada, selectedTurma);
         });
     });
 
-    let selectedTurma = localStorage.getItem("selectedTurma") || 'turma_a';
-    const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
-
-    loadActivities(turma, disciplinaSelecionada);
-
-
-    // Estilos dos tipos de atividades
-    const typeStyles = {
-        Projeto: { icon: 'bx bx-task', bgColor: '#CFE8FF', textColor: '#3C91E6' },
-        Avaliação: { icon: 'bx bx-pencil', bgColor: '#FFF2C6', textColor: '#FFCE26' },
-        Relatório: { icon: 'bx bx-file', bgColor: '#FFE6E6', textColor: '#FF6F61' },
-        Revisão: { icon: 'bx bx-book', bgColor: '#E8F5E9', textColor: '#4CAF50' },
-        Apresentação: { icon: 'bx bx-show', bgColor: '#F3E5F5', textColor: '#9C27B0' },
-        Questionário: { icon: 'bx bx-help-circle', bgColor: '#FFF9C4', textColor: '#FFC107' },
-        Leitura: { icon: 'bx bx-book-reader', bgColor: '#D1C4E9', textColor: '#673AB7' },
-        Pesquisa: { icon: 'bx bx-search', bgColor: '#E1F5FE', textColor: '#03A9F4' },
-        'Lição de casa': { icon: 'bx bx-home', bgColor: '#FFECB3', textColor: '#FF9800' },
-        Aviso: { icon: 'bx bx-bell', bgColor: '#FFCDD2', textColor: '#E53935' }
-    };
-
-    // Função para carregar atividades
-    function loadActivities() {
-        const activities = JSON.parse(localStorage.getItem("activities_v3")) || [];
+    // Função para carregar as atividades filtradas pela turma e disciplina
+    function loadActivities(disciplina, turma) {
+        const activities = JSON.parse(localStorage.getItem(`activities_${disciplina}_${turma}`)) || [];
         const boxInfo = document.querySelector(".box-info");
 
         // Verifica se há atividades para exibir
@@ -131,7 +106,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // Exibe as atividades na tela
-        activities.forEach(activity => {
+        boxInfo.innerHTML = ""; // Limpa a área antes de adicionar as atividades
+        activities.forEach((activity) => {
             const activityElement = createActivityElement(activity);
             boxInfo.appendChild(activityElement);
         });
@@ -140,18 +116,30 @@ document.addEventListener("DOMContentLoaded", function () {
     // Função para criar o elemento de atividade
     function createActivityElement(details) {
         const { type, date, content, link } = details;
-        const { icon, bgColor, textColor } = typeStyles[type] || {};
+        const typeStyles = {
+            Projeto: { icon: "bx bx-task", bgColor: "#CFE8FF", textColor: "#3C91E6" },
+            Avaliação: { icon: "bx bx-pencil", bgColor: "#FFF2C6", textColor: "#FFCE26" },
+            Relatório: { icon: "bx bx-file", bgColor: "#FFE6E6", textColor: "#FF6F61" },
+            Revisão: { icon: "bx bx-book", bgColor: "#E8F5E9", textColor: "#4CAF50" },
+            Apresentação: { icon: "bx bx-show", bgColor: "#F3E5F5", textColor: "#9C27B0" },
+            Questionário: { icon: "bx bx-help-circle", bgColor: "#FFF9C4", textColor: "#FFC107" },
+            Leitura: { icon: "bx bx-book-reader", bgColor: "#D1C4E9", textColor: "#673AB7" },
+            Pesquisa: { icon: "bx bx-search", bgColor: "#E1F5FE", textColor: "#03A9F4" },
+            "Lição de casa": { icon: "bx bx-home", bgColor: "#FFECB3", textColor: "#FF9800" },
+            Aviso: { icon: "bx bx-bell", bgColor: "#FFCDD2", textColor: "#E53935" },
+        };
+        const { icon, bgColor, textColor } = typeStyles[details.type] || {};
 
         const activityElement = document.createElement("li");
         activityElement.classList.add("Atividades");
         activityElement.dataset.details = JSON.stringify(details);
 
         // Mostra inicialmente apenas a data
-        activityElement.innerHTML = `
+        activityElement.innerHTML = `        
             <i class="${icon}" style="background: ${bgColor}; color: ${textColor}; padding: 10px; border-radius: 50%;"></i>
             <span>
-                <h3>${type}</h3>
-                <p>${new Date(date).toLocaleDateString()}</p>
+                <h3>${details.type}</h3>
+                <p>${new Date(details.date).toLocaleDateString()}</p>
             </span>
         `;
 
@@ -165,14 +153,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Função para exibir os detalhes da atividade
     function showActivityDetails(details) {
-        // Criação do overlay (fundo escuro)
         const overlay = document.createElement("div");
         overlay.classList.add("overlay");
-
-        // Criação do conteúdo do modal (informações da atividade)
+    
         const modal = document.createElement("div");
         modal.classList.add("modal");
-
+    
+        // Recupera a resposta salva, se existir
+        const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+        const email = usuarioLogado ? usuarioLogado.email : null;
+        const respostaSalva = email ? localStorage.getItem(`resposta_${details.type}_${email}`) : null;
+    
+        // Verifica se já existe uma resposta
+        const jaRespondeu = !!respostaSalva;
+    
         modal.innerHTML = `
             <div class="modal-header">
                 <h2>Detalhes da Atividade</h2>
@@ -182,30 +176,89 @@ document.addEventListener("DOMContentLoaded", function () {
                 <p><strong>Tipo:</strong> ${details.type}</p>
                 <p><strong>Data:</strong> ${details.date}</p>
                 <p><strong>Conteúdo/Explicação:</strong> ${details.content}</p>
-                ${details.link ? `<p><strong>Link:</strong> <a href="${details.link}" target="_blank">${details.link}</a></p>` : ''}
+                ${
+                    details.link
+                        ? `<p><strong>Link:</strong> <a href="${details.link}" target="_blank">${details.link}</a></p>`
+                        : ""
+                }
+                <div id="resposta-container">
+                    ${
+                        jaRespondeu
+                            ? `<p>Sua resposta: <strong>${respostaSalva}</strong></p>
+                               <button id="alterar-resposta-btn">Alterar Resposta</button>`
+                            : `<button id="aceitar-btn">Aceitar</button>
+                               <button id="negar-btn">Negar</button>`
+                    }
+                </div>
             </div>
         `;
-
-        // Adiciona o modal e o overlay no corpo da página
+    
         document.body.appendChild(overlay);
         document.body.appendChild(modal);
-
-        // Fechar o modal
-        document.getElementById("close-modal-btn").addEventListener("click", function () {
+    
+        // Fecha o modal ao clicar no botão de fechar ou no overlay
+        document.getElementById("close-modal-btn").addEventListener("click", closeOverlay);
+        overlay.addEventListener("click", closeOverlay);
+    
+        function closeOverlay() {
             document.body.removeChild(overlay);
             document.body.removeChild(modal);
-        });
+        }
+    
+        // Adiciona os eventos aos botões
+        const respostaContainer = document.getElementById("resposta-container");
+    
+        if (!jaRespondeu) {
+            document.getElementById("aceitar-btn").addEventListener("click", function () {
+                salvarResposta("Aceitar");
+            });
+            document.getElementById("negar-btn").addEventListener("click", function () {
+                salvarResposta("Negar");
+            });
+        } else {
+            document.getElementById("alterar-resposta-btn").addEventListener("click", function () {
+                respostaContainer.innerHTML = `
+                    <button id="aceitar-btn">Aceitar</button>
+                    <button id="negar-btn">Negar</button>
+                `;
+                adicionarEventosBotoes();
+            });
+        }
+    
+        function salvarResposta(resposta) {
+            if (email) {
+                localStorage.setItem(`resposta_${details.type}_${email}`, resposta);
+                respostaContainer.innerHTML = `
+                    <p>Sua resposta: <strong>${resposta}</strong></p>
+                    <button id="alterar-resposta-btn">Alterar Resposta</button>
+                `;
+                document.getElementById("alterar-resposta-btn").addEventListener("click", function () {
+                    respostaContainer.innerHTML = `
+                        <button id="aceitar-btn">Aceitar</button>
+                        <button id="negar-btn">Negar</button>
+                    `;
+                    adicionarEventosBotoes();
+                });
+            } else {
+                alert("Erro: usuário não encontrado.");
+            }
+        }
+    
+        function adicionarEventosBotoes() {
+            document.getElementById("aceitar-btn").addEventListener("click", function () {
+                salvarResposta("Aceitar");
+            });
+            document.getElementById("negar-btn").addEventListener("click", function () {
+                salvarResposta("Negar");
+            });
+        }
+    }    
+    
 
-        // Fechar o modal clicando fora do conteúdo
-        overlay.addEventListener("click", function () {
-            document.body.removeChild(overlay);
-            document.body.removeChild(modal);
-        });
-    }
-
-    // Carregar as atividades do localStorage assim que a página carregar
-    loadActivities();
+    // Inicializa as atividades para a disciplina padrão (nenhuma selecionada inicialmente)
+    loadActivities("matematica", selectedTurma); // Padrão inicial
 });
+
 
 
 document.addEventListener("DOMContentLoaded", function () {
