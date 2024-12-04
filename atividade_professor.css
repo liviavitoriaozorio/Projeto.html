@@ -357,14 +357,11 @@ header a {
 	border-radius: 20px;
 	font-weight: 700;
 }
-#Conteudo main .table-data .order table tr td .status.completed {
+#Conteudo main .table-data .order table tr td .status.aceito {
 	background: #3C91E6;
 }
-#Conteudo main .table-data .order table tr td .status.process {
+#Conteudo main .table-data .order table tr td .status.negado {
 	background: #FD7238;
-}
-#Conteudo main .table-data .order table tr td .status.pending {
-	background: #FFCE26;
 }
 
 
